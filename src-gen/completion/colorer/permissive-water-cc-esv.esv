@@ -1,0 +1,4 @@
+module completion/colorer/permissive-water-cc-esv
+
+colorer
+  _.WATER-Plhdr : gray   

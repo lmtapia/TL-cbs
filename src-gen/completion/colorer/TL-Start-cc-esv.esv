@@ -1,0 +1,18 @@
+module completion/colorer/TL-Start-cc-esv
+
+imports
+  completion/colorer/Funcons-cc-esv
+
+colorer
+  _.L-start-Plhdr    : gray   
+  _.L-exp-Plhdr      : gray   
+  _.L-int-Plhdr      : gray   
+  _.LEX-int-Plhdr    : gray   
+  _.L-id-Plhdr       : gray   
+  _.LEX-id-Plhdr     : gray   
+  _.L-start-Plhdr    : gray   
+  _.L-exp-Plhdr      : gray   
+  _.L-int-Plhdr      : gray   
+  _.FCT-Quoted-Plhdr : gray   
+  _.FCT-Plhdr        : gray   
+  _.L-id-Plhdr       : gray   

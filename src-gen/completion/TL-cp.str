@@ -1,0 +1,47 @@
+module completion/TL-cp
+
+imports
+  libstratego-gpp
+  libspoofax/editor/completion/-
+
+
+imports
+  signatures/TL-sig
+
+
+imports
+  completion/TL-Start-cp
+
+
+rules
+
+  suggest-completions(|completions):
+    Start-Plhdr() -> <suggest-completions(|completions)> L-start-Plhdr()
+    where <not(is-expanded)> (Start-Plhdr(), L-start-Plhdr())
+          ; rules (
+              is-expanded :
+                (Start-Plhdr(), L-start-Plhdr()) -> <id>
+            )
+
+
+rules
+
+  is-left-recursive :
+    "L-start" -> <is-left-recursive> "Start"
+    where <not(is-lexical-completion-sort)> "L-start"
+
+  is-right-recursive :
+    "L-start" -> <is-right-recursive> "Start"
+    where <not(is-lexical-completion-sort)> "L-start"
+
+  is-Start-completion-sort :
+    "L-start" -> <id>
+
+
+rules
+
+  is-SDF-placeholder =
+    ?Start-Plhdr()
+
+  is-SDF-placeholder =
+    ?L-start-Plhdr()

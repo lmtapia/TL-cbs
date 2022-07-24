@@ -1,0 +1,114 @@
+module pp/TL-pp
+
+imports
+  libstratego-gpp
+  libspoofax/sdf/pp
+  libspoofax/term/origin
+  libspoofax/term/annotation
+  libstratego-sglr
+  libstratego-sglr
+  signatures/TL-sig
+
+
+imports
+  signatures/TL-Start-sig
+
+
+imports
+  pp/TL-Start-pp
+
+
+strategies
+  prettyprint-example =
+    prettyprint-unknown
+
+  prettyprint-unknown =
+    fail
+
+  prettyprint-unknown(|sort) =
+    fail
+
+
+strategies
+  prettyprint-SDF-start-symbols =
+    prettyprint-unknown-start-symbols
+
+  prettyprint-unknown-start-symbols =
+    fail
+
+
+strategies
+  prettyprint-unknown-start-symbols =
+    prettyprint-unknown-Start
+
+
+strategies
+  prettyprint-unknown =
+    prettyprint-unknown-Start
+
+  prettyprint-unknown(|sort):
+    t -> <prettyprint-unknown-Start>
+    where <?"Start"> sort
+
+  prettyprint-unknown-Start :
+    t1__ -> [ H(
+                [SOpt(HS(), "0")]
+              , t1__'
+              )
+            ]
+    where not(is-unknown-Start)
+    where t1__' := <clean-layout-empty-symbols(
+                    | ""
+                    , FALSE()
+                    , FALSE()
+                    )
+                    ; flatten-list> [ <check-nonterminal-isEmpty ; id
+                                       <+ pp-one-V(prettyprint-unknown-L-start)
+                                       <+ pp-one-Z(prettyprint-completion-aux)> t1__
+                                    ]
+
+  is-unknown-Start =
+    fail
+
+  prettyprint-unknown-Start :
+    amb([h|hs]) -> <prettyprint-unknown-Start> h
+
+  prettyprint-unknown-Start :
+    Start-Plhdr() -> [ H(
+                         [SOpt(HS(), "0")]
+                       , [S("[[Start]]")]
+                       )
+                     ]
+
+  is-unknown-Start =
+    ?Start-Plhdr()
+
+  prettyprint-unknown-L-start :
+    L-start-Plhdr() -> [ H(
+                           [SOpt(HS(), "0")]
+                         , [S("[[L-start]]")]
+                         )
+                       ]
+
+  is-unknown-L-start =
+    ?L-start-Plhdr()
+
+  prettyprint-unknown-Start :
+    Start-Plhdr(_) -> [ H(
+                          [SOpt(HS(), "0")]
+                        , [S("[[Start]]")]
+                        )
+                      ]
+
+  is-unknown-Start =
+    ?Start-Plhdr(_)
+
+  prettyprint-unknown-L-start :
+    L-start-Plhdr(_) -> [ H(
+                            [SOpt(HS(), "0")]
+                          , [S("[[L-start]]")]
+                          )
+                        ]
+
+  is-unknown-L-start =
+    ?L-start-Plhdr(_)

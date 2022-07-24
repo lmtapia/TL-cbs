@@ -1,0 +1,82 @@
+module Funcons
+exports
+  context-free start-symbols
+    Start
+
+  context-free syntax
+    FCT                      -> Start      {avoid}
+    FCT-SEQ "," FCT-SEQ      -> FCT-SEQ    {cons("FCTSequence"), right}
+                             -> FCT-SEQ    {cons("FCTEmpty")}
+    FCT                      -> FCT-SEQ    
+    INT                      -> FCT        {cons("FCTInt")}
+    FLOAT                    -> FCT        {cons("FCTFloat")}
+    CHAR                     -> FCT        {cons("FCTChar")}
+    STRING                   -> FCT        {cons("FCTString")}
+    "\\\"" FCT-Quoted "\\\"" -> FCT        {cons("FCTDoubleQuoted")}
+    VAR                      -> FCT        {cons("FCTVar")}
+    NAME                     -> FCT        {cons("FCTName")}
+    NAME FCT                 -> FCT        {cons("FCTApp")}
+    FCT ":" FCT              -> FCT        {cons("FCTTyped"), non-assoc}
+    "~" FCT                  -> FCT        {cons("FCTComplement")}
+    FCT? "=>" FCT            -> FCT        {cons("FCTComputes"), non-assoc}
+    FCT POSTFIX              -> FCT        {cons("FCTPostfix")}
+    FCT "|" {FCT "|"}+       -> FCT        {cons("FCTUnion")}
+    FCT "&" {FCT "&"}+       -> FCT        {cons("FCTIntersect")}
+    "(" FCT-SEQ ")"          -> FCT        {cons("FCTGroup")}
+    "[" FCT-SEQ "]"          -> FCT        {cons("FCTList")}
+    "{" FCT-SEQ "}"          -> FCT        {cons("FCTSet")}
+    "{" {FCT-POINT ","}* "}" -> FCT        {cons("FCTMap")}
+    FCT "|->" FCT            -> FCT-POINT  {cons("Point")}
+                             -> FCT-Quoted {cons("FCTQuotedEmpty")}
+
+  lexical syntax
+    
+
+  context-free syntax
+    "[[Start]]"      -> Start      {cons("Start-Plhdr"), placeholder}
+    "[[INT]]"        -> INT        {cons("INT-Plhdr"), placeholder}
+    "[[FLOAT]]"      -> FLOAT      {cons("FLOAT-Plhdr"), placeholder}
+    "[[CHAR]]"       -> CHAR       {cons("CHAR-Plhdr"), placeholder}
+    "[[STRING]]"     -> STRING     {cons("STRING-Plhdr"), placeholder}
+    "[[VAR]]"        -> VAR        {cons("VAR-Plhdr"), placeholder}
+    "[[NAME]]"       -> NAME       {cons("NAME-Plhdr"), placeholder}
+    "[[POSTFIX]]"    -> POSTFIX    {cons("POSTFIX-Plhdr"), placeholder}
+    "[[FCT-SEQ]]"    -> FCT-SEQ    {cons("FCT-SEQ-Plhdr"), placeholder}
+    "[[FCT-POINT]]"  -> FCT-POINT  {cons("FCT-POINT-Plhdr"), placeholder}
+    "[[FCT]]"        -> FCT        {cons("FCT-Plhdr"), placeholder}
+    "[[FCT-Quoted]]" -> FCT-Quoted {cons("FCT-Quoted-Plhdr"), placeholder}
+
+  lexical restrictions
+    "[[Start]]" "[[INT]]" "[[FLOAT]]" "[[CHAR]]" "[[STRING]]" "[[VAR]]"
+    "[[NAME]]" "[[POSTFIX]]" "[[FCT-SEQ]]" "[[FCT-POINT]]" "[[FCT]]"
+    "[[FCT-Quoted]]" -/- [a-zA-Z]
+
+  lexical syntax
+    "-"? [0-9]+                                          -> INT         
+    "-"? [0-9]+ "." [0-9]+                               -> FLOAT       
+    "'" ~[] "'"                                          -> CHAR        
+    "\"" STRING-CHAR* "\""                               -> STRING      
+    ~[\"\n] | "\\\"" | BACKSLASH                         -> STRING-CHAR 
+    "\\"                                                 -> BACKSLASH   
+    [a-z] [a-zA-Z0-9\-]*                                 -> NAME        
+    [A-Z] [a-zA-Z]* ( [\-] [a-zA-Z]+ )* SUFFIX? POSTFIX? -> VAR         
+    [0-9]+ | [\']+ | ( [0-9]+ [\']+ )                    -> SUFFIX      
+    "*" | "+" | "?"                                      -> POSTFIX     
+    [\ \t\n\r]                                           -> LAYOUT      
+    "/*" ( ~[\*] | STAR )* "*/"                          -> LAYOUT      
+    "*"                                                  -> STAR        
+    "//" ~[\n\r]* [\n\r] | EOF                           -> LAYOUT      
+                                                         -> EOF         
+
+  lexical restrictions
+    INT -/- [0-9]
+    FLOAT -/- [0-9]
+    NAME -/- [a-zA-Z0-9\-]
+    BACKSLASH -/- [\"]
+    STAR -/- [\/]
+    EOF -/- ~[]
+
+  context-free restrictions
+    LAYOUT? -/- [\ \t\n\r]
+    LAYOUT? -/- [\/] . [\/]
+    LAYOUT? -/- [\/] . [\*]

@@ -1,0 +1,77 @@
+module statics
+
+imports
+  signatures/nabl2/shared/-
+  signatures/nabl2/shared/common/-
+  signatures/nabl2/shared/constraints/-
+  nabl2/shared/-
+  signatures/nabl2/runtime/-
+  signatures/nabl2/runtime/analysis/-
+  signatures/nabl2/runtime/common/-
+  nabl2/runtime/-
+  nabl2/runtime/analysis/-
+  nabl2/runtime/prelude/-
+  nabl2/runtime/stdlib/-
+
+
+rules
+
+
+rules
+
+
+rules
+
+
+imports
+  signatures/-
+
+
+rules
+
+  nabl2--generate-constraint-init-rule(|):
+    (nabl2_source, term14@wld1) -> (args24, constraint9)
+    with(s := <nabl2--fresh-var(|nabl2_source)> "s" ; id)
+    with(args24 := Params((s)))
+    with(constraint9 := CNew([s], <nabl2--get-ast-index> term14))
+    with(if nabl2--is-debug-collection-enabled then
+           nabl2--collection-info-msg(
+           | <concat-strings> ["init ^ ", <pp-NaBL2-CTerm> (s)]
+           )
+         end)
+
+  nabl2--generate-constraint-default-rule(|):
+    (nabl2_source, term15@wld1, args25) -> constraint10
+    with(id)
+    with(Params(params13@(s)) := args25
+         <+ fatal-err(
+            | <concat-strings> [ "Cannot match expected "
+                               , "^ (s)"
+                               , " with actual "
+                               , <nabl2--pp-flat-args> args25
+                               , " when matching "
+                               , "wld1"
+                               , " with "
+                               , <pp-NaBL2-Term> term15
+                               , "."
+                               ]
+            ))
+    with(if nabl2--is-debug-collection-enabled then
+           nabl2--collection-info-msg(
+           | <concat-strings> [ "default"
+                              , " [[ "
+                              , <pp-NaBL2-Term> term15
+                              , " ^ "
+                              , <pp-NaBL2-CTerm> params13
+                              , " ]]"
+                              ]
+           )
+         end)
+    with(constraint10 := CConj(
+                           CAstProperty(
+                             <nabl2--get-ast-index> term15
+                           , Params()
+                           , (s)
+                           )
+                         , CTrue(<nabl2--get-ast-index> term15)
+                         ))

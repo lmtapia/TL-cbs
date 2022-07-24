@@ -1,0 +1,538 @@
+module completion/Funcons-cp
+
+imports
+  libstratego-gpp
+  libspoofax/editor/completion/-
+
+
+imports
+  signatures/Funcons-sig
+
+
+rules
+
+  suggest-completions(|completions):
+    Start-Plhdr() -> <suggest-completions(|completions)> FCT-Plhdr()
+    where <not(is-expanded)> (Start-Plhdr(), FCT-Plhdr())
+          ; rules (
+              is-expanded :
+                (Start-Plhdr(), FCT-Plhdr()) -> <id>
+            )
+
+  suggest-completions(|completions):
+    FCT-SEQ-Plhdr() -> <add-completions(
+                        | ( "FCTSequence"
+                          , FCTSequence(
+                              <try(inline-completions(|FCT-SEQ-Plhdr()))> FCT-SEQ-Plhdr()
+                            , <try(inline-completions(|FCT-SEQ-Plhdr()))> FCT-SEQ-Plhdr()
+                            )
+                          )
+                        )
+                        ; fail> completions
+
+  null-constructor-completion-sort :
+    "FCT-SEQ" -> FCTEmpty()
+
+  suggest-completions(|completions):
+    FCT-SEQ-Plhdr() -> <suggest-completions(|completions)> FCT-Plhdr()
+    where <not(is-expanded)> (FCT-SEQ-Plhdr(), FCT-Plhdr())
+          ; rules (
+              is-expanded :
+                (FCT-SEQ-Plhdr(), FCT-Plhdr()) -> <id>
+            )
+
+  suggest-completions(|completions):
+    FCT-Plhdr() -> <add-completions(
+                    | ( "FCTInt"
+                      , FCTInt(
+                          <try(inline-completions(|FCT-Plhdr()))> INT-Plhdr()
+                        )
+                      )
+                    )
+                    ; fail> completions
+
+  suggest-completions(|completions):
+    FCT-Plhdr() -> <add-completions(
+                    | ( "FCTFloat"
+                      , FCTFloat(
+                          <try(inline-completions(|FCT-Plhdr()))> FLOAT-Plhdr()
+                        )
+                      )
+                    )
+                    ; fail> completions
+
+  suggest-completions(|completions):
+    FCT-Plhdr() -> <add-completions(
+                    | ( "FCTChar"
+                      , FCTChar(
+                          <try(inline-completions(|FCT-Plhdr()))> CHAR-Plhdr()
+                        )
+                      )
+                    )
+                    ; fail> completions
+
+  suggest-completions(|completions):
+    FCT-Plhdr() -> <add-completions(
+                    | ( "FCTString"
+                      , FCTString(
+                          <try(inline-completions(|FCT-Plhdr()))> STRING-Plhdr()
+                        )
+                      )
+                    )
+                    ; fail> completions
+
+  suggest-completions(|completions):
+    FCT-Plhdr() -> <add-completions(
+                    | ( "FCTDoubleQuoted"
+                      , FCTDoubleQuoted(
+                          <try(inline-completions(|FCT-Plhdr()))> FCT-Quoted-Plhdr()
+                        )
+                      )
+                    )
+                    ; fail> completions
+
+  suggest-completions(|completions):
+    FCT-Plhdr() -> <add-completions(
+                    | ( "FCTVar"
+                      , FCTVar(
+                          <try(inline-completions(|FCT-Plhdr()))> VAR-Plhdr()
+                        )
+                      )
+                    )
+                    ; fail> completions
+
+  suggest-completions(|completions):
+    FCT-Plhdr() -> <add-completions(
+                    | ( "FCTName"
+                      , FCTName(
+                          <try(inline-completions(|FCT-Plhdr()))> NAME-Plhdr()
+                        )
+                      )
+                    )
+                    ; fail> completions
+
+  suggest-completions(|completions):
+    FCT-Plhdr() -> <add-completions(
+                    | ( "FCTApp"
+                      , FCTApp(
+                          <try(inline-completions(|FCT-Plhdr()))> NAME-Plhdr()
+                        , <try(inline-completions(|FCT-Plhdr()))> FCT-Plhdr()
+                        )
+                      )
+                    )
+                    ; fail> completions
+
+  suggest-completions(|completions):
+    FCT-Plhdr() -> <add-completions(
+                    | ( "FCTTyped"
+                      , FCTTyped(
+                          <try(inline-completions(|FCT-Plhdr()))> FCT-Plhdr()
+                        , <try(inline-completions(|FCT-Plhdr()))> FCT-Plhdr()
+                        )
+                      )
+                    )
+                    ; fail> completions
+
+  suggest-completions(|completions):
+    FCT-Plhdr() -> <add-completions(
+                    | ( "FCTComplement"
+                      , FCTComplement(
+                          <try(inline-completions(|FCT-Plhdr()))> FCT-Plhdr()
+                        )
+                      )
+                    )
+                    ; fail> completions
+
+  suggest-completions(|completions):
+    FCT-Plhdr() -> <add-completions(
+                    | ( "FCTComputes"
+                      , FCTComputes(
+                          Some(CURSOR_ELEMENT())
+                        , <try(inline-completions(|FCT-Plhdr()))> FCT-Plhdr()
+                        )
+                      )
+                    )
+                    ; fail> completions
+
+  suggest-completions(|completions):
+    FCT-Plhdr() -> <add-completions(
+                    | ( "FCTPostfix"
+                      , FCTPostfix(
+                          <try(inline-completions(|FCT-Plhdr()))> FCT-Plhdr()
+                        , <try(inline-completions(|FCT-Plhdr()))> POSTFIX-Plhdr()
+                        )
+                      )
+                    )
+                    ; fail> completions
+
+  suggest-completions(|completions):
+    FCT-Plhdr() -> <add-completions(
+                    | ( "FCTUnion"
+                      , FCTUnion(
+                          <try(inline-completions(|FCT-Plhdr()))> FCT-Plhdr()
+                        , [ <try(inline-completions(|FCT-Plhdr()))> FCT-Plhdr()
+                          ]
+                        )
+                      )
+                    )
+                    ; fail> completions
+
+  suggest-completions(|completions):
+    FCT-Plhdr() -> <add-completions(
+                    | ( "FCTIntersect"
+                      , FCTIntersect(
+                          <try(inline-completions(|FCT-Plhdr()))> FCT-Plhdr()
+                        , [ <try(inline-completions(|FCT-Plhdr()))> FCT-Plhdr()
+                          ]
+                        )
+                      )
+                    )
+                    ; fail> completions
+
+  suggest-completions(|completions):
+    FCT-Plhdr() -> <add-completions(
+                    | ( "FCTGroup"
+                      , FCTGroup(
+                          <try(inline-completions(|FCT-Plhdr()))> FCT-SEQ-Plhdr()
+                        )
+                      )
+                    )
+                    ; fail> completions
+
+  suggest-completions(|completions):
+    FCT-Plhdr() -> <add-completions(
+                    | ( "FCTList"
+                      , FCTList(
+                          <try(inline-completions(|FCT-Plhdr()))> FCT-SEQ-Plhdr()
+                        )
+                      )
+                    )
+                    ; fail> completions
+
+  suggest-completions(|completions):
+    FCT-Plhdr() -> <add-completions(
+                    | ( "FCTSet"
+                      , FCTSet(
+                          <try(inline-completions(|FCT-Plhdr()))> FCT-SEQ-Plhdr()
+                        )
+                      )
+                    )
+                    ; fail> completions
+
+  suggest-completions(|completions):
+    FCT-Plhdr() -> <add-completions(
+                    | ("FCTMap", FCTMap(CURSOR_ELEMENT()))
+                    )
+                    ; fail> completions
+
+  suggest-completions(|completions):
+    FCT-POINT-Plhdr() -> <add-completions(
+                          | ( "Point"
+                            , Point(
+                                <try(inline-completions(|FCT-POINT-Plhdr()))> FCT-Plhdr()
+                              , <try(inline-completions(|FCT-POINT-Plhdr()))> FCT-Plhdr()
+                              )
+                            )
+                          )
+                          ; fail> completions
+
+  null-constructor-completion-sort :
+    "FCT-Quoted" -> FCTQuotedEmpty()
+
+
+rules
+
+  is-left-recursive :
+    "FCT-SEQ" -> <id>
+
+  suggest-completions-left-rec(|completions):
+    (sort, orig-term) -> <add-completions(
+                          | ( "FCTSequence"
+                            , FCTSequence(
+                                orig-term
+                              , <try(inline-completions(|FCT-SEQ-Plhdr()))> FCT-SEQ-Plhdr()
+                              )
+                            )
+                          )
+                          ; fail> completions
+    where <is-FCT-SEQ-completion-sort> sort
+
+  suggest-completions-left-rec(|completions):
+    (sort, orig-term) -> <add-completions(
+                          | ( "FCTTyped"
+                            , FCTTyped(
+                                orig-term
+                              , <try(inline-completions(|FCT-Plhdr()))> FCT-Plhdr()
+                              )
+                            )
+                          )
+                          ; fail> completions
+    where <is-FCT-completion-sort> sort
+
+  suggest-completions-left-rec(|completions):
+    (sort, orig-term) -> <add-completions(
+                          | ( "FCTPostfix"
+                            , FCTPostfix(
+                                orig-term
+                              , <try(inline-completions(|FCT-Plhdr()))> POSTFIX-Plhdr()
+                              )
+                            )
+                          )
+                          ; fail> completions
+    where <is-FCT-completion-sort> sort
+
+  suggest-completions-left-rec(|completions):
+    (sort, orig-term) -> <add-completions(
+                          | ( "FCTUnion"
+                            , FCTUnion(
+                                orig-term
+                              , [ <try(inline-completions(|FCT-Plhdr()))> FCT-Plhdr()
+                                ]
+                              )
+                            )
+                          )
+                          ; fail> completions
+    where <is-FCT-completion-sort> sort
+
+  is-left-recursive :
+    "FCT" -> <id>
+
+  suggest-completions-left-rec(|completions):
+    (sort, orig-term) -> <add-completions(
+                          | ( "FCTIntersect"
+                            , FCTIntersect(
+                                orig-term
+                              , [ <try(inline-completions(|FCT-Plhdr()))> FCT-Plhdr()
+                                ]
+                              )
+                            )
+                          )
+                          ; fail> completions
+    where <is-FCT-completion-sort> sort
+
+  is-right-recursive :
+    "FCT-SEQ" -> <id>
+
+  suggest-completions-right-rec(|completions):
+    (sort, orig-term) -> <add-completions(
+                          | ( "FCTSequence"
+                            , FCTSequence(
+                                <try(inline-completions(|FCT-SEQ-Plhdr()))> FCT-SEQ-Plhdr()
+                              , orig-term
+                              )
+                            )
+                          )
+                          ; fail> completions
+    where <is-FCT-SEQ-completion-sort> sort
+
+  is-FCT-SEQ-completion-sort :
+    "FCT-SEQ" -> <id>
+
+  suggest-completions-right-rec(|completions):
+    (sort, orig-term) -> <add-completions(
+                          | ( "FCTApp"
+                            , FCTApp(
+                                <try(inline-completions(|FCT-Plhdr()))> NAME-Plhdr()
+                              , orig-term
+                              )
+                            )
+                          )
+                          ; fail> completions
+    where <is-FCT-completion-sort> sort
+
+  suggest-completions-right-rec(|completions):
+    (sort, orig-term) -> <add-completions(
+                          | ( "FCTTyped"
+                            , FCTTyped(
+                                <try(inline-completions(|FCT-Plhdr()))> FCT-Plhdr()
+                              , orig-term
+                              )
+                            )
+                          )
+                          ; fail> completions
+    where <is-FCT-completion-sort> sort
+
+  suggest-completions-right-rec(|completions):
+    (sort, orig-term) -> <add-completions(
+                          | ("FCTComplement", FCTComplement(orig-term))
+                          )
+                          ; fail> completions
+    where <is-FCT-completion-sort> sort
+
+  is-right-recursive :
+    "FCT" -> <id>
+
+  suggest-completions-right-rec(|completions):
+    (sort, orig-term) -> <add-completions(
+                          | ( "FCTComputes"
+                            , FCTComputes(Some(CURSOR_ELEMENT()), orig-term)
+                            )
+                          )
+                          ; fail> completions
+    where <is-FCT-completion-sort> sort
+
+  is-FCT-completion-sort :
+    "FCT" -> <id>
+
+  is-left-recursive :
+    "FCT" -> <is-left-recursive> "Start"
+    where <not(is-lexical-completion-sort)> "FCT"
+
+  is-right-recursive :
+    "FCT" -> <is-right-recursive> "Start"
+    where <not(is-lexical-completion-sort)> "FCT"
+
+  is-Start-completion-sort :
+    "FCT" -> <id>
+
+  is-left-recursive :
+    "FCT" -> <is-left-recursive> "FCT-SEQ"
+    where <not(is-lexical-completion-sort)> "FCT"
+
+  is-right-recursive :
+    "FCT" -> <is-right-recursive> "FCT-SEQ"
+    where <not(is-lexical-completion-sort)> "FCT"
+
+  is-FCT-SEQ-completion-sort :
+    "FCT" -> <id>
+
+  is-left-recursive :
+    "INT" -> <is-left-recursive> "FCT"
+    where <not(is-lexical-completion-sort)> "INT"
+
+  is-right-recursive :
+    "INT" -> <is-right-recursive> "FCT"
+    where <not(is-lexical-completion-sort)> "INT"
+
+  is-FCT-completion-sort :
+    "INT" -> <id>
+
+  is-left-recursive :
+    "FLOAT" -> <is-left-recursive> "FCT"
+    where <not(is-lexical-completion-sort)> "FLOAT"
+
+  is-right-recursive :
+    "FLOAT" -> <is-right-recursive> "FCT"
+    where <not(is-lexical-completion-sort)> "FLOAT"
+
+  is-FCT-completion-sort :
+    "FLOAT" -> <id>
+
+  is-left-recursive :
+    "CHAR" -> <is-left-recursive> "FCT"
+    where <not(is-lexical-completion-sort)> "CHAR"
+
+  is-right-recursive :
+    "CHAR" -> <is-right-recursive> "FCT"
+    where <not(is-lexical-completion-sort)> "CHAR"
+
+  is-FCT-completion-sort :
+    "CHAR" -> <id>
+
+  is-left-recursive :
+    "STRING" -> <is-left-recursive> "FCT"
+    where <not(is-lexical-completion-sort)> "STRING"
+
+  is-right-recursive :
+    "STRING" -> <is-right-recursive> "FCT"
+    where <not(is-lexical-completion-sort)> "STRING"
+
+  is-FCT-completion-sort :
+    "STRING" -> <id>
+
+  is-left-recursive :
+    "VAR" -> <is-left-recursive> "FCT"
+    where <not(is-lexical-completion-sort)> "VAR"
+
+  is-right-recursive :
+    "VAR" -> <is-right-recursive> "FCT"
+    where <not(is-lexical-completion-sort)> "VAR"
+
+  is-FCT-completion-sort :
+    "VAR" -> <id>
+
+  is-left-recursive :
+    "NAME" -> <is-left-recursive> "FCT"
+    where <not(is-lexical-completion-sort)> "NAME"
+
+  is-right-recursive :
+    "NAME" -> <is-right-recursive> "FCT"
+    where <not(is-lexical-completion-sort)> "NAME"
+
+  is-FCT-completion-sort :
+    "NAME" -> <id>
+
+  is-lexical-completion-sort :
+    "INT" -> <id>
+
+  is-lexical-completion-sort :
+    "FLOAT" -> <id>
+
+  is-lexical-completion-sort :
+    "CHAR" -> <id>
+
+  is-lexical-completion-sort :
+    "STRING" -> <id>
+
+  is-lexical-completion-sort :
+    "STRING-CHAR" -> <id>
+
+  is-lexical-completion-sort :
+    "BACKSLASH" -> <id>
+
+  is-lexical-completion-sort :
+    "NAME" -> <id>
+
+  is-lexical-completion-sort :
+    "VAR" -> <id>
+
+  is-lexical-completion-sort :
+    "SUFFIX" -> <id>
+
+  is-lexical-completion-sort :
+    "POSTFIX" -> <id>
+
+  is-lexical-completion-sort :
+    "STAR" -> <id>
+
+  is-lexical-completion-sort :
+    "EOF" -> <id>
+
+
+rules
+
+  is-SDF-placeholder =
+    ?Start-Plhdr()
+
+  is-SDF-placeholder =
+    ?INT-Plhdr()
+
+  is-SDF-placeholder =
+    ?FLOAT-Plhdr()
+
+  is-SDF-placeholder =
+    ?CHAR-Plhdr()
+
+  is-SDF-placeholder =
+    ?STRING-Plhdr()
+
+  is-SDF-placeholder =
+    ?VAR-Plhdr()
+
+  is-SDF-placeholder =
+    ?NAME-Plhdr()
+
+  is-SDF-placeholder =
+    ?POSTFIX-Plhdr()
+
+  is-SDF-placeholder =
+    ?FCT-SEQ-Plhdr()
+
+  is-SDF-placeholder =
+    ?FCT-POINT-Plhdr()
+
+  is-SDF-placeholder =
+    ?FCT-Plhdr()
+
+  is-SDF-placeholder =
+    ?FCT-Quoted-Plhdr()

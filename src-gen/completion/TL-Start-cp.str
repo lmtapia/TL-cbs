@@ -1,0 +1,251 @@
+module completion/TL-Start-cp
+
+imports
+  libstratego-gpp
+  libspoofax/editor/completion/-
+
+
+imports
+  signatures/TL-Start-sig
+
+
+imports
+  completion/Funcons-cp
+
+
+rules
+
+  suggest-completions(|completions):
+    L-start-Plhdr() -> <add-completions(
+                        | ( "L-start--L-exp"
+                          , L-start--L-exp(
+                              <try(inline-completions(|L-start-Plhdr()))> L-exp-Plhdr()
+                            )
+                          )
+                        )
+                        ; fail> completions
+
+  suggest-completions(|completions):
+    L-exp-Plhdr() -> <add-completions(
+                      | ( "L-exp--L-int"
+                        , L-exp--L-int(
+                            <try(inline-completions(|L-exp-Plhdr()))> L-int-Plhdr()
+                          )
+                        )
+                      )
+                      ; fail> completions
+
+  suggest-completions(|completions):
+    L-exp-Plhdr() -> <add-completions(
+                      | ( "L-exp--L-id"
+                        , L-exp--L-id(
+                            <try(inline-completions(|L-exp-Plhdr()))> L-id-Plhdr()
+                          )
+                        )
+                      )
+                      ; fail> completions
+
+  suggest-completions(|completions):
+    L-int-Plhdr() -> <add-completions(
+                      | ( "LEX-int"
+                        , LEX-int(
+                            <try(inline-completions(|L-int-Plhdr()))> LEX-int-Plhdr()
+                          )
+                        )
+                      )
+                      ; fail> completions
+
+  suggest-completions(|completions):
+    L-id-Plhdr() -> <add-completions(
+                     | ( "LEX-id"
+                       , LEX-id(
+                           <try(inline-completions(|L-id-Plhdr()))> LEX-id-Plhdr()
+                         )
+                       )
+                     )
+                     ; fail> completions
+
+  suggest-completions(|completions):
+    FCT-Plhdr() -> <add-completions(
+                    | ( "T-start"
+                      , T-start(
+                          <try(inline-completions(|FCT-Plhdr()))> L-start-Plhdr()
+                        )
+                      )
+                    )
+                    ; fail> completions
+
+  suggest-completions(|completions):
+    FCT-Plhdr() -> <add-completions(
+                    | ( "T-eval"
+                      , T-eval(
+                          <try(inline-completions(|FCT-Plhdr()))> L-exp-Plhdr()
+                        )
+                      )
+                    )
+                    ; fail> completions
+
+  suggest-completions(|completions):
+    FCT-Quoted-Plhdr() -> <add-completions(
+                           | ( "L-int"
+                             , L-int(
+                                 <try(inline-completions(|FCT-Quoted-Plhdr()))> L-int-Plhdr()
+                               )
+                             )
+                           )
+                           ; fail> completions
+
+  suggest-completions(|completions):
+    FCT-Plhdr() -> <add-completions(
+                    | ( "T-int"
+                      , T-int(
+                          <try(inline-completions(|FCT-Plhdr()))> L-int-Plhdr()
+                        )
+                      )
+                    )
+                    ; fail> completions
+
+  suggest-completions(|completions):
+    FCT-Quoted-Plhdr() -> <add-completions(
+                           | ( "L-id"
+                             , L-id(
+                                 <try(inline-completions(|FCT-Quoted-Plhdr()))> L-id-Plhdr()
+                               )
+                             )
+                           )
+                           ; fail> completions
+
+  suggest-completions(|completions):
+    FCT-Plhdr() -> <add-completions(
+                    | ( "T-id"
+                      , T-id(
+                          <try(inline-completions(|FCT-Plhdr()))> L-id-Plhdr()
+                        )
+                      )
+                    )
+                    ; fail> completions
+
+
+rules
+
+  is-lexical-completion-sort :
+    "LEX-int" -> <id>
+
+  is-lexical-completion-sort :
+    "LEX-id" -> <id>
+
+  is-left-recursive :
+    "L-exp" -> <is-left-recursive> "L-start"
+    where <not(is-lexical-completion-sort)> "L-exp"
+
+  is-right-recursive :
+    "L-exp" -> <is-right-recursive> "L-start"
+    where <not(is-lexical-completion-sort)> "L-exp"
+
+  is-L-start-completion-sort :
+    "L-exp" -> <id>
+
+  is-left-recursive :
+    "L-int" -> <is-left-recursive> "L-exp"
+    where <not(is-lexical-completion-sort)> "L-int"
+
+  is-right-recursive :
+    "L-int" -> <is-right-recursive> "L-exp"
+    where <not(is-lexical-completion-sort)> "L-int"
+
+  is-L-exp-completion-sort :
+    "L-int" -> <id>
+
+  is-left-recursive :
+    "L-id" -> <is-left-recursive> "L-exp"
+    where <not(is-lexical-completion-sort)> "L-id"
+
+  is-right-recursive :
+    "L-id" -> <is-right-recursive> "L-exp"
+    where <not(is-lexical-completion-sort)> "L-id"
+
+  is-L-exp-completion-sort :
+    "L-id" -> <id>
+
+  is-left-recursive :
+    "LEX-int" -> <is-left-recursive> "L-int"
+    where <not(is-lexical-completion-sort)> "LEX-int"
+
+  is-right-recursive :
+    "LEX-int" -> <is-right-recursive> "L-int"
+    where <not(is-lexical-completion-sort)> "LEX-int"
+
+  is-L-int-completion-sort :
+    "LEX-int" -> <id>
+
+  is-left-recursive :
+    "LEX-id" -> <is-left-recursive> "L-id"
+    where <not(is-lexical-completion-sort)> "LEX-id"
+
+  is-right-recursive :
+    "LEX-id" -> <is-right-recursive> "L-id"
+    where <not(is-lexical-completion-sort)> "LEX-id"
+
+  is-L-id-completion-sort :
+    "LEX-id" -> <id>
+
+  is-left-recursive :
+    "L-int" -> <is-left-recursive> "FCT-Quoted"
+    where <not(is-lexical-completion-sort)> "L-int"
+
+  is-right-recursive :
+    "L-int" -> <is-right-recursive> "FCT-Quoted"
+    where <not(is-lexical-completion-sort)> "L-int"
+
+  is-FCT-Quoted-completion-sort :
+    "L-int" -> <id>
+
+  is-left-recursive :
+    "L-id" -> <is-left-recursive> "FCT-Quoted"
+    where <not(is-lexical-completion-sort)> "L-id"
+
+  is-right-recursive :
+    "L-id" -> <is-right-recursive> "FCT-Quoted"
+    where <not(is-lexical-completion-sort)> "L-id"
+
+  is-FCT-Quoted-completion-sort :
+    "L-id" -> <id>
+
+
+rules
+
+  is-SDF-placeholder =
+    ?L-start-Plhdr()
+
+  is-SDF-placeholder =
+    ?L-exp-Plhdr()
+
+  is-SDF-placeholder =
+    ?L-int-Plhdr()
+
+  is-SDF-placeholder =
+    ?LEX-int-Plhdr()
+
+  is-SDF-placeholder =
+    ?L-id-Plhdr()
+
+  is-SDF-placeholder =
+    ?LEX-id-Plhdr()
+
+  is-SDF-placeholder =
+    ?L-start-Plhdr()
+
+  is-SDF-placeholder =
+    ?L-exp-Plhdr()
+
+  is-SDF-placeholder =
+    ?L-int-Plhdr()
+
+  is-SDF-placeholder =
+    ?FCT-Quoted-Plhdr()
+
+  is-SDF-placeholder =
+    ?FCT-Plhdr()
+
+  is-SDF-placeholder =
+    ?L-id-Plhdr()

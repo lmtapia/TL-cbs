@@ -1,0 +1,48 @@
+module signatures/TL-Start-sig
+
+imports
+  signatures/Funcons-sig
+
+
+signature
+  sorts
+    T-start
+
+  constructors
+                     : string -> LEX-int
+                     : string -> LEX-id
+    L-start--L-exp   : L-exp -> L-start
+    L-exp--L-int     : L-int -> L-exp
+    L-exp--L-id      : L-id -> L-exp
+    LEX-int          : LEX-int -> L-int
+    LEX-id           : LEX-id -> L-id
+    L-start-Plhdr    : L-start
+    L-exp-Plhdr      : L-exp
+    L-int-Plhdr      : L-int
+    LEX-int-Plhdr    : LEX-int
+    L-id-Plhdr       : L-id
+    LEX-id-Plhdr     : LEX-id
+    L-start-Plhdr    : COMPLETION-INSERTION -> L-start
+    L-exp-Plhdr      : COMPLETION-INSERTION -> L-exp
+    L-int-Plhdr      : COMPLETION-INSERTION -> L-int
+    LEX-int-Plhdr    : COMPLETION-INSERTION -> LEX-int
+    L-id-Plhdr       : COMPLETION-INSERTION -> L-id
+    LEX-id-Plhdr     : COMPLETION-INSERTION -> LEX-id
+    T-start          : L-start -> FCT
+    T-eval           : L-exp -> FCT
+    L-int            : L-int -> FCT-Quoted
+    T-int            : L-int -> FCT
+    L-id             : L-id -> FCT-Quoted
+    T-id             : L-id -> FCT
+    L-start-Plhdr    : L-start
+    L-exp-Plhdr      : L-exp
+    L-int-Plhdr      : L-int
+    FCT-Quoted-Plhdr : FCT-Quoted
+    FCT-Plhdr        : FCT
+    L-id-Plhdr       : L-id
+    L-start-Plhdr    : COMPLETION-INSERTION -> L-start
+    L-exp-Plhdr      : COMPLETION-INSERTION -> L-exp
+    L-int-Plhdr      : COMPLETION-INSERTION -> L-int
+    FCT-Quoted-Plhdr : COMPLETION-INSERTION -> FCT-Quoted
+    FCT-Plhdr        : COMPLETION-INSERTION -> FCT
+    L-id-Plhdr       : COMPLETION-INSERTION -> L-id

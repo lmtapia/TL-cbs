@@ -1,0 +1,9 @@
+module ds-signatures/TL-sig
+
+imports ds-signatures/TL-Start-sig
+
+signature
+    sorts
+      Start
+    constructors
+      __L-start2Start__ : L-start -> Start {implicit}

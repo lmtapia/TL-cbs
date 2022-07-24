@@ -1,0 +1,9 @@
+module ds-signatures/permissive-water-sig
+
+signature
+    sorts
+    sort aliases
+      WATER = String
+      WATERTOKEN = String
+      WATERTOKENSTART = String
+      WATERTOKENSEPARATOR = String

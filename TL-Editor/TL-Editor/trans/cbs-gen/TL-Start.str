@@ -1,0 +1,36 @@
+module TL-Start
+
+imports
+  libstratego-gpp
+  signatures/-
+  pp/TL-parenthesize
+  pp/TL-pp
+
+imports
+  
+
+// Language "TL"
+
+rules
+to-funcons:
+  |[ start[: (:E:) :] ]| ->
+  |[ initialise-binding finalise-failing eval[: (:E:) :] ]|
+to-funcons:
+  |[ eval[: (:N:) :] ]| ->
+  |[ int[: (:N:) :] ]|
+to-funcons:
+  |[ eval[: (:X:) :] ]| ->
+  |[ bound id[: (:X:) :] ]|
+to-funcons-lex: 
+  FCTDoubleQuoted(L-int(LEX-int(str))) -> 
+  FCTString(<double-quote> str)
+to-funcons:
+  |[ int[: (:N:) :] ]| ->
+  |[ decimal \"(:N:)\" ]|
+to-funcons-lex: 
+  FCTDoubleQuoted(L-id(LEX-id(str))) -> 
+  FCTString(<double-quote> str)
+to-funcons:
+  |[ id[: (:X:) :] ]| ->
+  |[ \"(:X:)\" ]|
+

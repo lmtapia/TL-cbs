@@ -1,0 +1,81 @@
+module TL-Start
+imports Funcons
+
+exports
+  lexical syntax
+    [0-9]+                   -> LEX-int 
+    [a-z] ( [a-z] | [0-9] )* -> LEX-id  
+
+  syntax
+    
+
+  context-free syntax
+    L-exp   -> L-start {cons("L-start--L-exp")}
+    L-int   -> L-exp   {cons("L-exp--L-int")}
+    L-id    -> L-exp   {cons("L-exp--L-id")}
+    LEX-int -> L-int   {cons("LEX-int")}
+    LEX-id  -> L-id    {cons("LEX-id")}
+
+  lexical syntax
+    
+
+  context-free syntax
+    "[[L-start]]" -> L-start {cons("L-start-Plhdr"), placeholder}
+    "[[L-exp]]"   -> L-exp   {cons("L-exp-Plhdr"), placeholder}
+    "[[L-int]]"   -> L-int   {cons("L-int-Plhdr"), placeholder}
+    "[[LEX-int]]" -> LEX-int {cons("LEX-int-Plhdr"), placeholder}
+    "[[L-id]]"    -> L-id    {cons("L-id-Plhdr"), placeholder}
+    "[[LEX-id]]"  -> LEX-id  {cons("LEX-id-Plhdr"), placeholder}
+
+  lexical restrictions
+    "[[L-start]]" "[[L-exp]]" "[[L-int]]" "[[LEX-int]]" "[[L-id]]" "[[LEX-id]]"
+    -/- [a-zA-Z]
+
+  context-free syntax
+    "start" "[:" L-start ":]" -> FCT        {cons("T-start")}
+    "eval" "[:" L-exp ":]"    -> FCT        {cons("T-eval")}
+    L-int                     -> FCT-Quoted {cons("L-int")}
+    "int" "[:" L-int ":]"     -> FCT        {cons("T-int")}
+    L-id                      -> FCT-Quoted {cons("L-id")}
+    "id" "[:" L-id ":]"       -> FCT        {cons("T-id")}
+
+  lexical syntax
+    
+
+  context-free syntax
+    "[[L-start]]"    -> L-start    {cons("L-start-Plhdr"), placeholder}
+    "[[L-exp]]"      -> L-exp      {cons("L-exp-Plhdr"), placeholder}
+    "[[L-int]]"      -> L-int      {cons("L-int-Plhdr"), placeholder}
+    "[[FCT-Quoted]]" -> FCT-Quoted {cons("FCT-Quoted-Plhdr"), placeholder}
+    "[[FCT]]"        -> FCT        {cons("FCT-Plhdr"), placeholder}
+    "[[L-id]]"       -> L-id       {cons("L-id-Plhdr"), placeholder}
+
+  lexical restrictions
+    "[[L-start]]" "[[L-exp]]" "[[L-int]]" "[[FCT-Quoted]]" "[[FCT]]" "[[L-id]]"
+    -/- [a-zA-Z]
+
+  context-free syntax
+    
+
+  lexical syntax
+    
+
+  variables
+    "(:START" [1-9]? ":)"  -> L-start  {prefer}
+    "(:START" [1-9]? "?:)" -> L-start? {prefer}
+    "(:START" [1-9]? "*:)" -> L-start* {prefer}
+    "(:START" [1-9]? "+:)" -> L-start+ {prefer}
+    "(:E" [1-9]? ":)"      -> L-exp    {prefer}
+    "(:E" [1-9]? "?:)"     -> L-exp?   {prefer}
+    "(:E" [1-9]? "*:)"     -> L-exp*   {prefer}
+    "(:E" [1-9]? "+:)"     -> L-exp+   {prefer}
+    "(:N" [1-9]? ":)"      -> L-int    {prefer}
+    "(:N" [1-9]? "?:)"     -> L-int?   {prefer}
+    "(:N" [1-9]? "*:)"     -> L-int*   {prefer}
+    "(:N" [1-9]? "+:)"     -> L-int+   {prefer}
+    "(:X" [1-9]? ":)"      -> L-id     {prefer}
+    "(:X" [1-9]? "?:)"     -> L-id?    {prefer}
+    "(:X" [1-9]? "*:)"     -> L-id*    {prefer}
+    "(:X" [1-9]? "+:)"     -> L-id+    {prefer}
+
+  sorts T-start

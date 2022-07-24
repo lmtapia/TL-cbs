@@ -1,0 +1,13 @@
+module signatures/TL-sig
+
+imports
+  signatures/TL-Start-sig
+
+
+signature
+  constructors
+                  : L-start -> Start
+    Start-Plhdr   : Start
+    L-start-Plhdr : L-start
+    Start-Plhdr   : COMPLETION-INSERTION -> Start
+    L-start-Plhdr : COMPLETION-INSERTION -> L-start

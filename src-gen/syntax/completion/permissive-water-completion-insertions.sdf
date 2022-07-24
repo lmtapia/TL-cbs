@@ -1,0 +1,13 @@
+module completion/permissive-water-completion-insertions
+imports permissive-water
+
+exports
+  context-free start-symbols
+    WATER
+
+  context-free syntax
+    COMPLETION-INSERTION -> WATER {cons("WATER-Plhdr"), placeholder-insertion}
+
+exports
+  lexical syntax
+     -> COMPLETION-INSERTION 

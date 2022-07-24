@@ -1,0 +1,8 @@
+module completion/colorer/Funcons-pp-cc-esv
+
+imports
+  completion/colorer/Funcons-cc-esv
+
+colorer
+  _.NAME-Plhdr : gray   
+  _.FCT-Plhdr  : gray   

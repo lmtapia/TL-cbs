@@ -1,0 +1,13 @@
+module signatures/Funcons-pp-sig
+
+imports
+  signatures/Funcons-sig
+
+
+signature
+  constructors
+    FCTAppComp : List(NAME) * FCT -> FCT
+    NAME-Plhdr : NAME
+    FCT-Plhdr  : FCT
+    NAME-Plhdr : COMPLETION-INSERTION -> NAME
+    FCT-Plhdr  : COMPLETION-INSERTION -> FCT

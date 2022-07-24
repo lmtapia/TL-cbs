@@ -1,0 +1,15 @@
+module completion/colorer/Funcons-cc-esv
+
+colorer
+  _.Start-Plhdr      : gray   
+  _.INT-Plhdr        : gray   
+  _.FLOAT-Plhdr      : gray   
+  _.CHAR-Plhdr       : gray   
+  _.STRING-Plhdr     : gray   
+  _.VAR-Plhdr        : gray   
+  _.NAME-Plhdr       : gray   
+  _.POSTFIX-Plhdr    : gray   
+  _.FCT-SEQ-Plhdr    : gray   
+  _.FCT-POINT-Plhdr  : gray   
+  _.FCT-Plhdr        : gray   
+  _.FCT-Quoted-Plhdr : gray   
