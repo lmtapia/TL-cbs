@@ -23,6 +23,9 @@ to-funcons:
   |[ eval[: (:AExp:) :] ]| ->
   |[ eval-arith[: (:AExp:) :] ]|
 to-funcons:
+  |[ eval[: (:BExp:) :] ]| ->
+  |[ eval-bool[: (:BExp:) :] ]|
+to-funcons:
   |[ eval-arith[: (:N:) :] ]| ->
   |[ int[: (:N:) :] ]|
 to-funcons:
@@ -36,4 +39,32 @@ to-funcons:
 to-funcons:
   |[ eval-arith[: ((:AExp:)) :] ]| ->
   |[ eval-arith[: (:AExp:) :] ]|
+to-funcons:
+  |[ eval-bool[: (:B:) :] ]| ->
+  |[ val-bool[: (:B:) :] ]|
+to-funcons:
+  |[ eval-bool[: (:BExp1:)and(:BExp2:) :] ]| ->
+  |[ if-else (eval-bool[: (:BExp1:) :], 
+             eval-bool[: (:BExp2:) :], 
+             false) ]|
+to-funcons:
+  |[ eval-bool[: (:BExp1:)or(:BExp2:) :] ]| ->
+  |[ if-else (eval-bool[: (:BExp1:) :], 
+             true, 
+             eval-bool[: (:BExp2:) :]) ]|
+to-funcons:
+  |[ eval-bool[: (:AExp1:)<(:AExp2:) :] ]| ->
+  |[ is-less (eval-arith[: (:AExp1:) :], 
+             eval-arith[: (:AExp2:) :]) ]|
+to-funcons:
+  |[ eval-bool[: (:AExp1:)>(:AExp2:) :] ]| ->
+  |[ is-greater (eval-arith[: (:AExp1:) :], 
+             eval-arith[: (:AExp2:) :]) ]|
+to-funcons:
+  |[ eval-bool[: (:AExp1:)==(:AExp2:) :] ]| ->
+  |[ is-eq (eval[: (:AExp1:) :], 
+             eval[: (:AExp2:) :]) ]|
+to-funcons:
+  |[ eval-bool[: ((:BExp:)) :] ]| ->
+  |[ eval-bool[: (:BExp:) :] ]|
 

@@ -27,6 +27,8 @@ context-free syntax // Language
     L-id
   L-exp.L-exp--L-aexp =
     L-aexp
+  L-exp.L-exp--L-bexp =
+    L-bexp
   
   L-aexp.L-aexp--L-int =
     L-int
@@ -36,6 +38,21 @@ context-free syntax // Language
     L-aexp "/" L-aexp
   L-aexp.L-aexp--LPAREN-L-aexp-RPAREN =
     "(" L-aexp ")"
+  
+  L-bexp.L-bexp--L-bool =
+    L-bool
+  L-bexp.L-bexp--L-bexp-R-or-L-bexp =
+    L-bexp "or" L-bexp
+  L-bexp.L-bexp--L-bexp-R-and-L-bexp =
+    L-bexp "and" L-bexp
+  L-bexp.L-bexp--L-aexp-LESS-L-aexp =
+    L-aexp "<" L-aexp
+  L-bexp.L-bexp--L-aexp-GREATER-L-aexp =
+    L-aexp ">" L-aexp
+  L-bexp.L-bexp--L-exp-EQUALS-EQUALS-L-exp =
+    L-exp "==" L-exp
+  L-bexp.L-bexp--LPAREN-L-bexp-RPAREN =
+    "(" L-bexp ")"
   
   
 context-free syntax // Semantics
@@ -47,6 +64,8 @@ context-free syntax // Semantics
     "eval" "[:" L-exp ":]"
   FCT.T-eval-arith =
     "eval-arith" "[:" L-aexp ":]"
+  FCT.T-eval-bool =
+    "eval-bool" "[:" L-bexp ":]"
   
 context-free syntax // Desugaring
   
@@ -59,14 +78,18 @@ variables // Meta-variables
   // #2 Expressions
                 
   
-  L-exp = "(:E" [1-9]? ":)" {prefer}
-  L-exp? = "(:E" [1-9]? "?:)" {prefer}
-  L-exp* = "(:E" [1-9]? "*:)" {prefer}
-  L-exp+ = "(:E" [1-9]? "+:)" {prefer}
+  L-exp = "(:Exp" [1-9]? ":)" {prefer}
+  L-exp? = "(:Exp" [1-9]? "?:)" {prefer}
+  L-exp* = "(:Exp" [1-9]? "*:)" {prefer}
+  L-exp+ = "(:Exp" [1-9]? "+:)" {prefer}
   L-aexp = "(:AExp" [1-9]? ":)" {prefer}
   L-aexp? = "(:AExp" [1-9]? "?:)" {prefer}
   L-aexp* = "(:AExp" [1-9]? "*:)" {prefer}
   L-aexp+ = "(:AExp" [1-9]? "+:)" {prefer}
+  L-bexp = "(:BExp" [1-9]? ":)" {prefer}
+  L-bexp? = "(:BExp" [1-9]? "?:)" {prefer}
+  L-bexp* = "(:BExp" [1-9]? "*:)" {prefer}
+  L-bexp+ = "(:BExp" [1-9]? "+:)" {prefer}
   
 // SDF comments
   

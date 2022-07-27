@@ -13,10 +13,24 @@ lexical syntax // Language
   
   LEX-int = ( [0-9] )+
   LEX-id = ( [a-z] ) ( [a-z] | [0-9] )*
+  LEX-bool = "true"
+  LEX-bool = "false"
+  LEX-keyword = "false"
+  LEX-keyword = "true"
+  LEX-keyword = "and"
+  LEX-keyword = "or"
+  
+  // #1.1 Desambiguation
+                
+  
   
 syntax // Language
   
   // #1 Lexical
+                
+  
+  
+  // #1.1 Desambiguation
                 
   
   
@@ -29,6 +43,14 @@ context-free syntax // Language
     LEX-int
   L-id.LEX-id = 
     LEX-id
+  L-bool.LEX-bool = 
+    LEX-bool
+  L-keyword.LEX-keyword = 
+    LEX-keyword
+  
+  // #1.1 Desambiguation
+                
+  
   
 context-free syntax // Semantics
   
@@ -41,10 +63,22 @@ context-free syntax // Semantics
   FCT-Quoted.L-id = L-id
   FCT.T-id =
     "id" "[:" L-id ":]"
+  FCT-Quoted.L-bool = L-bool
+  FCT.T-val-bool =
+    "val-bool" "[:" L-bool ":]"
+  FCT-Quoted.LEX-keyword = LEX-keyword
+  
+  // #1.1 Desambiguation
+                
+  
   
 context-free syntax // Desugaring
   
   // #1 Lexical
+                
+  
+  
+  // #1.1 Desambiguation
                 
   
   
@@ -61,12 +95,29 @@ variables // Meta-variables
   L-id? = "(:X" [1-9]? "?:)" {prefer}
   L-id* = "(:X" [1-9]? "*:)" {prefer}
   L-id+ = "(:X" [1-9]? "+:)" {prefer}
+  L-bool = "(:B" [1-9]? ":)" {prefer}
+  L-bool? = "(:B" [1-9]? "?:)" {prefer}
+  L-bool* = "(:B" [1-9]? "*:)" {prefer}
+  L-bool+ = "(:B" [1-9]? "+:)" {prefer}
+  
+  // #1.1 Desambiguation
+                
+  
   
 // SDF comments
   
   // #1 Lexical
                 
   
+  
+  // #1.1 Desambiguation
+                
+  
+  
+  lexical syntax 
+    LEX-id = LEX-keyword {reject}
+  lexical restrictions
+    LEX-id -/- [A-Za-z0-9]
   
 sorts // ASTs
   T-start

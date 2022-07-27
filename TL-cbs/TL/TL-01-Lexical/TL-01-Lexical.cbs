@@ -12,3 +12,21 @@ Lexis  X:id  ::= ('a'-'z') ('a'-'z'|'0'-'9')*
 
 Semantics id[[ X:id ]] : => identifiers
             = \"X\"
+
+Lexis B:bool ::= 'true' | 'false'
+Semantics val-bool[[ _:bool ]]: => bools 
+Rule val-bool[['true']] = true 
+Rule val-bool[['false']] = false 
+
+
+Lexis keyword ::= 'false' | 'true' | 'and' | 'or'
+
+#1.1 Desambiguation
+
+Lexis SDF
+/*
+lexical syntax 
+  ``id`` = ``keyword`` {reject}
+lexical restrictions
+  ``id`` -/- [A-Za-z0-9]
+*/

@@ -18,6 +18,6 @@ rules
                  
 
 to-funcons:
-  |[ start[: (:E:) :] ]| ->
-  |[ initialise-binding finalise-failing eval[: (:E:) :] ]|
+  |[ start[: (:Exp:) :] ]| ->
+  |[ initialise-binding finalise-failing eval[: (:Exp:) :] ]|
 

@@ -28,4 +28,17 @@ to-funcons-lex:
 to-funcons:
   |[ id[: (:X:) :] ]| ->
   |[ \"(:X:)\" ]|
+to-funcons-lex: 
+  FCTDoubleQuoted(L-bool(LEX-bool(str))) -> 
+  FCTString(<double-quote> str)
+to-funcons:
+  |[ val-bool[: true :] ]| ->
+  |[ true ]|
+to-funcons:
+  |[ val-bool[: false :] ]| ->
+  |[ false ]|
+
+// #1.1 Desambiguation
+              
+
 
