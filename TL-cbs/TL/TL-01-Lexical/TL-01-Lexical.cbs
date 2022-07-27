@@ -1,0 +1,14 @@
+Language "TL"
+
+#1 Lexical
+			
+			   
+Lexis  N:int ::= ('0'-'9')+
+    
+Semantics int[[ N:int ]] : => integers
+            = decimal \"N\"
+    
+Lexis  X:id  ::= ('a'-'z') ('a'-'z'|'0'-'9')*
+
+Semantics id[[ X:id ]] : => identifiers
+            = \"X\"
