@@ -1,0 +1,23 @@
+Language "TL" 
+
+#2 Expressions
+
+Syntax E:exp ::= id
+			   | aexp
+Semantics eval[[ _:exp ]] : => values
+
+Rule eval[[ X ]] = bound id[[ X ]]
+Rule eval[[ AExp ]] = eval-arith[[ AExp ]]
+
+
+Syntax AExp : aexp ::= int
+				  | aexp '+' aexp
+				  | aexp '/' aexp
+				  | '(' aexp ')'
+				  
+Semantics eval-arith[[ _:aexp ]]: => integers
+Rule eval-arith[[ N ]] = int[[ N ]]
+Rule eval-arith[[ AExp1 '+' AExp2]] = int-add(eval-arith[[AExp1]],eval-arith[[AExp2]] )
+Rule eval-arith[[ AExp1 '/' AExp2]] = int-div(eval-arith[[AExp1]],eval-arith[[AExp2]] )
+Rule eval-arith[[ '(' AExp ')' ]] = eval-arith[[ AExp ]]
+				  
