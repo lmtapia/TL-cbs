@@ -1,0 +1,72 @@
+module TL-01-Lexical
+            
+imports 
+  
+  Funcons
+
+// Language "TL"
+    
+lexical syntax // Language
+  
+  // #1 Lexical
+                
+  
+  LEX-int = ( [0-9] )+
+  LEX-id = ( [a-z] ) ( [a-z] | [0-9] )*
+  
+syntax // Language
+  
+  // #1 Lexical
+                
+  
+  
+context-free syntax // Language
+  
+  // #1 Lexical
+                
+  
+  L-int.LEX-int = 
+    LEX-int
+  L-id.LEX-id = 
+    LEX-id
+  
+context-free syntax // Semantics
+  
+  // #1 Lexical
+                
+  
+  FCT-Quoted.L-int = L-int
+  FCT.T-int =
+    "int" "[:" L-int ":]"
+  FCT-Quoted.L-id = L-id
+  FCT.T-id =
+    "id" "[:" L-id ":]"
+  
+context-free syntax // Desugaring
+  
+  // #1 Lexical
+                
+  
+  
+variables // Meta-variables
+  
+  // #1 Lexical
+                
+  
+  L-int = "(:N" [1-9]? ":)" {prefer}
+  L-int? = "(:N" [1-9]? "?:)" {prefer}
+  L-int* = "(:N" [1-9]? "*:)" {prefer}
+  L-int+ = "(:N" [1-9]? "+:)" {prefer}
+  L-id = "(:X" [1-9]? ":)" {prefer}
+  L-id? = "(:X" [1-9]? "?:)" {prefer}
+  L-id* = "(:X" [1-9]? "*:)" {prefer}
+  L-id+ = "(:X" [1-9]? "+:)" {prefer}
+  
+// SDF comments
+  
+  // #1 Lexical
+                
+  
+  
+sorts // ASTs
+  T-start

@@ -1,0 +1,15 @@
+module Main
+
+imports
+  
+  Menus
+  Syntax
+  Analysis
+  Refactoring
+
+language
+
+  extensions : tl
+
+  provider : target/metaborg/stratego.ctree
+  provider : target/metaborg/stratego.jar

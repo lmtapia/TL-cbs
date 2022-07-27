@@ -1,0 +1,62 @@
+module TL-Start
+            
+imports 
+  TL-01-Lexical
+  TL-02-Expressions
+  Funcons
+
+// Language "TL"
+    
+lexical syntax // Language
+  
+  // # Top level
+                   
+  
+  
+syntax // Language
+  
+  // # Top level
+                   
+  
+  
+context-free syntax // Language
+  
+  // # Top level
+                   
+  
+  L-start.L-start--L-exp =
+    L-exp
+  
+  
+context-free syntax // Semantics
+  
+  // # Top level
+                   
+  
+  FCT.T-start =
+    "start" "[:" L-start ":]"
+  
+context-free syntax // Desugaring
+  
+  // # Top level
+                   
+  
+  
+variables // Meta-variables
+  
+  // # Top level
+                   
+  
+  L-start = "(:START" [1-9]? ":)" {prefer}
+  L-start? = "(:START" [1-9]? "?:)" {prefer}
+  L-start* = "(:START" [1-9]? "*:)" {prefer}
+  L-start+ = "(:START" [1-9]? "+:)" {prefer}
+  
+// SDF comments
+  
+  // # Top level
+                   
+  
+  
+sorts // ASTs
+  T-start

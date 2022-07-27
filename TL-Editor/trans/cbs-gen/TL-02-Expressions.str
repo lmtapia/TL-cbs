@@ -1,0 +1,39 @@
+module TL-02-Expressions
+
+imports
+  libstratego-gpp
+  signatures/-
+  pp/TL-parenthesize
+  pp/TL-pp
+
+imports
+  cbs-gen/TL-01-Lexical
+
+// Language "TL"
+
+rules
+
+// #2 Expressions
+              
+
+to-funcons:
+  |[ eval[: (:X:) :] ]| ->
+  |[ bound id[: (:X:) :] ]|
+to-funcons:
+  |[ eval[: (:AExp:) :] ]| ->
+  |[ eval-arith[: (:AExp:) :] ]|
+to-funcons:
+  |[ eval-arith[: (:N:) :] ]| ->
+  |[ int[: (:N:) :] ]|
+to-funcons:
+  |[ eval-arith[: (:AExp1:)+(:AExp2:) :] ]| ->
+  |[ int-add (eval-arith[: (:AExp1:) :], 
+             eval-arith[: (:AExp2:) :]) ]|
+to-funcons:
+  |[ eval-arith[: (:AExp1:)/(:AExp2:) :] ]| ->
+  |[ int-div (eval-arith[: (:AExp1:) :], 
+             eval-arith[: (:AExp2:) :]) ]|
+to-funcons:
+  |[ eval-arith[: ((:AExp:)) :] ]| ->
+  |[ eval-arith[: (:AExp:) :] ]|
+

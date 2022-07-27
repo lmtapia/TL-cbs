@@ -1,2 +1,0 @@
-# TL Language Specification
-

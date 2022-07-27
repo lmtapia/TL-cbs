@@ -1,0 +1,78 @@
+module TL-02-Expressions
+            
+imports 
+  TL-01-Lexical
+  Funcons
+
+// Language "TL"
+    
+lexical syntax // Language
+  
+  // #2 Expressions
+                
+  
+  
+syntax // Language
+  
+  // #2 Expressions
+                
+  
+  
+context-free syntax // Language
+  
+  // #2 Expressions
+                
+  
+  L-exp.L-exp--L-id =
+    L-id
+  L-exp.L-exp--L-aexp =
+    L-aexp
+  
+  L-aexp.L-aexp--L-int =
+    L-int
+  L-aexp.L-aexp--L-aexp-PLUS-L-aexp =
+    L-aexp "+" L-aexp
+  L-aexp.L-aexp--L-aexp-SLASH-L-aexp =
+    L-aexp "/" L-aexp
+  L-aexp.L-aexp--LPAREN-L-aexp-RPAREN =
+    "(" L-aexp ")"
+  
+  
+context-free syntax // Semantics
+  
+  // #2 Expressions
+                
+  
+  FCT.T-eval =
+    "eval" "[:" L-exp ":]"
+  FCT.T-eval-arith =
+    "eval-arith" "[:" L-aexp ":]"
+  
+context-free syntax // Desugaring
+  
+  // #2 Expressions
+                
+  
+  
+variables // Meta-variables
+  
+  // #2 Expressions
+                
+  
+  L-exp = "(:E" [1-9]? ":)" {prefer}
+  L-exp? = "(:E" [1-9]? "?:)" {prefer}
+  L-exp* = "(:E" [1-9]? "*:)" {prefer}
+  L-exp+ = "(:E" [1-9]? "+:)" {prefer}
+  L-aexp = "(:AExp" [1-9]? ":)" {prefer}
+  L-aexp? = "(:AExp" [1-9]? "?:)" {prefer}
+  L-aexp* = "(:AExp" [1-9]? "*:)" {prefer}
+  L-aexp+ = "(:AExp" [1-9]? "+:)" {prefer}
+  
+// SDF comments
+  
+  // #2 Expressions
+                
+  
+  
+sorts // ASTs
+  T-start

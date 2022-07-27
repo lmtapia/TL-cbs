@@ -1,9 +1,0 @@
-module ds-signatures/Funcons-pp-sig
-
-imports ds-signatures/Funcons-sig
-
-signature
-    sorts
-      FCT
-    constructors
-      FCTAppComp : List(NAME) * FCT -> FCT 

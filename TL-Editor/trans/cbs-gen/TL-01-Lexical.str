@@ -1,0 +1,31 @@
+module TL-01-Lexical
+
+imports
+  libstratego-gpp
+  signatures/-
+  pp/TL-parenthesize
+  pp/TL-pp
+
+imports
+  
+
+// Language "TL"
+
+rules
+
+// #1 Lexical
+              
+
+to-funcons-lex: 
+  FCTDoubleQuoted(L-int(LEX-int(str))) -> 
+  FCTString(<double-quote> str)
+to-funcons:
+  |[ int[: (:N:) :] ]| ->
+  |[ decimal \"(:N:)\" ]|
+to-funcons-lex: 
+  FCTDoubleQuoted(L-id(LEX-id(str))) -> 
+  FCTString(<double-quote> str)
+to-funcons:
+  |[ id[: (:X:) :] ]| ->
+  |[ \"(:X:)\" ]|
+

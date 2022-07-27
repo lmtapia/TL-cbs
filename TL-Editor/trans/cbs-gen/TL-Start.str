@@ -1,0 +1,23 @@
+module TL-Start
+
+imports
+  libstratego-gpp
+  signatures/-
+  pp/TL-parenthesize
+  pp/TL-pp
+
+imports
+  cbs-gen/TL-01-Lexical
+  cbs-gen/TL-02-Expressions
+
+// Language "TL"
+
+rules
+
+// # Top level
+                 
+
+to-funcons:
+  |[ start[: (:E:) :] ]| ->
+  |[ initialise-binding finalise-failing eval[: (:E:) :] ]|
+
