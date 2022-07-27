@@ -8,4 +8,4 @@ Language "TL"
 # Top level
 Syntax START:start ::= exp
 Semantics start[[ _:start ]]: => values
-Rule start[[ E ]] = initialise-binding finalise-failing eval[[ E ]]
+Rule start[[ Exp ]] = initialise-binding finalise-failing eval[[ Exp ]]
