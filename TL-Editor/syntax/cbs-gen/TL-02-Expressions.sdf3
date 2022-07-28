@@ -41,6 +41,8 @@ context-free syntax // Language
   
   L-bexp.L-bexp--L-bool =
     L-bool
+  L-bexp.L-bexp--R-no-L-bexp =
+    "no" L-bexp
   L-bexp.L-bexp--L-bexp-R-or-L-bexp =
     L-bexp "or" L-bexp
   L-bexp.L-bexp--L-bexp-R-and-L-bexp =

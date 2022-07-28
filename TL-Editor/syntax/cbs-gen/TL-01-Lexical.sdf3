@@ -1,7 +1,7 @@
 module TL-01-Lexical
             
 imports 
-  
+  TL-02-Expressions
   Funcons
 
 // Language "TL"
@@ -118,6 +118,54 @@ variables // Meta-variables
     LEX-id = LEX-keyword {reject}
   lexical restrictions
     LEX-id -/- [A-Za-z0-9]
+  
+  context-free syntax
+  
+  L-aexp.L-aexp--L-aexp-SLASH-L-aexp =
+    L-aexp "/" L-aexp
+   {left}
+  L-aexp.L-aexp--L-aexp-PLUS-L-aexp =
+    L-aexp "+" L-aexp
+   {left}
+  
+  context-free priorities
+  
+  L-aexp.L-aexp--L-aexp-SLASH-L-aexp =
+    L-aexp "/" L-aexp
+  
+  >
+  L-aexp.L-aexp--L-aexp-PLUS-L-aexp =
+    L-aexp "+" L-aexp
+  
+  
+  context-free syntax
+  
+  L-bexp.L-bexp--L-bexp-R-and-L-bexp =
+    L-bexp "and" L-bexp
+   {left}
+  L-bexp.L-bexp--L-bexp-R-or-L-bexp =
+    L-bexp "or" L-bexp
+   {left}
+  
+  context-free priorities
+   
+  { L-bexp.L-bexp--R-no-L-bexp =
+    "no" L-bexp
+  
+  } >
+  {non-assoc: 
+  L-bexp.L-bexp--L-aexp-LESS-L-aexp =
+    L-aexp "<" L-aexp
+  
+  
+  L-bexp.L-bexp--L-aexp-GREATER-L-aexp =
+    L-aexp ">" L-aexp
+  
+  
+  L-bexp.L-bexp--L-exp-EQUALS-EQUALS-L-exp =
+    L-exp "==" L-exp
+  
+  }
   
 sorts // ASTs
   T-start
