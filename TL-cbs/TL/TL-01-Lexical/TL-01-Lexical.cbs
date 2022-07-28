@@ -30,3 +30,34 @@ lexical syntax
 lexical restrictions
   ``id`` -/- [A-Za-z0-9]
 */
+
+Syntax SDF
+/*
+context-free syntax
+
+``aexp ::= aexp '/' aexp`` {left}
+``aexp ::= aexp '+' aexp`` {left}
+
+context-free priorities
+
+``aexp ::= aexp '/' aexp``
+>
+``aexp ::= aexp '+' aexp``
+
+context-free syntax
+
+``bexp ::= bexp 'and' bexp`` {left}
+``bexp ::= bexp 'or' bexp`` {left}
+
+context-free priorities
+ 
+{ ``bexp ::= 'no' bexp``
+} >
+{non-assoc: 
+``bexp ::= aexp '<' aexp``
+
+``bexp ::= aexp '>' aexp``
+
+``bexp ::= exp '==' exp``
+}
+*/
