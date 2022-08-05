@@ -1,0 +1,27 @@
+Language "TL"
+
+#3 Statements
+
+Syntax 
+S: statement ::= id '=' exp
+               | 'print' exp
+
+Semantics 
+  execute[[S*:statement*]] : => null-type 
+
+/*
+Rule 
+  execute[[ X '=' Exp]] = assign(bound(id[[ X ]]), eval[[ Exp ]])
+*/
+Rule
+  execute[[  X '=' AExp ]] =
+    bind(id[[ X ]], allocate-initialised-variable(integers, eval[[AExp]]))
+
+Rule
+  execute[['print' Exp ]] =
+    print ( to-string eval[[Exp]], "\n" )
+
+Rule
+  execute[[ ]] = null
+Rule
+  execute[[S S+]] = sequential ( execute[[S]], execute[[S+]] )

@@ -1,11 +1,15 @@
 Language "TL"
-[
+
+[ 
 #1 Lexical
 #2 Expressions
+#3 Statements
 ]
 
 # Top level
-
-Syntax START:start ::= exp
-Semantics start[[ _:start ]]: => values
-Rule start[[ Exp ]] = initialise-binding finalise-failing eval[[ Exp ]]
+Syntax START:start ::= statement*
+Semantics start[[ _:start ]]: => null-type
+Rule start[[ S* ]] = 
+	initialise-binding 
+	finalise-failing 
+		execute[[ S* ]]
