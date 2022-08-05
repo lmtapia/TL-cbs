@@ -1,0 +1,18 @@
+initialise-binding finalise-failing sequential
+  (bind
+     ("a",
+      allocate-initialised-variable
+        (integers,
+         decimal "3")),
+   bind
+     ("b",
+      allocate-initialised-variable
+        (integers,
+         int-add
+           (decimal "5",
+            decimal "3"))),
+   print
+     (to-string assigned bound
+        "b",
+      "
+"))

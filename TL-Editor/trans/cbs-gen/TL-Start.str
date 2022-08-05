@@ -9,6 +9,7 @@ imports
 imports
   cbs-gen/TL-01-Lexical
   cbs-gen/TL-02-Expressions
+  cbs-gen/TL-03-Statements
 
 // Language "TL"
 
@@ -18,6 +19,6 @@ rules
                  
 
 to-funcons:
-  |[ start[: (:Exp:) :] ]| ->
-  |[ initialise-binding finalise-failing eval[: (:Exp:) :] ]|
+  |[ start[: (:S*:) :] ]| ->
+  |[ initialise-binding finalise-failing execute[: (:S*:) :] ]|
 

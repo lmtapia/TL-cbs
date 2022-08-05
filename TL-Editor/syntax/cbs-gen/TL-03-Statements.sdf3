@@ -1,0 +1,64 @@
+module TL-03-Statements
+            
+imports 
+  TL-01-Lexical
+  TL-02-Expressions
+  Funcons
+
+// Language "TL"
+    
+lexical syntax // Language
+  
+  // #3 Statements
+                
+  
+  
+syntax // Language
+  
+  // #3 Statements
+                
+  
+  
+context-free syntax // Language
+  
+  // #3 Statements
+                
+  
+  L-statement.L-statement--L-id-EQUALS-L-exp =
+    L-id "=" L-exp
+  L-statement.L-statement--R-print-L-exp =
+    "print" L-exp
+  
+  
+context-free syntax // Semantics
+  
+  // #3 Statements
+                
+  
+  FCT.T-execute =
+    "execute" "[:" L-statement* ":]"
+  
+context-free syntax // Desugaring
+  
+  // #3 Statements
+                
+  
+  
+variables // Meta-variables
+  
+  // #3 Statements
+                
+  
+  L-statement = "(:S" [1-9]? ":)" {prefer}
+  L-statement? = "(:S" [1-9]? "?:)" {prefer}
+  L-statement* = "(:S" [1-9]? "*:)" {prefer}
+  L-statement+ = "(:S" [1-9]? "+:)" {prefer}
+  
+// SDF comments
+  
+  // #3 Statements
+                
+  
+  
+sorts // ASTs
+  T-start

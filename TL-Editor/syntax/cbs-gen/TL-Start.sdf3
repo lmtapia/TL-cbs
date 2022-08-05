@@ -3,6 +3,7 @@ module TL-Start
 imports 
   TL-01-Lexical
   TL-02-Expressions
+  TL-03-Statements
   Funcons
 
 // Language "TL"
@@ -24,8 +25,8 @@ context-free syntax // Language
   // # Top level
                    
   
-  L-start.L-start--L-exp =
-    L-exp
+  L-start.L-start--L-statement-S =
+    L-statement*
   
   
 context-free syntax // Semantics
@@ -51,6 +52,7 @@ variables // Meta-variables
   L-start? = "(:START" [1-9]? "?:)" {prefer}
   L-start* = "(:START" [1-9]? "*:)" {prefer}
   L-start+ = "(:START" [1-9]? "+:)" {prefer}
+  L-statement* = "..." [1-9]? {prefer}
   
 // SDF comments
   
