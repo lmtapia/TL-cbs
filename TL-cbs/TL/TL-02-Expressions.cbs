@@ -9,7 +9,7 @@ Syntax Exp:exp ::=  id
 Semantics eval[[ _:exp ]] : => values
 
 
-Rule eval[[ X ]] = assigned bound id[[ X ]]
+Rule eval[[ ID ]] = assigned bound id[[ ID ]]
 Rule eval[[ AExp ]] = eval-arith[[ AExp ]]
 Rule eval[[ BExp ]] = eval-bool[[ BExp ]]
 

@@ -3,19 +3,36 @@ Language "TL"
 #3 Statements
 
 Syntax 
-S: statement ::= id '=' exp
+P: program ::= decl* statement*
+
+Semantics
+	run[[_:program]] :=> null-type
+Rule
+  run[[D*:decl* S*:statement*]] = 
+  scope(collateral(declare-vars[[D*]]) ,execute[[S*]])
+  
+Syntax
+D: decl ::= 'int' id
+Semantics
+	declare-vars[[_:decl]]:(=> environments)+
+Rule
+	declare-vars[['int' ID]] = 
+	 bind(id[[ ID ]], allocate-initialised-variable(integers, 0))
+Rule
+	declare-vars[[D:decl D+:decl+]] = declare-vars[[D]], declare-vars[[D+]]
+	
+
+Syntax 
+S: statement ::= id '=' aexp
                | 'print' exp
 
 Semantics 
   execute[[S*:statement*]] : => null-type 
 
-/*
+
 Rule 
-  execute[[ X '=' Exp]] = assign(bound(id[[ X ]]), eval[[ Exp ]])
-*/
-Rule
-  execute[[  X '=' AExp ]] =
-    bind(id[[ X ]], allocate-initialised-variable(integers, eval[[AExp]]))
+  execute[[ ID '=' AExp]] = assign(bound(id[[ ID ]]), eval[[ AExp ]])
+
 
 Rule
   execute[['print' Exp ]] =
