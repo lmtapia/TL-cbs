@@ -7,7 +7,7 @@ Syntax Exp:exp ::=  id
 			     | bexp
 			   			   
 Semantics eval[[ _:exp ]] : => values
-Rule eval[[ X ]] = bound id[[ X ]]
+Rule eval[[ X ]] = assigned bound id[[ X ]]
 Rule eval[[ AExp ]] = eval-arith[[ AExp ]]
 Rule eval[[ BExp ]] = eval-bool[[ BExp ]]
 
@@ -34,9 +34,12 @@ Syntax BExp : bexp ::= bool
 					 
 Semantics eval-bool[[ _:bexp ]]: => booleans
 Rule eval-bool[[ B ]] = val-bool[[B]]
+
 Rule eval-bool[[ 'no' BExp ]] = not eval-bool[[BExp]]
+
 Rule eval-bool[[ BExp1 'and' BExp2]] = if-else(eval-bool[[ BExp1 ]],eval-bool[[ BExp2 ]],false)
 Rule eval-bool[[ BExp1 'or' BExp2]] = if-else(eval-bool[[ BExp1 ]],true,eval-bool[[ BExp2 ]])
+
 
 Rule eval-bool[[ AExp1 '<' AExp2]] = is-less(eval-arith[[AExp1]],eval-arith[[AExp2]])
 Rule eval-bool[[ AExp1 '>' AExp2]] = is-greater(eval-arith[[AExp1]],eval-arith[[AExp2]])

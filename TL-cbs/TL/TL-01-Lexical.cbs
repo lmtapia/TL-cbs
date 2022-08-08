@@ -8,10 +8,10 @@ Lexis  N:int ::= ('0'-'9')+
 Semantics int[[ N:int ]] : => integers
             = decimal \"N\"
     
-Lexis  X:id  ::= ('a'-'z') ('a'-'z'|'0'-'9')*
+Lexis  ID:id  ::= ('a'-'z') ('a'-'z'|'0'-'9')*
 
-Semantics id[[ X:id ]] : => identifiers
-            = \"X\"
+Semantics id[[ ID:id ]] : => identifiers
+            = \"ID\"
 
 Lexis B:bool ::= 'true' | 'false'
 Semantics val-bool[[ _:bool ]]: => bools 
