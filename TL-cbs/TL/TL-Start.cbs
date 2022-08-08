@@ -7,9 +7,10 @@ Language "TL"
 ]
 
 # Top level
-Syntax START:start ::= statement*
+Syntax START:start ::= program
 Semantics start[[ _:start ]]: => null-type
-Rule start[[ S* ]] = 
+Rule start[[ P ]] = 
 	initialise-binding 
+	initialise-storing
 	finalise-failing 
-		execute[[ S* ]]
+		run[[ P ]]
