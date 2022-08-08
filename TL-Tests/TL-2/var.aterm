@@ -1,9 +1,12 @@
-L-start--L-statement-S(
-  [ L-statement--L-id-EQUALS-L-exp(LEX-id("a"), L-exp--L-aexp(L-aexp--L-int(LEX-int("3"))))
-  , L-statement--L-id-EQUALS-L-exp(
-      LEX-id("b")
-    , L-exp--L-aexp(L-aexp--L-aexp-PLUS-L-aexp(L-aexp--L-int(LEX-int("5")), L-aexp--L-int(LEX-int("3"))))
-    )
-  , L-statement--R-print-L-exp(L-exp--L-id(LEX-id("b")))
-  ]
+L-start--L-program(
+  L-program--L-decl-S-L-statement-S(
+    [L-decl--R-int-L-id(LEX-id("a")), L-decl--R-int-L-id(LEX-id("b"))]
+  , [ L-statement--L-id-EQUALS-L-aexp(LEX-id("a"), L-aexp--L-int(LEX-int("3")))
+    , L-statement--L-id-EQUALS-L-aexp(
+        LEX-id("b")
+      , L-aexp--L-aexp-PLUS-L-aexp(L-aexp--L-int(LEX-int("5")), L-aexp--L-int(LEX-int("3")))
+      )
+    , L-statement--R-print-L-exp(L-exp--L-id(LEX-id("b")))
+    ]
+  )
 )
