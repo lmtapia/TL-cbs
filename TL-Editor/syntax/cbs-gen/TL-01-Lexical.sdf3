@@ -91,10 +91,10 @@ variables // Meta-variables
   L-int? = "(:N" [1-9]? "?:)" {prefer}
   L-int* = "(:N" [1-9]? "*:)" {prefer}
   L-int+ = "(:N" [1-9]? "+:)" {prefer}
-  L-id = "(:X" [1-9]? ":)" {prefer}
-  L-id? = "(:X" [1-9]? "?:)" {prefer}
-  L-id* = "(:X" [1-9]? "*:)" {prefer}
-  L-id+ = "(:X" [1-9]? "+:)" {prefer}
+  L-id = "(:ID" [1-9]? ":)" {prefer}
+  L-id? = "(:ID" [1-9]? "?:)" {prefer}
+  L-id* = "(:ID" [1-9]? "*:)" {prefer}
+  L-id+ = "(:ID" [1-9]? "+:)" {prefer}
   L-bool = "(:B" [1-9]? ":)" {prefer}
   L-bool? = "(:B" [1-9]? "?:)" {prefer}
   L-bool* = "(:B" [1-9]? "*:)" {prefer}

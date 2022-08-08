@@ -17,8 +17,8 @@ rules
               
 
 to-funcons:
-  |[ eval[: (:X:) :] ]| ->
-  |[ assigned bound id[: (:X:) :] ]|
+  |[ eval[: (:ID:) :] ]| ->
+  |[ assigned bound id[: (:ID:) :] ]|
 to-funcons:
   |[ eval[: (:AExp:) :] ]| ->
   |[ eval-arith[: (:AExp:) :] ]|

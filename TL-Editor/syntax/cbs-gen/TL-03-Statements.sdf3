@@ -24,8 +24,14 @@ context-free syntax // Language
   // #3 Statements
                 
   
-  L-statement.L-statement--L-id-EQUALS-L-exp =
-    L-id "=" L-exp
+  L-program.L-program--L-decl-S-L-statement-S =
+    L-decl* L-statement*
+  
+  L-decl.L-decl--R-int-L-id =
+    "int" L-id
+  
+  L-statement.L-statement--L-id-EQUALS-L-aexp =
+    L-id "=" L-aexp
   L-statement.L-statement--R-print-L-exp =
     "print" L-exp
   
@@ -35,6 +41,10 @@ context-free syntax // Semantics
   // #3 Statements
                 
   
+  FCT.T-run =
+    "run" "[:" L-program ":]"
+  FCT-SEQ.T-declare-vars =
+    "declare-vars" "[:" L-decl ":]"
   FCT.T-execute =
     "execute" "[:" L-statement* ":]"
   
@@ -49,6 +59,16 @@ variables // Meta-variables
   // #3 Statements
                 
   
+  L-program = "(:P" [1-9]? ":)" {prefer}
+  L-program? = "(:P" [1-9]? "?:)" {prefer}
+  L-program* = "(:P" [1-9]? "*:)" {prefer}
+  L-program+ = "(:P" [1-9]? "+:)" {prefer}
+  L-decl* = "..." [1-9]? {prefer}
+  L-statement* = "..." [1-9]? {prefer}
+  L-decl = "(:D" [1-9]? ":)" {prefer}
+  L-decl? = "(:D" [1-9]? "?:)" {prefer}
+  L-decl* = "(:D" [1-9]? "*:)" {prefer}
+  L-decl+ = "(:D" [1-9]? "+:)" {prefer}
   L-statement = "(:S" [1-9]? ":)" {prefer}
   L-statement? = "(:S" [1-9]? "?:)" {prefer}
   L-statement* = "(:S" [1-9]? "*:)" {prefer}

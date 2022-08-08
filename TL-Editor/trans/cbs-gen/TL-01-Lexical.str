@@ -26,8 +26,8 @@ to-funcons-lex:
   FCTDoubleQuoted(L-id(LEX-id(str))) -> 
   FCTString(<double-quote> str)
 to-funcons:
-  |[ id[: (:X:) :] ]| ->
-  |[ \"(:X:)\" ]|
+  |[ id[: (:ID:) :] ]| ->
+  |[ \"(:ID:)\" ]|
 to-funcons-lex: 
   FCTDoubleQuoted(L-bool(LEX-bool(str))) -> 
   FCTString(<double-quote> str)

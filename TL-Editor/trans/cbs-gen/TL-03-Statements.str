@@ -18,10 +18,14 @@ rules
               
 
 to-funcons:
-  |[ execute[: (:X:)=(:AExp:) :] ]| ->
-  |[ bind (id[: (:X:) :], 
+  |[ declare-vars[: int(:ID:) :] ]| ->
+  |[ bind (id[: (:ID:) :], 
              allocate-initialised-variable (integers, 
-                     eval[: (:AExp:) :])) ]|
+                     0)) ]|
+to-funcons:
+  |[ execute[: (:ID:)=(:AExp:) :] ]| ->
+  |[ assign (bound (id[: (:ID:) :]), 
+             eval[: (:AExp:) :]) ]|
 to-funcons:
   |[ execute[: print(:Exp:) :] ]| ->
   |[ print (to-string eval[: (:Exp:) :], 

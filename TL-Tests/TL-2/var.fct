@@ -1,18 +1,2 @@
-initialise-binding finalise-failing sequential
-  (bind
-     ("a",
-      allocate-initialised-variable
-        (integers,
-         decimal "3")),
-   bind
-     ("b",
-      allocate-initialised-variable
-        (integers,
-         int-add
-           (decimal "5",
-            decimal "3"))),
-   print
-     (to-string assigned bound
-        "b",
-      "
-"))
+initialise-binding initialise-storing finalise-failing
+  run [: int a int b a = 3 b = 5 + 3 print b :]
