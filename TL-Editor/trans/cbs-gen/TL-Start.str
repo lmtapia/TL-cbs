@@ -19,6 +19,6 @@ rules
                  
 
 to-funcons:
-  |[ start[: (:P:) :] ]| ->
-  |[ initialise-binding initialise-storing finalise-failing run[: (:P:) :] ]|
+  |[ start[: (:Pgm:) :] ]| ->
+  |[ initialise-binding initialise-storing finalise-failing run[: (:Pgm:) :] ]|
 

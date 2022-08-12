@@ -9,23 +9,23 @@ imports
     
 lexical syntax // Language
   
-  // #3 Statements
+  // #3 Programs
                 
   
   
 syntax // Language
   
-  // #3 Statements
+  // #3 Programs
                 
   
   
 context-free syntax // Language
   
-  // #3 Statements
+  // #3 Programs
                 
   
-  L-program.L-program--L-decl-S-L-statement-S =
-    L-decl* L-statement*
+  L-program.L-program--L-decl-Q-L-statement =
+    L-decl? L-statement
   
   L-decl.L-decl--R-int-L-id =
     "int" L-id
@@ -34,37 +34,37 @@ context-free syntax // Language
     L-id "=" L-aexp
   L-statement.L-statement--R-print-L-exp =
     "print" L-exp
+  L-statement.L-statement--L-statement-L-statement =
+    L-statement L-statement
   
   
 context-free syntax // Semantics
   
-  // #3 Statements
+  // #3 Programs
                 
   
   FCT.T-run =
     "run" "[:" L-program ":]"
-  FCT-SEQ.T-declare-vars =
+  FCT.T-declare-vars =
     "declare-vars" "[:" L-decl ":]"
   FCT.T-execute =
-    "execute" "[:" L-statement* ":]"
+    "execute" "[:" L-statement ":]"
   
 context-free syntax // Desugaring
   
-  // #3 Statements
+  // #3 Programs
                 
   
   
 variables // Meta-variables
   
-  // #3 Statements
+  // #3 Programs
                 
   
-  L-program = "(:P" [1-9]? ":)" {prefer}
-  L-program? = "(:P" [1-9]? "?:)" {prefer}
-  L-program* = "(:P" [1-9]? "*:)" {prefer}
-  L-program+ = "(:P" [1-9]? "+:)" {prefer}
-  L-decl* = "..." [1-9]? {prefer}
-  L-statement* = "..." [1-9]? {prefer}
+  L-program = "(:Pgm" [1-9]? ":)" {prefer}
+  L-program? = "(:Pgm" [1-9]? "?:)" {prefer}
+  L-program* = "(:Pgm" [1-9]? "*:)" {prefer}
+  L-program+ = "(:Pgm" [1-9]? "+:)" {prefer}
   L-decl = "(:D" [1-9]? ":)" {prefer}
   L-decl? = "(:D" [1-9]? "?:)" {prefer}
   L-decl* = "(:D" [1-9]? "*:)" {prefer}
@@ -76,7 +76,7 @@ variables // Meta-variables
   
 // SDF comments
   
-  // #3 Statements
+  // #3 Programs
                 
   
   
