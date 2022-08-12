@@ -1,8 +1,13 @@
-L-start--L-exp(
-  L-exp--L-aexp(
-    L-aexp--L-aexp-SLASH-L-aexp(
-      L-aexp--LPAREN-L-aexp-RPAREN(L-aexp--L-aexp-PLUS-L-aexp(L-aexp--L-int(LEX-int("34")), L-aexp--L-int(LEX-int("6"))))
-    , L-aexp--L-int(LEX-int("2"))
+L-start--L-program(
+  L-program--L-decl-Q-L-statement(
+    None()
+  , L-statement--R-print-L-exp(
+      L-exp--L-aexp(
+        L-aexp--L-aexp-SLASH-L-aexp(
+          L-aexp--LPAREN-L-aexp-RPAREN(L-aexp--L-aexp-PLUS-L-aexp(L-aexp--L-int(LEX-int("34")), L-aexp--L-int(LEX-int("6"))))
+        , L-aexp--L-int(LEX-int("2"))
+        )
+      )
     )
   )
 )

@@ -1,2 +1,2 @@
-initialise-binding finalise-failing bound
-  "x"
+initialise-binding initialise-storing finalise-failing
+  run [: print x :]

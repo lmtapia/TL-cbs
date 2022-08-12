@@ -3,14 +3,14 @@ Language "TL"
 [ 
 #1 Lexical
 #2 Expressions
-#3 Statements
+#3 Programs
 ]
 
 # Top level
 Syntax START:start ::= program
 Semantics start[[ _:start ]]: => null-type
-Rule start[[ P ]] = 
+Rule start[[ Pgm ]] = 
 	initialise-binding 
 	initialise-storing
 	finalise-failing 
-		run[[ P ]]
+		run[[ Pgm ]]
