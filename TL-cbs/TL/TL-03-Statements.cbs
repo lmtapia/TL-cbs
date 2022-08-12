@@ -1,37 +1,39 @@
 Language "TL"
 
-#3 Statements
+#3 Programs
 
 Syntax 
-P: program ::= decl* statement*
+  Pgm: program ::= decl? statement
 
 Semantics
-	run[[_:program]] :=> null-type
+  run[[ _:program ]] : => null-type
 Rule
-  run[[D*:decl* S*:statement*]] = 
-  scope(collateral(declare-vars[[D*]]) ,execute[[S*]])
+  run[[ D:decl S ]] = 
+  scope(collateral(declare-vars[[D]]) ,execute[[S]])
   
 Syntax
-D: decl ::= 'int' id
+  D: decl ::= 'int' id
 Semantics
-	declare-vars[[_:decl]]:(=> environments)+
+  declare-vars[[_:decl]] : => environments
 Rule
-	declare-vars[['int' ID]] = 
+  declare-vars[['int' ID]] = 
 	 bind(id[[ ID ]], allocate-initialised-variable(integers, 0))
+/*
 Rule
-	declare-vars[[D:decl D+:decl+]] = declare-vars[[D]], declare-vars[[D+]]
-	
+  declare-vars[[ D:decl D+:decl+ ]] = declare-vars[[D]], declare-vars[[D+]]
+*/
 
 Syntax 
 S: statement ::= id '=' aexp
                | 'print' exp
+               | statement statement
 
 Semantics 
-  execute[[S*:statement*]] : => null-type 
+  execute[[ _:statement ]] : =>null-type 
 
 
 Rule 
-  execute[[ ID '=' AExp]] = assign(bound(id[[ ID ]]), eval[[ AExp ]])
+  execute[[ ID '=' AExp ]] = assign(bound(id[[ ID ]]), eval[[ AExp ]])
 
 
 Rule
@@ -39,6 +41,4 @@ Rule
     print ( to-string eval[[Exp]], "\n" )
 
 Rule
-  execute[[ ]] = null
-Rule
-  execute[[S S+]] = sequential ( execute[[S]], execute[[S+]] )
+  execute[[S1 S2]] = sequential ( execute[[S1]], execute[[S2]] )

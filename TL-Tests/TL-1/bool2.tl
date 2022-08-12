@@ -1,1 +1,1 @@
-false or ((5 > 4) and true)
+print false or ((5 > 4) and true)
