@@ -1,0 +1,32 @@
+module TL-04-Statements
+
+imports
+  libstratego-gpp
+  signatures/-
+  pp/TL-parenthesize
+  pp/TL-pp
+
+imports
+  cbs-gen/TL-01-Lexical
+  cbs-gen/TL-02-Expressions
+
+// Language "TL"
+
+rules
+
+// #4 Statements
+              
+
+to-funcons:
+  |[ execute[: (:ID:)=(:AExp:) :] ]| ->
+  |[ assign (bound (id[: (:ID:) :]), 
+             eval[: (:AExp:) :]) ]|
+to-funcons:
+  |[ execute[: print(:Exp:) :] ]| ->
+  |[ print (to-string eval[: (:Exp:) :], 
+             "\n") ]|
+to-funcons:
+  |[ execute[: (:Stmt1:)(:Stmt2:) :] ]| ->
+  |[ sequential (execute[: (:Stmt1:) :], 
+             execute[: (:Stmt2:) :]) ]|
+

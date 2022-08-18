@@ -1,2 +1,2 @@
-initialise-binding initialise-storing finalise-failing
-  run [: int a a = 3 :]
+initialise-binding initialise-storing initialise-giving finalise-failing
+  run [: int aa :]

@@ -9,7 +9,7 @@ imports
 imports
   cbs-gen/TL-01-Lexical
   cbs-gen/TL-02-Expressions
-  cbs-gen/TL-03-Statements
+  cbs-gen/TL-03-Programs
 
 // Language "TL"
 
@@ -20,5 +20,5 @@ rules
 
 to-funcons:
   |[ start[: (:Pgm:) :] ]| ->
-  |[ initialise-binding initialise-storing finalise-failing run[: (:Pgm:) :] ]|
+  |[ initialise-binding initialise-storing initialise-giving finalise-failing run[: (:Pgm:) :] ]|
 

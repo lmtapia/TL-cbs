@@ -1,0 +1,48 @@
+Language "TL"
+
+#3 Programs
+
+Syntax 
+  Pgm : program ::= decl
+
+Semantics
+  run[[ _:program ]] : =>null-type
+
+Rule
+  run[[ D:program ]] = scope(declare-vars[[ D ]], null)
+/*
+Rule 
+  run[[ S:statement ]] = scope((),execute[[S]])
+*/
+  
+Syntax
+  D: decl ::= 'int' id
+Semantics
+  declare-vars[[ _:decl ]] : =>environments
+Rule
+  declare-vars[['int' ID]] = 
+	 bind(id[[ ID ]], allocate-initialised-variable(integers, 0))
+/*
+Rule
+  declare-vars[[ D:decl D+:decl+ ]] = declare-vars[[D]], declare-vars[[D+]]
+*/
+
+Syntax 
+S: statement ::= id '=' aexp
+               | 'print' exp
+               | statement statement
+
+Semantics 
+  execute[[ _:statement ]] : =>null-type 
+
+
+Rule 
+  execute[[ ID '=' AExp ]] = assign(bound(id[[ ID ]]), eval[[ AExp ]])
+
+
+Rule
+  execute[['print' Exp ]] =
+    print ( to-string eval[[Exp]], "\n" )
+
+Rule
+  execute[[S1 S2]] = sequential ( execute[[S1]], execute[[S2]] )

@@ -24,8 +24,8 @@ context-free syntax // Language
   // #3 Programs
                 
   
-  L-program.L-program--L-decl-Q-L-statement =
-    L-decl? L-statement
+  L-program.L-program--L-decl =
+    L-decl
   
   L-decl.L-decl--R-int-L-id =
     "int" L-id

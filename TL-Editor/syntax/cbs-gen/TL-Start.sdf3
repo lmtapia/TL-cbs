@@ -3,7 +3,7 @@ module TL-Start
 imports 
   TL-01-Lexical
   TL-02-Expressions
-  TL-03-Statements
+  TL-03-Programs
   Funcons
 
 // Language "TL"

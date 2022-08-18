@@ -19,6 +19,7 @@ lexical syntax // Language
   LEX-keyword = "true"
   LEX-keyword = "and"
   LEX-keyword = "or"
+  LEX-keyword = "int"
   
   // #1.1 Desambiguation
                 

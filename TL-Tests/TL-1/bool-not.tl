@@ -1,1 +1,1 @@
-print no false == (7 < 0)
+no false == (7 < 0)

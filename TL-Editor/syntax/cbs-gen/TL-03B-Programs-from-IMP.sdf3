@@ -1,0 +1,78 @@
+module TL-03B-Programs-from-IMP
+            
+imports 
+  TL-04-Statements
+  TL-02-Expressions
+  TL-01-Lexical
+  Funcons
+
+// Language "TL"
+    
+lexical syntax // Language
+  
+  // # 3B ProgramsIMP
+                   
+  
+  
+syntax // Language
+  
+  // # 3B ProgramsIMP
+                   
+  
+  
+context-free syntax // Language
+  
+  // # 3B ProgramsIMP
+                   
+  
+  L-pgm.L-pgm--R-int-L-idlist-L-stmt =
+    "int" L-idlist L-stmt
+  L-pgm.L-pgm--L-exp =
+    L-exp
+  
+  L-idlist.L-idlist--L-id-C-COMMA-L-idlist-D-Q =
+    L-id L-COMMA-L-idlist?
+  
+  L-COMMA-L-idlist.L-COMMA-L-idlist--COMMA-L-idlist =
+    "," L-idlist
+  
+  
+  
+context-free syntax // Semantics
+  
+  // # 3B ProgramsIMP
+                   
+  
+  FCT.T-run =
+    "run" "[:" L-pgm ":]"
+  FCT-SEQ.T-declare-int-vars =
+    "declare-int-vars" "[:" L-idlist ":]"
+  
+context-free syntax // Desugaring
+  
+  // # 3B ProgramsIMP
+                   
+  
+  
+variables // Meta-variables
+  
+  // # 3B ProgramsIMP
+                   
+  
+  L-pgm = "(:Pgm" [1-9]? ":)" {prefer}
+  L-pgm? = "(:Pgm" [1-9]? "?:)" {prefer}
+  L-pgm* = "(:Pgm" [1-9]? "*:)" {prefer}
+  L-pgm+ = "(:Pgm" [1-9]? "+:)" {prefer}
+  L-idlist = "(:IL" [1-9]? ":)" {prefer}
+  L-idlist? = "(:IL" [1-9]? "?:)" {prefer}
+  L-idlist* = "(:IL" [1-9]? "*:)" {prefer}
+  L-idlist+ = "(:IL" [1-9]? "+:)" {prefer}
+  
+// SDF comments
+  
+  // # 3B ProgramsIMP
+                   
+  
+  
+sorts // ASTs
+  T-start

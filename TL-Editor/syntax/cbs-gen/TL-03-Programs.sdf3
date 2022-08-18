@@ -1,0 +1,84 @@
+module TL-03-Programs
+            
+imports 
+  TL-01-Lexical
+  TL-02-Expressions
+  Funcons
+
+// Language "TL"
+    
+lexical syntax // Language
+  
+  // #3 Programs
+                
+  
+  
+syntax // Language
+  
+  // #3 Programs
+                
+  
+  
+context-free syntax // Language
+  
+  // #3 Programs
+                
+  
+  L-program.L-program--L-decl =
+    L-decl
+  
+  L-decl.L-decl--R-int-L-id =
+    "int" L-id
+  
+  L-statement.L-statement--L-id-EQUALS-L-aexp =
+    L-id "=" L-aexp
+  L-statement.L-statement--R-print-L-exp =
+    "print" L-exp
+  L-statement.L-statement--L-statement-L-statement =
+    L-statement L-statement
+  
+  
+context-free syntax // Semantics
+  
+  // #3 Programs
+                
+  
+  FCT.T-run =
+    "run" "[:" L-program ":]"
+  FCT.T-declare-vars =
+    "declare-vars" "[:" L-decl ":]"
+  FCT.T-execute =
+    "execute" "[:" L-statement ":]"
+  
+context-free syntax // Desugaring
+  
+  // #3 Programs
+                
+  
+  
+variables // Meta-variables
+  
+  // #3 Programs
+                
+  
+  L-program = "(:Pgm" [1-9]? ":)" {prefer}
+  L-program? = "(:Pgm" [1-9]? "?:)" {prefer}
+  L-program* = "(:Pgm" [1-9]? "*:)" {prefer}
+  L-program+ = "(:Pgm" [1-9]? "+:)" {prefer}
+  L-decl = "(:D" [1-9]? ":)" {prefer}
+  L-decl? = "(:D" [1-9]? "?:)" {prefer}
+  L-decl* = "(:D" [1-9]? "*:)" {prefer}
+  L-decl+ = "(:D" [1-9]? "+:)" {prefer}
+  L-statement = "(:S" [1-9]? ":)" {prefer}
+  L-statement? = "(:S" [1-9]? "?:)" {prefer}
+  L-statement* = "(:S" [1-9]? "*:)" {prefer}
+  L-statement+ = "(:S" [1-9]? "+:)" {prefer}
+  
+// SDF comments
+  
+  // #3 Programs
+                
+  
+  
+sorts // ASTs
+  T-start
