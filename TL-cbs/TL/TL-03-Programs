@@ -3,18 +3,22 @@ Language "TL"
 #3 Programs
 
 Syntax 
-  Pgm: program ::= decl? statement
+  Pgm : program ::= decl
 
 Semantics
-  run[[ _:program ]] : => null-type
+  run[[ _:program ]] : =>null-type
+
 Rule
-  run[[ D:decl S ]] = 
-  scope(collateral(declare-vars[[D]]) ,execute[[S]])
+  run[[ D:program ]] = scope(declare-vars[[ D ]], null)
+/*
+Rule 
+  run[[ S:statement ]] = scope((),execute[[S]])
+*/
   
 Syntax
   D: decl ::= 'int' id
 Semantics
-  declare-vars[[_:decl]] : => environments
+  declare-vars[[ _:decl ]] : =>environments
 Rule
   declare-vars[['int' ID]] = 
 	 bind(id[[ ID ]], allocate-initialised-variable(integers, 0))

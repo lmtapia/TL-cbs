@@ -1,0 +1,23 @@
+Language "TL"
+
+#4 Statements
+
+Syntax 
+Stmt: stmt ::= id '=' aexp
+               | 'print' exp
+               | stmt stmt
+
+Semantics 
+  execute[[ _:stmt ]] : =>null-type 
+
+
+Rule 
+  execute[[ ID '=' AExp ]] = assign(bound(id[[ ID ]]), eval[[ AExp ]])
+
+
+Rule
+  execute[['print' Exp ]] =
+    print ( to-string eval[[Exp]], "\n" )
+
+Rule
+  execute[[Stmt1 Stmt2]] = sequential ( execute[[Stmt1]], execute[[Stmt2]] )

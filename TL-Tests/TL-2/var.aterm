@@ -1,6 +1,1 @@
-L-start--L-program(
-  L-program--L-decl-L-statement-S(
-    L-decl--R-int-L-id(LEX-id("a"))
-  , [L-statement--L-id-EQUALS-L-aexp(LEX-id("a"), L-aexp--L-int(LEX-int("3")))]
-  )
-)
+L-start--L-program(L-program--L-decl(L-decl--R-int-L-id(LEX-id("aa"))))

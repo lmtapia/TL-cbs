@@ -1,5 +1,10 @@
-initialise-binding finalise-failing is-eq
-  (false,
-   is-less
-     (decimal "7",
-      decimal "0"))
+initialise-binding initialise-storing finalise-failing scope
+  (collateral( ),
+   print
+     (to-string is-eq
+        (not false,
+         is-less
+           (decimal "7",
+            decimal "0")),
+      "
+"))
