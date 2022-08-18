@@ -1,8 +1,8 @@
 #!/bin/bash
 
 runfct="runfct"
-fileext="imp"
-lang="IMP"
+fileext="tl"
+lang="TL"
 
 function run-test {
   testTitle=$1
@@ -15,13 +15,11 @@ function run-test {
   ${runfct} --config ${lang}.config ${testDir}/${testName}.fct >> ${testDir}/${testName}.output
 }
 
-echo -e "\nCoverage Tests"
-for i in $(seq -w 1 9)
+for dir in .;
 do
-  run-test "Coverage ${i}" "Test0${i}" "Coverage"
+  echo -e "\nCoverage Tests"
+  for file in .;
+  do
+    run-test "Coverage ${i}" "Test0${i}" "Coverage" 
+  done
 done
-
-echo -e "\nK-Tutorial Tests"
-run-test "Sum" "sum" "K-Tutorial"
-run-test "Primes" "primes" "K-Tutorial"
-run-test "Collatz" "collatz" "K-Tutorial"
