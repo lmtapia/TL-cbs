@@ -1,6 +1,4 @@
 #!/bin/bash
-# usage: run-tests [file.fct]
-# without filename runs all compatible test cases
 
 runfct="runfct"
 fileext="tl"
@@ -21,7 +19,6 @@ function run-test {
   
   ((i=i+1))
 }
-
 
 
 if [[ -n "$1" && -f $1 ]]; then
