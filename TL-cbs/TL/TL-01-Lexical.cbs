@@ -19,7 +19,7 @@ Rule val-bool[['true']] = true
 Rule val-bool[['false']] = false 
 
 
-Lexis keyword ::= 'false' | 'true' | 'and' | 'or'
+Lexis keyword ::= 'false' | 'true' | 'and' | 'or' | 'int'
 
 #1.1 Desambiguation
 

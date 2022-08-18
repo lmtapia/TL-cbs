@@ -3,14 +3,15 @@ Language "TL"
 [ 
 #1 Lexical
 #2 Expressions
-#3 Statements
+#3A ProgramsIMP
 ]
 
 # Top level
-Syntax START:start ::= program
+Syntax START:start ::= pgm
 Semantics start[[ _:start ]]: => null-type
-Rule start[[ P ]] = 
+Rule start[[ Pgm : pgm ]] = 
 	initialise-binding 
 	initialise-storing
+	initialise-giving
 	finalise-failing 
-		run[[ P ]]
+		run[[ Pgm ]]

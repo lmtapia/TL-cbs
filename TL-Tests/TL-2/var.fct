@@ -1,2 +1,2 @@
-initialise-binding initialise-storing finalise-failing
-  run [: int a int b a = 3 b = 5 + 3 print b :]
+initialise-binding initialise-storing initialise-giving finalise-failing
+  run [: int aa :]
