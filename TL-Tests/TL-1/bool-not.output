@@ -1,0 +1,9 @@
+===== Program =====
+no false == (7 < 0)
+===================
+Result:
+false
+
+Mutable Entity: store
+
+

@@ -4,11 +4,12 @@ Language "TL"
 
 Syntax 
 Stmt: stmt ::= id '=' aexp
-               | 'print' exp
-               | stmt stmt
+             | 'print' exp
+             | stmt stmt+
+
 
 Semantics 
-  execute[[ _:stmt ]] : =>null-type 
+  execute[[ _:stmt+ ]] : =>null-type 
 
 
 Rule 
@@ -20,4 +21,4 @@ Rule
     print ( to-string eval[[Exp]], "\n" )
 
 Rule
-  execute[[Stmt1 Stmt2]] = sequential ( execute[[Stmt1]], execute[[Stmt2]] )
+  execute[[Stmt1 Stmt+]] = sequential ( execute[[Stmt1]], execute[[Stmt+]] )
