@@ -1,2 +1,2 @@
-int x,y;
+int x,y
 y=9

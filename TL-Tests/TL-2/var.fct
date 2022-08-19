@@ -5,8 +5,21 @@ initialise-binding initialise-storing initialise-giving finalise-failing scope
          allocate-initialised-variable
            (integers,
             0))),
+<<<<<<< HEAD
    print
      (to-string assigned bound
         "a",
       "
 "))
+=======
+   sequential
+     (assign
+        (bound
+           ("a"),
+         decimal "5"),
+      print
+        (to-string assigned bound
+           "a",
+         "
+")))
+>>>>>>> bc15d28 (Multiple or none statements, tested)
