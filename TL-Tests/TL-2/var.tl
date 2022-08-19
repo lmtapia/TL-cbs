@@ -1,1 +1,2 @@
-int aa
+int a;
+print a

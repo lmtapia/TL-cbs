@@ -1,12 +1,16 @@
 initialise-binding initialise-storing initialise-giving finalise-failing scope
   (collateral
      (bind
-        ("a",
+        ("x",
+         allocate-initialised-variable
+           (integers,
+            0)),
+      bind
+        ("y",
          allocate-initialised-variable
            (integers,
             0))),
-   print
-     (to-string assigned bound
-        "a",
-      "
-"))
+   assign
+     (bound
+        ("y"),
+      decimal "9"))

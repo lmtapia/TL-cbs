@@ -18,7 +18,7 @@ Rule
 Syntax
   D: decl ::= 'int' id
 Semantics
-  declare-vars[[ _:decl ]] : =>environments
+  declare-vars[[ _:decl+ ]] : (=>environments)+
 Rule
   declare-vars[['int' ID]] = 
 	 bind(id[[ ID ]], allocate-initialised-variable(integers, 0))

@@ -1,1 +1,6 @@
-L-start--L-program(L-program--L-decl(L-decl--R-int-L-id(LEX-id("aa"))))
+L-start--L-pgm(
+  L-pgm--C-R-int-L-idlist-D-Q-L-stmt-P(
+    Some(L-R-int-L-idlist--R-int-L-idlist(L-idlist--L-id-C-COMMA-L-idlist-D-Q(LEX-id("a"), None())))
+  , [L-stmt--R-print-L-exp(L-exp--L-id(LEX-id("a")))]
+  )
+)

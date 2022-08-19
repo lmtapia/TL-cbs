@@ -6,20 +6,23 @@ lang="TL"
 
 function run-test {
   testTitle=$1
-  testName=$2
+  testNumber=$2
   testDir=$3
-  echo "Test ${testTitle}:"
-  echo "===== Program =====" > ${testDir}/${testName}.output
-  cat ${testDir}/${testName}.$fileext >> ${testDir}/${testName}.output
-  echo "===================" >> ${testDir}/${testName}.output
-  ${runfct} --config ${lang}.config ${testDir}/${testName}.fct >> ${testDir}/${testName}.output
+  echo "$testNumber ${testTitle}:"
+  echo "===== Program =====" > ${testDir}${testTitle}.output
+  cat ${testDir}${testTitle}.$fileext >> ${testDir}${testTitle}.output
+  echo $'\n'"===================" >> ${testDir}${testTitle}.output
+  ${runfct} --config ${lang}.config ${testDir}${testTitle}.fct >> ${testDir}/${testTitle}.output
 }
-
-for dir in .;
+i=1
+for dir in $lang-*/;
 do
-  echo -e "\nCoverage Tests"
-  for file in .;
+  echo -e "$dir"
+  for file in $dir*.fct;
   do
-    run-test "Coverage ${i}" "Test0${i}" "Coverage" 
+    run-test $(basename $file  .fct) "Test0${i}" "$dir" 
+    ((i=i+1))
   done
 done
+
+#for v in *.txt ; do mv $v  $(basename $v  .txt); done
