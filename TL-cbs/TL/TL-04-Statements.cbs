@@ -5,11 +5,11 @@ Language "TL"
 Syntax 
 Stmt: stmt ::= id '=' aexp
              | 'print' exp
-             | stmt stmt+
+          
 
 
 Semantics 
-  execute[[ _:stmt+ ]] : =>null-type 
+  execute[[ _:stmt* ]] : =>null-type 
 
 
 Rule 
@@ -19,6 +19,8 @@ Rule
 Rule
   execute[['print' Exp ]] =
     print ( to-string eval[[Exp]], "\n" )
+Rule
+  execute[[ ]] = null-value
 
 Rule
-  execute[[Stmt1 Stmt+]] = sequential ( execute[[Stmt1]], execute[[Stmt+]] )
+  execute[[Stmt Stmt+]] = sequential( execute[[Stmt]], execute[[Stmt+]] )
