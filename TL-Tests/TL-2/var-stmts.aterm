@@ -1,0 +1,16 @@
+L-start--L-pgm(
+  L-pgm--R-int-L-idlist-SEMI-L-stmt(
+    L-idlist--L-id-C-COMMA-L-idlist-D-Q(
+      LEX-id("x")
+    , Some(
+        L-COMMA-L-idlist--COMMA-L-idlist(
+          L-idlist--L-id-C-COMMA-L-idlist-D-Q(
+            LEX-id("y")
+          , Some(L-COMMA-L-idlist--COMMA-L-idlist(L-idlist--L-id-C-COMMA-L-idlist-D-Q(LEX-id("z"), None())))
+          )
+        )
+      )
+    )
+  , L-stmt--R-print-L-exp(L-exp--L-id(LEX-id("z")))
+  )
+)
