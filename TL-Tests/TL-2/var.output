@@ -1,13 +1,14 @@
 ===== Program =====
-int a;
+int a
+a = 5
 print a
 ===================
 Result:
 null-value
 
 Mutable Entity: store
-@1 |-> 0
+@1 |-> 5
 
 Output Entity: standard-out
-"0","\n"
+"5","\n"
 

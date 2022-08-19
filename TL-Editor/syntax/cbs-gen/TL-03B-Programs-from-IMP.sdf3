@@ -25,8 +25,8 @@ context-free syntax // Language
   // # 3B ProgramsIMP
                    
   
-  L-pgm.L-pgm--R-int-L-idlist-SEMI-L-stmt =
-    "int" L-idlist ";" L-stmt
+  L-pgm.L-pgm--R-int-L-idlist-L-stmt-S =
+    "int" L-idlist L-stmt*
   L-pgm.L-pgm--L-exp =
     L-exp
   
@@ -63,6 +63,7 @@ variables // Meta-variables
   L-pgm? = "(:Pgm" [1-9]? "?:)" {prefer}
   L-pgm* = "(:Pgm" [1-9]? "*:)" {prefer}
   L-pgm+ = "(:Pgm" [1-9]? "+:)" {prefer}
+  L-stmt* = "..." [1-9]? {prefer}
   L-idlist = "(:IL" [1-9]? ":)" {prefer}
   L-idlist? = "(:IL" [1-9]? "?:)" {prefer}
   L-idlist* = "(:IL" [1-9]? "*:)" {prefer}
