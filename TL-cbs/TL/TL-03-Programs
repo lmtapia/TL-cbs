@@ -1,17 +1,8 @@
 Language "TL"
 
-#3 Statements
+#3 Programs
 
 Syntax 
-<<<<<<< HEAD:TL-cbs/TL/TL-03-Statements.cbs
-P: program ::= decl* statement*
-
-Semantics
-	run[[_:program]] :=> null-type
-Rule
-  run[[D*:decl* S*:statement*]] = 
-  scope(collateral(declare-vars[[D*]]) ,execute[[S*]])
-=======
   Pgm : program ::= decl
 
 Semantics
@@ -23,33 +14,30 @@ Rule
 Rule 
   run[[ S:statement ]] = scope((),execute[[S]])
 */
->>>>>>> 11dba2a (TEST NEEDED Variable declaration achieved):TL-cbs/TL/TL-03-Programs
   
 Syntax
-D: decl ::= 'int' id
+  D: decl ::= 'int' id
 Semantics
-<<<<<<< HEAD:TL-cbs/TL/TL-03-Statements.cbs
-	declare-vars[[_:decl]]:(=> environments)+
-=======
-  declare-vars[[ _:decl ]] : =>environments
->>>>>>> 11dba2a (TEST NEEDED Variable declaration achieved):TL-cbs/TL/TL-03-Programs
+  declare-vars[[ _:decl+ ]] : (=>environments)+
 Rule
-	declare-vars[['int' ID]] = 
+  declare-vars[['int' ID]] = 
 	 bind(id[[ ID ]], allocate-initialised-variable(integers, 0))
+/*
 Rule
-	declare-vars[[D:decl D+:decl+]] = declare-vars[[D]], declare-vars[[D+]]
-	
+  declare-vars[[ D:decl D+:decl+ ]] = declare-vars[[D]], declare-vars[[D+]]
+*/
 
 Syntax 
 S: statement ::= id '=' aexp
                | 'print' exp
+               | statement statement
 
 Semantics 
-  execute[[S*:statement*]] : => null-type 
+  execute[[ _:statement ]] : =>null-type 
 
 
 Rule 
-  execute[[ ID '=' AExp]] = assign(bound(id[[ ID ]]), eval[[ AExp ]])
+  execute[[ ID '=' AExp ]] = assign(bound(id[[ ID ]]), eval[[ AExp ]])
 
 
 Rule
@@ -57,6 +45,4 @@ Rule
     print ( to-string eval[[Exp]], "\n" )
 
 Rule
-  execute[[ ]] = null
-Rule
-  execute[[S S+]] = sequential ( execute[[S]], execute[[S+]] )
+  execute[[S1 S2]] = sequential ( execute[[S1]], execute[[S2]] )

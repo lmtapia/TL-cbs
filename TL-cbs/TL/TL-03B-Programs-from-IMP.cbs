@@ -3,15 +3,17 @@ Language "TL"
 #3B ProgramsIMP
 
 Syntax
-  Pgm : pgm ::= 'int' idlist stmt
+  Pgm : pgm ::= 'int' idlist ';' stmt
               | exp
 
 Semantics
-  run[[ _:pgm ]] : =>null-type
+  run[[ _:pgm ]] : =>values
+
 Rule
   run[[ 'int' IL ';' Stmt ]] = 
     scope(collateral(declare-int-vars[[ IL ]]), 
            execute[[ Stmt ]])
+
 Rule 
   run[[Exp]] = eval[[Exp]]
 
