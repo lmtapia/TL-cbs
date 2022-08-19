@@ -25,8 +25,8 @@ context-free syntax // Language
   // # 3B ProgramsIMP
                    
   
-  L-pgm.L-pgm--R-int-L-idlist-L-stmt =
-    "int" L-idlist L-stmt
+  L-pgm.L-pgm--R-int-L-idlist-SEMI-L-stmt =
+    "int" L-idlist ";" L-stmt
   L-pgm.L-pgm--L-exp =
     L-exp
   

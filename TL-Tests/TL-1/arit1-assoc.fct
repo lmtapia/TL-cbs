@@ -1,4 +1,4 @@
-initialise-binding finalise-failing int-add
+initialise-binding initialise-storing initialise-giving finalise-failing int-add
   (int-add
      (decimal "3",
       int-div

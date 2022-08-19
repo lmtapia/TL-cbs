@@ -28,8 +28,6 @@ context-free syntax // Language
     L-id "=" L-aexp
   L-stmt.L-stmt--R-print-L-exp =
     "print" L-exp
-  L-stmt.L-stmt--L-stmt-L-stmt =
-    L-stmt L-stmt
   
   
 context-free syntax // Semantics
@@ -38,7 +36,7 @@ context-free syntax // Semantics
                 
   
   FCT.T-execute =
-    "execute" "[:" L-stmt ":]"
+    "execute" "[:" L-stmt+ ":]"
   
 context-free syntax // Desugaring
   

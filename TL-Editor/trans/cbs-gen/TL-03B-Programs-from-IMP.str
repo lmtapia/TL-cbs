@@ -19,7 +19,7 @@ rules
                  
 
 to-funcons:
-  |[ run[: int(:IL:) (:Stmt:) :] ]| ->
+  |[ run[: int(:IL:);(:Stmt:) :] ]| ->
   |[ scope (collateral (declare-int-vars[: (:IL:) :]), 
              execute[: (:Stmt:) :]) ]|
 to-funcons:

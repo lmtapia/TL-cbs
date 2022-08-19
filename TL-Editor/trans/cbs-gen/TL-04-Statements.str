@@ -26,7 +26,7 @@ to-funcons:
   |[ print (to-string eval[: (:Exp:) :], 
              "\n") ]|
 to-funcons:
-  |[ execute[: (:Stmt1:)(:Stmt2:) :] ]| ->
+  |[ execute[: (:Stmt1:)(:Stmt+:) :] ]| ->
   |[ sequential (execute[: (:Stmt1:) :], 
-             execute[: (:Stmt2:) :]) ]|
+             execute[: (:Stmt+:) :]) ]|
 

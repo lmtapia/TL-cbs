@@ -3,7 +3,7 @@ module TL-Start
 imports 
   TL-01-Lexical
   TL-02-Expressions
-  TL-03-Programs
+  TL-03B-Programs-from-IMP
   Funcons
 
 // Language "TL"
@@ -25,8 +25,8 @@ context-free syntax // Language
   // # Top level
                    
   
-  L-start.L-start--L-program =
-    L-program
+  L-start.L-start--L-pgm =
+    L-pgm
   
   
 context-free syntax // Semantics

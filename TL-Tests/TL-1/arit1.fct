@@ -1,2 +1,5 @@
-initialise-binding initialise-storing finalise-failing
-  run [: print ( 34 + 6 ) / 2 :]
+initialise-binding initialise-storing initialise-giving finalise-failing int-div
+  (int-add
+     (decimal "34",
+      decimal "6"),
+   decimal "2")
