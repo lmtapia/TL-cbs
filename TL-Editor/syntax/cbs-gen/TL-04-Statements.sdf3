@@ -28,6 +28,13 @@ context-free syntax // Language
     L-id "=" L-aexp
   L-stmt.L-stmt--R-print-L-exp =
     "print" L-exp
+  L-stmt.L-stmt--R-if-L-bexp-L-block-R-else-L-block =
+    "if" L-bexp L-block "else" L-block
+  L-stmt.L-stmt--L-block =
+    L-block
+  
+  L-block.L-block--LBRACE-L-stmt-S-RBRACE =
+    "{" L-stmt* "}"
   
   
 context-free syntax // Semantics
@@ -53,6 +60,11 @@ variables // Meta-variables
   L-stmt? = "(:Stmt" [1-9]? "?:)" {prefer}
   L-stmt* = "(:Stmt" [1-9]? "*:)" {prefer}
   L-stmt+ = "(:Stmt" [1-9]? "+:)" {prefer}
+  L-block = "(:Block" [1-9]? ":)" {prefer}
+  L-block? = "(:Block" [1-9]? "?:)" {prefer}
+  L-block* = "(:Block" [1-9]? "*:)" {prefer}
+  L-block+ = "(:Block" [1-9]? "+:)" {prefer}
+  L-stmt* = "..." [1-9]? {prefer}
   
 // SDF comments
   

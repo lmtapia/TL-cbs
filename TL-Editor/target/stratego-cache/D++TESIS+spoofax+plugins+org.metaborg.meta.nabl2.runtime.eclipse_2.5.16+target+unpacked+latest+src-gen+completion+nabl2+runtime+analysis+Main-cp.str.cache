@@ -1,0 +1,1 @@
+Module("completion/nabl2/runtime/analysis/Main-cp",[Imports([Import("libstratego-gpp"),ImportWildcard("libspoofax/editor/completion")]),Imports([Import("signatures/nabl2/runtime/analysis/Main-sig")]),Imports([Import("completion/nabl2/runtime/analysis/Debug-cp"),Import("completion/nabl2/runtime/analysis/Generation-cp")])])

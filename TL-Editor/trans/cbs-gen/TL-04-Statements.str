@@ -26,6 +26,14 @@ to-funcons:
   |[ print (to-string eval[: (:Exp:) :], 
              "\n") ]|
 to-funcons:
+  |[ execute[: if(:BExp:)(:Block1:)else(:Block2:) :] ]| ->
+  |[ if-else (eval-bool[: (:BExp:) :], 
+             execute[: (:Block1:) :], 
+             execute[: (:Block2:) :]) ]|
+to-funcons:
+  |[ execute[: {(:Stmt*:)} :] ]| ->
+  |[ execute[: (:Stmt*:) :] ]|
+to-funcons:
   |[ execute[:  :] ]| ->
   |[ null-value ]|
 to-funcons:

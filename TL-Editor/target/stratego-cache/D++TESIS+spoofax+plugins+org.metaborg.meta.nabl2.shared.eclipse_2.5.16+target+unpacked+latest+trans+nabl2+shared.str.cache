@@ -1,0 +1,1 @@
+Module("nabl2/shared",[Imports([Import("nabl2/shared/main")])])

@@ -10,7 +10,7 @@ imports
   cbs-gen/TL-01-Lexical
   cbs-gen/TL-02-Expressions
   cbs-gen/TL-04-Statements
-  cbs-gen/TL-03B-Programs-from-IMP
+  cbs-gen/TL-03-Programs
 
 // Language "TL"
 

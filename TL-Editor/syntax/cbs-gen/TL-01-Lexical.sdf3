@@ -20,6 +20,8 @@ lexical syntax // Language
   LEX-keyword = "and"
   LEX-keyword = "or"
   LEX-keyword = "int"
+  LEX-keyword = "if"
+  LEX-keyword = "else"
   
   // #1.1 Desambiguation
                 

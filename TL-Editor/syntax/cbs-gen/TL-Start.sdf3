@@ -4,7 +4,7 @@ imports
   TL-01-Lexical
   TL-02-Expressions
   TL-04-Statements
-  TL-03B-Programs-from-IMP
+  TL-03-Programs
   Funcons
 
 // Language "TL"
