@@ -1,0 +1,41 @@
+initialise-binding initialise-storing initialise-giving finalise-failing scope
+  (collateral
+     (bind
+        ("a",
+         allocate-initialised-variable
+           (integers,
+            0)),
+      bind
+        ("b",
+         allocate-initialised-variable
+           (integers,
+            0)),
+      bind
+        ("c",
+         allocate-initialised-variable
+           (integers,
+            0))),
+   sequential
+     (assign
+        (bound
+           ("a"),
+         decimal "5"),
+      assign
+        (bound
+           ("b"),
+         decimal "6"),
+      assign
+        (bound
+           ("c"),
+         int-add
+           (int-add
+              (assigned bound
+                 "a",
+               assigned bound
+                 "b"),
+            decimal "2")),
+      print
+        (to-string assigned bound
+           "c",
+         "
+")))
