@@ -17,14 +17,14 @@ rules
               
 
 to-funcons:
-  |[ eval[: (:ID:) :] ]| ->
-  |[ assigned bound id[: (:ID:) :] ]|
-to-funcons:
   |[ eval[: (:AExp:) :] ]| ->
   |[ eval-arith[: (:AExp:) :] ]|
 to-funcons:
   |[ eval[: (:BExp:) :] ]| ->
   |[ eval-bool[: (:BExp:) :] ]|
+to-funcons:
+  |[ eval-arith[: (:ID:) :] ]| ->
+  |[ assigned bound id[: (:ID:) :] ]|
 to-funcons:
   |[ eval-arith[: (:N:) :] ]| ->
   |[ int[: (:N:) :] ]|

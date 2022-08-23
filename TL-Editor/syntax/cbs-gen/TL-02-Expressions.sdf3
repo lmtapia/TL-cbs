@@ -23,13 +23,13 @@ context-free syntax // Language
   // #2 Expressions
                 
   
-  L-exp.L-exp--L-id =
-    L-id
   L-exp.L-exp--L-aexp =
     L-aexp
   L-exp.L-exp--L-bexp =
     L-bexp
   
+  L-aexp.L-aexp--L-id =
+    L-id
   L-aexp.L-aexp--L-int =
     L-int
   L-aexp.L-aexp--L-aexp-PLUS-L-aexp =
