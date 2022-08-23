@@ -1,5 +1,12 @@
 ===== Program =====
-int a , b a = 5
+int a,b
+a = 5
+if a>0
+{ print a
+}
+else 
+{ print b
+}
 ===================
 Result:
 null-value
@@ -7,4 +14,7 @@ null-value
 Mutable Entity: store
 @1 |-> 5
 @2 |-> 0
+
+Output Entity: standard-out
+"5","\n"
 
