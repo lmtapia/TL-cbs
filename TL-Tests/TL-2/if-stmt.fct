@@ -1,0 +1,29 @@
+initialise-binding initialise-storing initialise-giving finalise-failing scope
+  (collateral
+     (bind
+        ("a",
+         allocate-initialised-variable
+           (integers,
+            0)),
+      bind
+        ("b",
+         allocate-initialised-variable
+           (integers,
+            0))),
+   sequential
+     (assign
+        (bound
+           ("a"),
+         decimal "5"),
+      if-else
+        (true,
+         print
+           (to-string assigned bound
+              "a",
+            "
+"),
+         print
+           (to-string assigned bound
+              "b",
+            "
+"))))
