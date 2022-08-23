@@ -1,6 +1,6 @@
 Language "TL"
 
-#3B ProgramsIMP
+#3 Programs
 
 Syntax
   Pgm : pgm ::= 'int' idlist stmt*
