@@ -1,0 +1,18 @@
+===== Program =====
+int a,b,c
+a = 5
+b = 6
+c =  a + b + 2 
+print c
+===================
+Result:
+null-value
+
+Mutable Entity: store
+@1 |-> 5
+@2 |-> 6
+@3 |-> 13
+
+Output Entity: standard-out
+"13","\n"
+
