@@ -34,6 +34,10 @@ context-free syntax // Language
     L-int
   L-aexp.L-aexp--L-aexp-PLUS-L-aexp =
     L-aexp "+" L-aexp
+  L-aexp.L-aexp--L-aexp-DASH-L-aexp =
+    L-aexp "-" L-aexp
+  L-aexp.L-aexp--L-aexp-STAR-L-aexp =
+    L-aexp "*" L-aexp
   L-aexp.L-aexp--L-aexp-SLASH-L-aexp =
     L-aexp "/" L-aexp
   L-aexp.L-aexp--LPAREN-L-aexp-RPAREN =

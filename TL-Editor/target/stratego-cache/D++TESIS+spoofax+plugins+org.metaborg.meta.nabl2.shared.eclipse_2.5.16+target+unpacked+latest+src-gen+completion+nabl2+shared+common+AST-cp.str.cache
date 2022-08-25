@@ -1,1 +1,0 @@
-Module("completion/nabl2/shared/common/AST-cp",[Imports([Import("libstratego-gpp"),ImportWildcard("libspoofax/editor/completion")]),Imports([Import("signatures/nabl2/shared/common/AST-sig")])])

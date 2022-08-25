@@ -31,6 +31,10 @@ to-funcons:
              execute[: (:Block1:) :], 
              execute[: (:Block2:) :]) ]|
 to-funcons:
+  |[ execute[: while(:BExp:)(:Block:) :] ]| ->
+  |[ while (eval-bool[: (:BExp:) :], 
+             execute[: (:Block:) :]) ]|
+to-funcons:
   |[ execute[: {(:Stmt*:)} :] ]| ->
   |[ execute[: (:Stmt*:) :] ]|
 to-funcons:

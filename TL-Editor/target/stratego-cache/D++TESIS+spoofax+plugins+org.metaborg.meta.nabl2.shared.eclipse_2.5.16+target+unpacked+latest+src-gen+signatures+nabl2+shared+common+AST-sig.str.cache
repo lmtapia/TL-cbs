@@ -1,1 +1,0 @@
-Module("signatures/nabl2/shared/common/AST-sig",[Signature([Sorts([SortNoArgs("NaBL2-TermIndex")]),Constructors([])])])

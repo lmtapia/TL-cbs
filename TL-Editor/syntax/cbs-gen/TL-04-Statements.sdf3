@@ -30,6 +30,8 @@ context-free syntax // Language
     "print" L-exp
   L-stmt.L-stmt--R-if-L-bexp-L-block-R-else-L-block =
     "if" L-bexp L-block "else" L-block
+  L-stmt.L-stmt--R-while-L-bexp-L-block =
+    "while" L-bexp L-block
   L-stmt.L-stmt--L-block =
     L-block
   

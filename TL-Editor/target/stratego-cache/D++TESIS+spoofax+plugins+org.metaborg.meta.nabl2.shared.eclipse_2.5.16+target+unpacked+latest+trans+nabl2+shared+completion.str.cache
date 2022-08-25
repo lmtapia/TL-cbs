@@ -1,1 +1,0 @@
-Module("nabl2/shared/completion",[Imports([ImportWildcard("completion/nabl2/shared")])])

@@ -1,1 +1,0 @@
-Module("nabl2/shared/main",[Imports([ImportWildcard("signatures/nabl2/shared"),ImportWildcard("pp/nabl2/shared"),ImportWildcard("nabl2/shared")])])

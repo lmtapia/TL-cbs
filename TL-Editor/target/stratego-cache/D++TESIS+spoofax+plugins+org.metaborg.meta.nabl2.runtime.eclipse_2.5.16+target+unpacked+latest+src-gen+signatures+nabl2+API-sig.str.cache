@@ -1,1 +1,0 @@
-Module("signatures/nabl2/API-sig",[Imports([Import("signatures/nabl2/shared/common/ScopeGraph-sig")]),Signature([Sorts([SortNoArgs("NaBL2Scope"),SortNoArgs("NaBL2Occurrence"),SortNoArgs("NaBL2TermIndex")]),Constructors([])])])

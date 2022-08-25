@@ -1,1 +1,0 @@
-Module("nabl2/runtime/analysis/query",[Imports([Import("nabl2/runtime/transform/query")])])

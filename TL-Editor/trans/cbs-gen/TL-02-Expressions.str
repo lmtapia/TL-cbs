@@ -33,6 +33,14 @@ to-funcons:
   |[ int-add (eval-arith[: (:AExp1:) :], 
              eval-arith[: (:AExp2:) :]) ]|
 to-funcons:
+  |[ eval-arith[: (:AExp1:)-(:AExp2:) :] ]| ->
+  |[ int-add (eval-arith[: (:AExp1:) :], 
+             int-neg (eval-arith[: (:AExp2:) :])) ]|
+to-funcons:
+  |[ eval-arith[: (:AExp1:)*(:AExp2:) :] ]| ->
+  |[ int-mul (eval-arith[: (:AExp1:) :], 
+             eval-arith[: (:AExp2:) :]) ]|
+to-funcons:
   |[ eval-arith[: (:AExp1:)/(:AExp2:) :] ]| ->
   |[ int-div (eval-arith[: (:AExp1:) :], 
              eval-arith[: (:AExp2:) :]) ]|

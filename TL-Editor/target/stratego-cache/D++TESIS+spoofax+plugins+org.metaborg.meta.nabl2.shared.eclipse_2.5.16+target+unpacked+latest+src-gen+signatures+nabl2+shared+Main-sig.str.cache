@@ -1,1 +1,0 @@
-Module("signatures/nabl2/shared/Main-sig",[Imports([Import("signatures/nabl2/shared/common/Main-sig"),Import("signatures/nabl2/shared/constraints/Main-sig")]),Signature([Constructors([])])])

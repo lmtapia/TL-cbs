@@ -1,1 +1,0 @@
-Module("nabl2/runtime/completion",[Imports([Import("nabl2/shared/completion"),ImportWildcard("completion/nabl2/runtime")])])
