@@ -1,0 +1,25 @@
+===== Program =====
+int a,b,c
+a = 1071
+b = 462
+
+while b>0
+{	c = b
+	b = a - (a/b) * b
+	a = c
+	print b
+}
+print a
+
+===================
+Result:
+null-value
+
+Mutable Entity: store
+@1 |-> 21
+@2 |-> 0
+@3 |-> 21
+
+Output Entity: standard-out
+"147","\n","21","\n","0","\n","21","\n"
+
