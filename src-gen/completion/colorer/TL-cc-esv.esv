@@ -1,8 +1,0 @@
-module completion/colorer/TL-cc-esv
-
-imports
-  completion/colorer/TL-Start-cc-esv
-
-colorer
-  _.Start-Plhdr   : gray   
-  _.L-start-Plhdr : gray   
