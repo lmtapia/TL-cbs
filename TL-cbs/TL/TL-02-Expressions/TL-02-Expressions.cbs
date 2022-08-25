@@ -24,6 +24,7 @@ Rule eval-arith[[ AExp1 '/' AExp2]] = checked int-div(eval-arith[[AExp1]],eval-a
 Rule eval-arith[[ '(' AExp ')' ]]= eval-arith[[ AExp ]]
 			
 Syntax BExp : bexp ::= bool
+					 | 'no' bexp
 					 | bexp 'or' bexp
 					 | bexp 'and' bexp
 					 | aexp '<' aexp

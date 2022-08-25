@@ -1,5 +1,0 @@
-initialise-binding finalise-failing is-eq
-  (false,
-   is-less
-     (decimal "7",
-      decimal "0"))
