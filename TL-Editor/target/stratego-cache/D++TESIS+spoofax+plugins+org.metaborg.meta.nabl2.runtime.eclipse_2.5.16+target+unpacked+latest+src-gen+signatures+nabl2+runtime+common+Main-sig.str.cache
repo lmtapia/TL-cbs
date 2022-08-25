@@ -1,0 +1,1 @@
+Module("signatures/nabl2/runtime/common/Main-sig",[Imports([Import("signatures/nabl2/runtime/common/AST-sig"),Import("signatures/nabl2/runtime/common/CTerms-sig"),Import("signatures/nabl2/runtime/common/Messages-sig"),Import("signatures/nabl2/runtime/common/Native-sig"),Import("signatures/nabl2/runtime/common/ScopeGraph-sig")]),Signature([Constructors([])])])

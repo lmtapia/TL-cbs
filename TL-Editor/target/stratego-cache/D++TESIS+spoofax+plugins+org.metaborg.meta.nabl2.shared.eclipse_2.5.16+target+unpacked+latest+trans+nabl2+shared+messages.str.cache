@@ -1,0 +1,1 @@
+Module("nabl2/shared/common/messages",[Imports([ImportWildcard("signatures/nabl2/shared/common")]),Rules([SDefNoArgs("nabl2--message-pos",GuardedLChoice(Match(NoAnnoList(Op("Message",[Wld,Wld,Var("pos")]))),CallNoArgs(SVar("pos")),Id))])])

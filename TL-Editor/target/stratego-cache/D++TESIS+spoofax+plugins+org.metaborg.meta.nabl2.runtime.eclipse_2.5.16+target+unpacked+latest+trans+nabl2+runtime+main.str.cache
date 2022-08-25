@@ -1,0 +1,1 @@
+Module("nabl2/runtime/main",[Imports([Import("nabl2/shared/main"),ImportWildcard("signatures/nabl2/runtime"),ImportWildcard("pp/nabl2/runtime"),ImportWildcard("nabl2/runtime/analysis"),ImportWildcard("nabl2/runtime/editor"),ImportWildcard("nabl2/runtime/prelude"),ImportWildcard("nabl2/runtime/stdlib"),ImportWildcard("nabl2/runtime/transform")])])
