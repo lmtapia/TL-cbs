@@ -1,0 +1,15 @@
+L-start--L-pgm(
+  L-pgm--L-exp(
+    L-exp--L-bexp(
+      L-bexp--L-bexp-R-or-L-bexp(
+        L-bexp--L-bool(LEX-bool("false"))
+      , L-bexp--LPAREN-L-bexp-RPAREN(
+          L-bexp--L-bexp-R-and-L-bexp(
+            L-bexp--LPAREN-L-bexp-RPAREN(L-bexp--L-aexp-GREATER-L-aexp(L-aexp--L-int(LEX-int("5")), L-aexp--L-int(LEX-int("4"))))
+          , L-bexp--L-bool(LEX-bool("true"))
+          )
+        )
+      )
+    )
+  )
+)

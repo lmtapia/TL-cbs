@@ -1,0 +1,12 @@
+===== Program =====
+int x,y
+y=9
+
+===================
+Result:
+null-value
+
+Mutable Entity: store
+@1 |-> 0
+@2 |-> 9
+
