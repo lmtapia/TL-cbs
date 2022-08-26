@@ -1,0 +1,9 @@
+===== Program =====
+false or ((5 > 4) and true)
+===================
+Result:
+true
+
+Mutable Entity: store
+
+

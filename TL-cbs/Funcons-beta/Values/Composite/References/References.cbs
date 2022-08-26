@@ -1,0 +1,29 @@
+### References and pointers
+
+[
+ Datatype references
+ Funcon   reference
+ Type     pointers
+ Funcon   pointer-null
+ Funcon   dereference
+]
+
+
+Meta-variables
+ T <: values
+
+
+Datatype
+ references(T) ::= reference(_:T)
+
+
+Datatype
+ pointers(T) ::= pointer-null | { _:references(T) }
+
+
+Funcon
+  dereference(_:pointers(T)) : =>(T)?
+Rule
+ dereference(reference(V:T)) ~> V
+Rule
+  dereference(pointer-null) ~> ( )
