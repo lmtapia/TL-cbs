@@ -1,0 +1,4 @@
+initialise-binding initialise-storing initialise-giving finalise-failing if-else
+  (false,
+   true,
+   true)

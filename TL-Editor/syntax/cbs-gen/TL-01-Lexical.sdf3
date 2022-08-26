@@ -1,0 +1,189 @@
+module TL-01-Lexical
+            
+imports 
+  TL-02-Expressions
+  Funcons
+
+// Language "TL"
+    
+lexical syntax // Language
+  
+  // #1 Lexical
+                
+  
+  LEX-int = ( [0-9] )+
+  LEX-id = ( [a-z] ) ( [a-z] | [0-9] )*
+  LEX-bool = "true"
+  LEX-bool = "false"
+  LEX-keyword = "false"
+  LEX-keyword = "true"
+  LEX-keyword = "and"
+  LEX-keyword = "or"
+  LEX-keyword = "int"
+  LEX-keyword = "if"
+  LEX-keyword = "else"
+  LEX-keyword = "while"
+  
+  // #1.1 Desambiguation
+                
+  
+  
+syntax // Language
+  
+  // #1 Lexical
+                
+  
+  
+  // #1.1 Desambiguation
+                
+  
+  
+context-free syntax // Language
+  
+  // #1 Lexical
+                
+  
+  L-int.LEX-int = 
+    LEX-int
+  L-id.LEX-id = 
+    LEX-id
+  L-bool.LEX-bool = 
+    LEX-bool
+  L-keyword.LEX-keyword = 
+    LEX-keyword
+  
+  // #1.1 Desambiguation
+                
+  
+  
+context-free syntax // Semantics
+  
+  // #1 Lexical
+                
+  
+  FCT-Quoted.L-int = L-int
+  FCT.T-int =
+    "int" "[:" L-int ":]"
+  FCT-Quoted.L-id = L-id
+  FCT.T-id =
+    "id" "[:" L-id ":]"
+  FCT-Quoted.L-bool = L-bool
+  FCT.T-val-bool =
+    "val-bool" "[:" L-bool ":]"
+  FCT-Quoted.LEX-keyword = LEX-keyword
+  
+  // #1.1 Desambiguation
+                
+  
+  
+context-free syntax // Desugaring
+  
+  // #1 Lexical
+                
+  
+  
+  // #1.1 Desambiguation
+                
+  
+  
+variables // Meta-variables
+  
+  // #1 Lexical
+                
+  
+  L-int = "(:N" [1-9]? ":)" {prefer}
+  L-int? = "(:N" [1-9]? "?:)" {prefer}
+  L-int* = "(:N" [1-9]? "*:)" {prefer}
+  L-int+ = "(:N" [1-9]? "+:)" {prefer}
+  L-id = "(:ID" [1-9]? ":)" {prefer}
+  L-id? = "(:ID" [1-9]? "?:)" {prefer}
+  L-id* = "(:ID" [1-9]? "*:)" {prefer}
+  L-id+ = "(:ID" [1-9]? "+:)" {prefer}
+  L-bool = "(:B" [1-9]? ":)" {prefer}
+  L-bool? = "(:B" [1-9]? "?:)" {prefer}
+  L-bool* = "(:B" [1-9]? "*:)" {prefer}
+  L-bool+ = "(:B" [1-9]? "+:)" {prefer}
+  
+  // #1.1 Desambiguation
+                
+  
+  
+// SDF comments
+  
+  // #1 Lexical
+                
+  
+  
+  // #1.1 Desambiguation
+                
+  
+  
+  lexical syntax 
+    LEX-id = LEX-keyword {reject}
+  lexical restrictions
+    LEX-id -/- [A-Za-z0-9]
+  
+  context-free syntax
+  
+  L-aexp.L-aexp--L-aexp-STAR-L-aexp =
+    L-aexp "*" L-aexp
+   {left}
+  L-aexp.L-aexp--L-aexp-SLASH-L-aexp =
+    L-aexp "/" L-aexp
+   {left}
+  L-aexp.L-aexp--L-aexp-PLUS-L-aexp =
+    L-aexp "+" L-aexp
+   {left}
+  L-aexp.L-aexp--L-aexp-DASH-L-aexp =
+    L-aexp "-" L-aexp
+   {left}
+  
+  context-free priorities
+  {
+  L-aexp.L-aexp--L-aexp-STAR-L-aexp =
+    L-aexp "*" L-aexp
+   
+  L-aexp.L-aexp--L-aexp-SLASH-L-aexp =
+    L-aexp "/" L-aexp
+  
+  }
+  >
+  {
+  L-aexp.L-aexp--L-aexp-PLUS-L-aexp =
+    L-aexp "+" L-aexp
+  
+  L-aexp.L-aexp--L-aexp-DASH-L-aexp =
+    L-aexp "-" L-aexp
+  
+  }
+  context-free syntax
+  
+  L-bexp.L-bexp--L-bexp-R-and-L-bexp =
+    L-bexp "and" L-bexp
+   {left}
+  L-bexp.L-bexp--L-bexp-R-or-L-bexp =
+    L-bexp "or" L-bexp
+   {left}
+  
+  context-free priorities
+   
+  { L-bexp.L-bexp--R-no-L-bexp =
+    "no" L-bexp
+  
+  } >
+  {non-assoc: 
+  L-bexp.L-bexp--L-aexp-LESS-L-aexp =
+    L-aexp "<" L-aexp
+  
+  
+  L-bexp.L-bexp--L-aexp-GREATER-L-aexp =
+    L-aexp ">" L-aexp
+  
+  
+  L-bexp.L-bexp--L-exp-EQUALS-EQUALS-L-exp =
+    L-exp "==" L-exp
+  
+  }
+  
+sorts // ASTs
+  T-start

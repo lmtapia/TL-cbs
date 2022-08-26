@@ -1,0 +1,14 @@
+===== Program =====
+int a
+a = 5
+print a
+===================
+Result:
+null-value
+
+Mutable Entity: store
+@1 |-> 5
+
+Output Entity: standard-out
+"5","\n"
+

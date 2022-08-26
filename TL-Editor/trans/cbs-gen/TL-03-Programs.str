@@ -1,0 +1,37 @@
+module TL-03-Programs
+
+imports
+  libstratego-gpp
+  signatures/-
+  pp/TL-parenthesize
+  pp/TL-pp
+
+imports
+  cbs-gen/TL-04-Statements
+  cbs-gen/TL-02-Expressions
+  cbs-gen/TL-01-Lexical
+
+// Language "TL"
+
+rules
+
+// #3 Programs
+              
+
+to-funcons:
+  |[ run[: int(:IL:)(:Stmt*:) :] ]| ->
+  |[ scope (collateral (declare-int-vars[: (:IL:) :]), 
+             execute[: (:Stmt*:) :]) ]|
+to-funcons:
+  |[ run[: (:Exp:) :] ]| ->
+  |[ eval[: (:Exp:) :] ]|
+to-funcons:
+  |[ declare-int-vars[: (:ID:) :] ]| ->
+  |[ bind (id[: (:ID:) :], 
+             allocate-initialised-variable (integers, 
+                     0)) ]|
+to-funcons:
+  |[ declare-int-vars[: (:ID:),(:IL:) :] ]| ->
+  |[ declare-int-vars[: (:ID:) :], 
+     declare-int-vars[: (:IL:) :] ]|
+

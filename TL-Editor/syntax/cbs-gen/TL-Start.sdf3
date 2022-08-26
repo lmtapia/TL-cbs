@@ -1,64 +1,64 @@
 module TL-Start
             
 imports 
-  
+  TL-01-Lexical
+  TL-02-Expressions
+  TL-04-Statements
+  TL-03-Programs
   Funcons
 
 // Language "TL"
     
 lexical syntax // Language
-  LEX-int = ( [0-9] )+
-  LEX-id = ( [a-z] ) ( [a-z] | [0-9] )*
+  
+  // # Top level
+                   
+  
   
 syntax // Language
   
+  // # Top level
+                   
+  
+  
 context-free syntax // Language
-  L-start.L-start--L-exp =
-    L-exp
   
-  L-exp.L-exp--L-int =
-    L-int
-  L-exp.L-exp--L-id =
-    L-id
+  // # Top level
+                   
   
-  L-int.LEX-int = 
-    LEX-int
-  L-id.LEX-id = 
-    LEX-id
+  L-start.L-start--L-pgm =
+    L-pgm
+  
   
 context-free syntax // Semantics
+  
+  // # Top level
+                   
+  
   FCT.T-start =
     "start" "[:" L-start ":]"
-  FCT.T-eval =
-    "eval" "[:" L-exp ":]"
-  FCT-Quoted.L-int = L-int
-  FCT.T-int =
-    "int" "[:" L-int ":]"
-  FCT-Quoted.L-id = L-id
-  FCT.T-id =
-    "id" "[:" L-id ":]"
   
 context-free syntax // Desugaring
   
+  // # Top level
+                   
+  
+  
 variables // Meta-variables
+  
+  // # Top level
+                   
+  
   L-start = "(:START" [1-9]? ":)" {prefer}
   L-start? = "(:START" [1-9]? "?:)" {prefer}
   L-start* = "(:START" [1-9]? "*:)" {prefer}
   L-start+ = "(:START" [1-9]? "+:)" {prefer}
-  L-exp = "(:E" [1-9]? ":)" {prefer}
-  L-exp? = "(:E" [1-9]? "?:)" {prefer}
-  L-exp* = "(:E" [1-9]? "*:)" {prefer}
-  L-exp+ = "(:E" [1-9]? "+:)" {prefer}
-  L-int = "(:N" [1-9]? ":)" {prefer}
-  L-int? = "(:N" [1-9]? "?:)" {prefer}
-  L-int* = "(:N" [1-9]? "*:)" {prefer}
-  L-int+ = "(:N" [1-9]? "+:)" {prefer}
-  L-id = "(:X" [1-9]? ":)" {prefer}
-  L-id? = "(:X" [1-9]? "?:)" {prefer}
-  L-id* = "(:X" [1-9]? "*:)" {prefer}
-  L-id+ = "(:X" [1-9]? "+:)" {prefer}
   
 // SDF comments
+  
+  // # Top level
+                   
+  
   
 sorts // ASTs
   T-start

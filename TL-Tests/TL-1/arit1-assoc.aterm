@@ -1,0 +1,11 @@
+L-start--L-exp(
+  L-exp--L-aexp(
+    L-aexp--L-aexp-PLUS-L-aexp(
+      L-aexp--L-aexp-PLUS-L-aexp(
+        L-aexp--L-int(LEX-int("3"))
+      , L-aexp--L-aexp-SLASH-L-aexp(L-aexp--L-int(LEX-int("4")), L-aexp--L-int(LEX-int("2")))
+      )
+    , L-aexp--L-aexp-SLASH-L-aexp(L-aexp--L-int(LEX-int("5")), L-aexp--L-int(LEX-int("3")))
+    )
+  )
+)

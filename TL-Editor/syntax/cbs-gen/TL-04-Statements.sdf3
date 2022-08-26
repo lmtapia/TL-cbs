@@ -1,0 +1,78 @@
+module TL-04-Statements
+            
+imports 
+  TL-01-Lexical
+  TL-02-Expressions
+  Funcons
+
+// Language "TL"
+    
+lexical syntax // Language
+  
+  // #4 Statements
+                
+  
+  
+syntax // Language
+  
+  // #4 Statements
+                
+  
+  
+context-free syntax // Language
+  
+  // #4 Statements
+                
+  
+  L-stmt.L-stmt--L-id-EQUALS-L-aexp =
+    L-id "=" L-aexp
+  L-stmt.L-stmt--R-print-L-exp =
+    "print" L-exp
+  L-stmt.L-stmt--R-if-L-bexp-L-block-R-else-L-block =
+    "if" L-bexp L-block "else" L-block
+  L-stmt.L-stmt--R-while-L-bexp-L-block =
+    "while" L-bexp L-block
+  L-stmt.L-stmt--L-block =
+    L-block
+  
+  L-block.L-block--LBRACE-L-stmt-S-RBRACE =
+    "{" L-stmt* "}"
+  
+  
+context-free syntax // Semantics
+  
+  // #4 Statements
+                
+  
+  FCT.T-execute =
+    "execute" "[:" L-stmt* ":]"
+  
+context-free syntax // Desugaring
+  
+  // #4 Statements
+                
+  
+  
+variables // Meta-variables
+  
+  // #4 Statements
+                
+  
+  L-stmt = "(:Stmt" [1-9]? ":)" {prefer}
+  L-stmt? = "(:Stmt" [1-9]? "?:)" {prefer}
+  L-stmt* = "(:Stmt" [1-9]? "*:)" {prefer}
+  L-stmt+ = "(:Stmt" [1-9]? "+:)" {prefer}
+  L-block = "(:Block" [1-9]? ":)" {prefer}
+  L-block? = "(:Block" [1-9]? "?:)" {prefer}
+  L-block* = "(:Block" [1-9]? "*:)" {prefer}
+  L-block+ = "(:Block" [1-9]? "+:)" {prefer}
+  L-stmt* = "..." [1-9]? {prefer}
+  
+// SDF comments
+  
+  // #4 Statements
+                
+  
+  
+sorts // ASTs
+  T-start

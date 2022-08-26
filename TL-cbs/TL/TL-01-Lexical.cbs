@@ -1,0 +1,69 @@
+Language "TL"
+
+#1 Lexical
+			
+			   
+Lexis  N:int ::= ('0'-'9')+
+    
+Semantics int[[ N:int ]] : => integers
+            = decimal \"N\"
+    
+Lexis  ID:id  ::= ('a'-'z') ('a'-'z'|'0'-'9')*
+
+Semantics id[[ ID:id ]] : => identifiers
+            = \"ID\"
+
+Lexis B:bool ::= 'true' | 'false'
+Semantics val-bool[[ _:bool ]]: => bools 
+Rule val-bool[['true']] = true 
+Rule val-bool[['false']] = false 
+
+
+Lexis keyword ::= 'false' | 'true' | 'and' | 'or' | 'int' | 'if' | 'else' | 'while'
+
+#1.1 Desambiguation
+
+Lexis SDF
+/*
+lexical syntax 
+  ``id`` = ``keyword`` {reject}
+lexical restrictions
+  ``id`` -/- [A-Za-z0-9]
+*/
+
+Syntax SDF
+/*
+context-free syntax
+
+``aexp ::= aexp '*' aexp`` {left}
+``aexp ::= aexp '/' aexp`` {left}
+``aexp ::= aexp '+' aexp`` {left}
+``aexp ::= aexp '-' aexp`` {left}
+
+context-free priorities
+{
+``aexp ::= aexp '*' aexp`` 
+``aexp ::= aexp '/' aexp``
+}
+>
+{
+``aexp ::= aexp '+' aexp``
+``aexp ::= aexp '-' aexp``
+}
+context-free syntax
+
+``bexp ::= bexp 'and' bexp`` {left}
+``bexp ::= bexp 'or' bexp`` {left}
+
+context-free priorities
+ 
+{ ``bexp ::= 'no' bexp``
+} >
+{non-assoc: 
+``bexp ::= aexp '<' aexp``
+
+``bexp ::= aexp '>' aexp``
+
+``bexp ::= exp '==' exp``
+}
+*/

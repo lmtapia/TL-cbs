@@ -1,23 +1,18 @@
 Language "TL"
 
-Syntax START:start ::= exp
-Semantics start[[ _:start ]]: => values
-Rule start[[ E ]] = initialise-binding finalise-failing eval[[ E ]]
+[ 
+#1 Lexical
+#2 Expressions
+#3 Programs
+#4 Statements
+]
 
-Syntax E:exp ::= int
-			   | id
-Semantics eval[[ _:exp ]] : => values
-Rule eval[[ N ]] = int[[ N ]]
-Rule eval[[ X ]] = bound id[[ X ]]
-			   
-			   
-			   
-Lexis  N:int ::= ('0'-'9')+
-    
-Semantics int[[ N:int ]] : => integers
-            = decimal \"N\"
-    
-Lexis  X:id  ::= ('a'-'z') ('a'-'z'|'0'-'9')*
-
-Semantics id[[ X:id ]] : => identifiers
-            = \"X\"
+# Top level
+Syntax START:start ::= pgm
+Semantics start[[ _:start ]]: =>values
+Rule start[[ Pgm ]] = 
+	initialise-binding 
+	initialise-storing
+	initialise-giving
+	finalise-failing 
+		run[[ Pgm ]]
