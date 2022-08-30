@@ -13,6 +13,21 @@ L-start--L-pgm(
     )
   , [ L-stmt--L-id-EQUALS-L-aexp(LEX-id("a"), L-aexp--L-int(LEX-int("5")))
     , L-stmt--L-id-EQUALS-L-aexp(LEX-id("b"), L-aexp--L-int(LEX-int("0")))
+    , L-stmt--L-id-EQUALS-L-aexp(LEX-id("c"), L-aexp--L-int(LEX-int("1")))
+    , L-stmt--R-while-L-bexp-L-block(
+        L-bexp--L-aexp-LESS-L-aexp(L-aexp--L-id(LEX-id("b")), L-aexp--L-id(LEX-id("a")))
+      , L-block--LBRACE-L-stmt-S-RBRACE(
+          [ L-stmt--L-id-EQUALS-L-aexp(
+              LEX-id("b")
+            , L-aexp--L-aexp-PLUS-L-aexp(L-aexp--L-id(LEX-id("b")), L-aexp--L-int(LEX-int("1")))
+            )
+          , L-stmt--L-id-EQUALS-L-aexp(
+              LEX-id("c")
+            , L-aexp--L-aexp-STAR-L-aexp(L-aexp--L-id(LEX-id("c")), L-aexp--L-id(LEX-id("b")))
+            )
+          ]
+        )
+      )
     , L-stmt--R-print-L-exp(L-exp--L-aexp(L-aexp--L-id(LEX-id("c"))))
     ]
   )
