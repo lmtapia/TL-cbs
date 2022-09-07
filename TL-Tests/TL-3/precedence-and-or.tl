@@ -1,1 +1,1 @@
-true and false or true
+true and (false or true and false)
