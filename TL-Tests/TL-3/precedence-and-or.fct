@@ -1,4 +1,10 @@
 initialise-binding initialise-storing initialise-giving finalise-failing if-else
   (true,
-   eval-bool [: false or true and false :],
+   if-else
+     (false,
+      true,
+      if-else
+        (true,
+         false,
+         false)),
    false)
