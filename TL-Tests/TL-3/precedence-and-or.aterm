@@ -1,16 +1,14 @@
 L-start--L-pgm(
   L-pgm--L-exp(
     L-exp--L-bexp(
-      amb(
-        [ L-bexp--L-bexp-R-or-L-bexp(
-            L-bexp--L-bexp-R-and-L-bexp(L-bexp--L-bool(LEX-bool("true")), L-bexp--L-bool(LEX-bool("false")))
-          , L-bexp--L-bool(LEX-bool("true"))
+      L-bexp--L-bexp-R-and-L-bexp(
+        L-bexp--L-bool(LEX-bool("true"))
+      , L-bexp--LPAREN-L-bexp-RPAREN(
+          L-bexp--L-bexp-R-or-L-bexp(
+            L-bexp--L-bool(LEX-bool("false"))
+          , L-bexp--L-bexp-R-and-L-bexp(L-bexp--L-bool(LEX-bool("true")), L-bexp--L-bool(LEX-bool("false")))
           )
-        , L-bexp--L-bexp-R-and-L-bexp(
-            L-bexp--L-bool(LEX-bool("true"))
-          , L-bexp--L-bexp-R-or-L-bexp(L-bexp--L-bool(LEX-bool("false")), L-bexp--L-bool(LEX-bool("true")))
-          )
-        ]
+        )
       )
     )
   )
