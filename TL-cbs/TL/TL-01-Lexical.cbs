@@ -56,7 +56,6 @@ context-free syntax
 ``bexp ::= bexp 'or' bexp`` {left}
 
 context-free priorities
- 
 { ``bexp ::= 'no' bexp``
 } >
 {non-assoc: 
@@ -65,5 +64,9 @@ context-free priorities
 ``bexp ::= aexp '>' aexp``
 
 ``bexp ::= exp '==' exp``
-}
+} >
+{``bexp ::= bexp 'and' bexp``}
+>
+{``bexp ::= bexp 'or' bexp`` }
+
 */

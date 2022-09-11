@@ -166,7 +166,6 @@ variables // Meta-variables
    {left}
   
   context-free priorities
-   
   { L-bexp.L-bexp--R-no-L-bexp =
     "no" L-bexp
   
@@ -183,7 +182,15 @@ variables // Meta-variables
   L-bexp.L-bexp--L-exp-EQUALS-EQUALS-L-exp =
     L-exp "==" L-exp
   
+  } >
+  {L-bexp.L-bexp--L-bexp-R-and-L-bexp =
+    L-bexp "and" L-bexp
   }
+  >
+  {L-bexp.L-bexp--L-bexp-R-or-L-bexp =
+    L-bexp "or" L-bexp
+   }
+  
   
 sorts // ASTs
   T-start
