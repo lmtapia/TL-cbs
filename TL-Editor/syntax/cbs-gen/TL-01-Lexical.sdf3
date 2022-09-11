@@ -139,7 +139,7 @@ variables // Meta-variables
    {left}
   
   context-free priorities
-  {
+  {left:
   L-aexp.L-aexp--L-aexp-STAR-L-aexp =
     L-aexp "*" L-aexp
    
@@ -148,7 +148,7 @@ variables // Meta-variables
   
   }
   >
-  {
+  {left:
   L-aexp.L-aexp--L-aexp-PLUS-L-aexp =
     L-aexp "+" L-aexp
   

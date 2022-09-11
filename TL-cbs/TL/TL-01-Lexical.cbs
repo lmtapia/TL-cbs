@@ -41,12 +41,12 @@ context-free syntax
 ``aexp ::= aexp '-' aexp`` {left}
 
 context-free priorities
-{
+{left:
 ``aexp ::= aexp '*' aexp`` 
 ``aexp ::= aexp '/' aexp``
 }
 >
-{
+{left:
 ``aexp ::= aexp '+' aexp``
 ``aexp ::= aexp '-' aexp``
 }
