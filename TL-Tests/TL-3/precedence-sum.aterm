@@ -1,16 +1,9 @@
 L-start--L-pgm(
   L-pgm--L-exp(
     L-exp--L-aexp(
-      amb(
-        [ L-aexp--L-aexp-DASH-L-aexp(
-            L-aexp--L-aexp-PLUS-L-aexp(L-aexp--L-int(LEX-int("45")), L-aexp--L-int(LEX-int("4")))
-          , L-aexp--L-int(LEX-int("5"))
-          )
-        , L-aexp--L-aexp-PLUS-L-aexp(
-            L-aexp--L-int(LEX-int("45"))
-          , L-aexp--L-aexp-DASH-L-aexp(L-aexp--L-int(LEX-int("4")), L-aexp--L-int(LEX-int("5")))
-          )
-        ]
+      L-aexp--L-aexp-DASH-L-aexp(
+        L-aexp--L-aexp-PLUS-L-aexp(L-aexp--L-int(LEX-int("45")), L-aexp--L-int(LEX-int("4")))
+      , L-aexp--L-int(LEX-int("5"))
       )
     )
   )

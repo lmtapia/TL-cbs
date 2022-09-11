@@ -1,9 +1,0 @@
-initialise-binding initialise-storing initialise-giving finalise-failing if-else
-  (false,
-   true,
-   if-else
-     (is-greater
-        (decimal "5",
-         decimal "4"),
-      true,
-      false))
