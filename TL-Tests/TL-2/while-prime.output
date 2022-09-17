@@ -1,12 +1,14 @@
-var:
+while-prime:
 
 ===================
 Result:
 null-value
 
 Mutable Entity: store
-@1 |-> 5
+@1 |-> 471
+@2 |-> 3
+@3 |-> 0
 
 Output Entity: standard-out
-"5","\n"
+"false","\n"
 
