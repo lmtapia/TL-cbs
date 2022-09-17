@@ -1,8 +1,8 @@
-arit1:
+precedence-and-or:
 
 ===================
 Result:
-20
+false
 
 Mutable Entity: store
 

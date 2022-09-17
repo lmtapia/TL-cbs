@@ -1,0 +1,72 @@
+initialise-binding initialise-storing initialise-giving finalise-failing scope
+  (collateral
+     (bind
+        ("x",
+         allocate-initialised-variable
+           (integers,
+            0)),
+      bind
+        ("d",
+         allocate-initialised-variable
+           (integers,
+            0)),
+      bind
+        ("ds",
+         allocate-initialised-variable
+           (integers,
+            0))),
+   sequential
+     (assign
+        (bound
+           ("x"),
+         decimal "471"),
+      assign
+        (bound
+           ("d"),
+         decimal "2"),
+      while
+        (not is-eq
+           (int-mul
+              (int-div
+                 (assigned bound
+                    "x",
+                  assigned bound
+                    "d"),
+               assigned bound
+                 "d"),
+            assigned bound
+              "x"),
+         assign
+           (bound
+              ("d"),
+            int-add
+              (assigned bound
+                 "d",
+               decimal "1"))),
+      if-else
+        (if-else
+           (is-eq
+              (int-mul
+                 (assigned bound
+                    "d",
+                  assigned bound
+                    "d"),
+               assigned bound
+                 "x"),
+            true,
+            is-greater
+              (int-mul
+                 (assigned bound
+                    "d",
+                  assigned bound
+                    "d"),
+               assigned bound
+                 "x")),
+         print
+           (to-string true,
+            "
+"),
+         print
+           (to-string false,
+            "
+"))))
