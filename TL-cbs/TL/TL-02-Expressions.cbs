@@ -1,0 +1,49 @@
+Language "TL" 
+
+#2 Expressions
+
+Syntax Exp:exp ::=  id
+			     | aexp
+			     | bexp
+			   			   
+Semantics eval[[ _:exp ]] : => values
+
+
+Rule eval[[ X ]] = bound id[[ X ]]
+Rule eval[[ AExp ]] = eval-arith[[ AExp ]]
+Rule eval[[ BExp ]] = eval-bool[[ BExp ]]
+
+
+Syntax AExp : aexp ::= int
+				  | aexp '+' aexp
+				  | aexp '/' aexp
+				  | '(' aexp ')'
+				  
+Semantics eval-arith[[ _:aexp ]]: => integers
+Rule eval-arith[[ N ]] = int[[ N ]]
+Rule eval-arith[[ AExp1 '+' AExp2]] = int-add(eval-arith[[AExp1]],eval-arith[[AExp2]] )
+Rule eval-arith[[ AExp1 '/' AExp2]] = int-div(eval-arith[[AExp1]],eval-arith[[AExp2]] )
+Rule eval-arith[[ '(' AExp ')' ]]= eval-arith[[ AExp ]]
+			
+Syntax BExp : bexp ::= bool
+                     | 'no' bexp  
+					 | bexp 'or' bexp
+					 | bexp 'and' bexp
+					 | aexp '<' aexp
+					 | aexp '>' aexp
+					 | exp '==' exp
+					 | '(' bexp ')'
+					 
+Semantics eval-bool[[ _:bexp ]]: => booleans
+Rule eval-bool[[ B ]] = val-bool[[B]]
+
+Rule eval-bool[[ 'no' BExp ]] = not eval-bool[[BExp]]
+
+Rule eval-bool[[ BExp1 'and' BExp2]] = if-else(eval-bool[[ BExp1 ]],eval-bool[[ BExp2 ]],false)
+Rule eval-bool[[ BExp1 'or' BExp2]] = if-else(eval-bool[[ BExp1 ]],true,eval-bool[[ BExp2 ]])
+
+
+Rule eval-bool[[ AExp1 '<' AExp2]] = is-less(eval-arith[[AExp1]],eval-arith[[AExp2]])
+Rule eval-bool[[ AExp1 '>' AExp2]] = is-greater(eval-arith[[AExp1]],eval-arith[[AExp2]])
+Rule eval-bool[[ Exp1 '==' Exp2]] = is-eq(eval[[Exp1]],eval[[Exp2]])
+Rule eval-bool[[ '(' BExp ')' ]] = eval-bool[[ BExp ]]
