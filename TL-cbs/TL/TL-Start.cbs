@@ -1,0 +1,11 @@
+Language "TL"
+
+[ 
+#1 Lexical
+#2 Expressions
+]
+
+# Top level
+Syntax START:start ::= exp
+Semantics start[[ _:start ]]: => values
+Rule start[[ Exp ]] = initialise-binding finalise-failing eval[[ Exp ]]
