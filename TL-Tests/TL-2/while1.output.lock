@@ -1,0 +1,14 @@
+while1:
+
+===================
+Result:
+null-value
+
+Mutable Entity: store
+@1 |-> 5
+@2 |-> 5
+@3 |-> 120
+
+Output Entity: standard-out
+"120","\n"
+

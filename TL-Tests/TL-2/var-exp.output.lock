@@ -1,0 +1,14 @@
+var-exp:
+
+===================
+Result:
+null-value
+
+Mutable Entity: store
+@1 |-> 5
+@2 |-> 6
+@3 |-> 13
+
+Output Entity: standard-out
+"13","\n"
+

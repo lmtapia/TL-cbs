@@ -3,9 +3,16 @@ Language "TL"
 [ 
 #1 Lexical
 #2 Expressions
+#3 Programs
+#4 Statements
 ]
 
 # Top level
-Syntax START:start ::= exp
-Semantics start[[ _:start ]]: => values
-Rule start[[ Exp ]] = initialise-binding finalise-failing eval[[ Exp ]]
+Syntax START:start ::= pgm
+Semantics start[[ _:start ]]: =>values
+Rule start[[ Pgm ]] = 
+	initialise-binding 
+	initialise-storing
+	initialise-giving
+	finalise-failing 
+		run[[ Pgm ]]
