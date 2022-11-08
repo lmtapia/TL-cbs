@@ -1,0 +1,15 @@
+L-start--L-pgm(
+  L-pgm--C-R-int-L-idlist-D-Q-L-stmt-P(
+    Some(
+      L-R-int-L-idlist--R-int-L-idlist(
+        L-idlist--L-id-C-COMMA-L-idlist-D-Q(
+          LEX-id("x")
+        , Some(L-COMMA-L-idlist--COMMA-L-idlist(L-idlist--L-id-C-COMMA-L-idlist-D-Q(LEX-id("y"), None())))
+        )
+      )
+    )
+  , [ L-stmt--L-id-EQUALS-L-aexp(LEX-id("y"), L-aexp--L-int(LEX-int("9")))
+    , L-stmt--R-print-L-exp(L-exp--L-id(LEX-id("y")))
+    ]
+  )
+)

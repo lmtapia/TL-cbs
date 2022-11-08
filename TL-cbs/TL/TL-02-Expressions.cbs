@@ -2,27 +2,31 @@ Language "TL"
 
 #2 Expressions
 
-Syntax Exp:exp ::=  id
-			     | aexp
+Syntax Exp:exp ::= aexp
 			     | bexp
 			   			   
 Semantics eval[[ _:exp ]] : => values
 
-
-Rule eval[[ X ]] = bound id[[ X ]]
 Rule eval[[ AExp ]] = eval-arith[[ AExp ]]
 Rule eval[[ BExp ]] = eval-bool[[ BExp ]]
 
 
-Syntax AExp : aexp ::= int
-				  | aexp '+' aexp
-				  | aexp '/' aexp
-				  | '(' aexp ')'
+Syntax AExp : aexp ::= id
+                     | int
+				     | aexp '+' aexp
+				     | aexp '-' aexp
+				     | aexp '*' aexp
+				     | aexp '/' aexp
+					 | '(' aexp ')'
 				  
 Semantics eval-arith[[ _:aexp ]]: => integers
+
+Rule eval-arith[[ ID ]] = assigned bound id[[ ID ]]
 Rule eval-arith[[ N ]] = int[[ N ]]
-Rule eval-arith[[ AExp1 '+' AExp2]] = int-add(eval-arith[[AExp1]],eval-arith[[AExp2]] )
-Rule eval-arith[[ AExp1 '/' AExp2]] = int-div(eval-arith[[AExp1]],eval-arith[[AExp2]] )
+Rule eval-arith[[ AExp1 '+' AExp2]] = int-add(eval-arith[[AExp1]],eval-arith[[AExp2]])
+Rule eval-arith[[ AExp1 '-' AExp2]] = int-add(eval-arith[[AExp1]],int-neg(eval-arith[[AExp2]]))
+Rule eval-arith[[ AExp1 '*' AExp2]] = int-mul(eval-arith[[AExp1]],eval-arith[[AExp2]])
+Rule eval-arith[[ AExp1 '/' AExp2]] = int-div(eval-arith[[AExp1]],eval-arith[[AExp2]])
 Rule eval-arith[[ '(' AExp ')' ]]= eval-arith[[ AExp ]]
 			
 Syntax BExp : bexp ::= bool

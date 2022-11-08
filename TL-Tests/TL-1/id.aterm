@@ -1,1 +1,1 @@
-L-start--L-exp(L-exp--L-id(LEX-id("x")))
+L-start--L-program(L-program--L-decl-Q-L-statement(None(), L-statement--R-print-L-exp(L-exp--L-id(LEX-id("x")))))
