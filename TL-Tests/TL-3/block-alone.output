@@ -1,0 +1,13 @@
+block-alone:
+
+===================
+Result:
+null-value
+
+Mutable Entity: store
+@1 |-> 4
+@2 |-> 6
+
+Output Entity: standard-out
+"4","\n","6","\n"
+

@@ -1,0 +1,6 @@
+initialise-binding initialise-storing initialise-giving finalise-failing int-add
+  (int-add
+     (decimal "45",
+      decimal "4"),
+   int-neg
+     (decimal "5"))
