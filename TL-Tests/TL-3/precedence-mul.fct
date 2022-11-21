@@ -1,0 +1,5 @@
+initialise-binding initialise-storing initialise-giving finalise-failing int-mul
+  (int-div
+     (decimal "15",
+      decimal "4"),
+   decimal "6")
