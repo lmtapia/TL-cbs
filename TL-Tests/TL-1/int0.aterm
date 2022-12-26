@@ -1,1 +1,1 @@
-L-start--L-exp(L-exp--L-int(LEX-int("0")))
+L-start--L-exp(L-exp--L-aexp(L-aexp--L-int(LEX-int("0"))))

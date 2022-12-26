@@ -18,6 +18,7 @@ Syntax AExp : aexp ::= int
 Semantics eval-arith[[ _:aexp ]]: => integers
 Rule eval-arith[[ N ]] = int[[ N ]]
 Rule eval-arith[[ AExp1 '+' AExp2]] = int-add(eval-arith[[AExp1]],eval-arith[[AExp2]] )
-Rule eval-arith[[ AExp1 '/' AExp2]] = int-div(eval-arith[[AExp1]],eval-arith[[AExp2]] )
+Rule eval-arith[[ AExp1 '/' AExp2]] = 
+	checked int-div(eval-arith[[AExp1]],eval-arith[[AExp2]] )
 Rule eval-arith[[ '(' AExp ')' ]] = eval-arith[[ AExp ]]
 				  
