@@ -1,4 +1,4 @@
-initialise-binding finalise-failing int-div
+initialise-binding finalise-failing checked int-div
   (int-add
      (decimal "34",
       decimal "6"),
