@@ -1,4 +1,4 @@
-initialise-binding initialise-storing initialise-giving finalise-failing is-eq
+initialise-binding finalise-failing is-eq
   (not false,
    is-less
      (decimal "7",

@@ -12,7 +12,5 @@ Syntax START:start ::= pgm
 Semantics start[[ _:start ]]: =>values
 Rule start[[ Pgm ]] = 
 	initialise-binding 
-	initialise-storing
-	initialise-giving
 	finalise-failing 
 		run[[ Pgm ]]
