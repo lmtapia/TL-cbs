@@ -1,2 +1,2 @@
-initialise-binding finalise-failing decimal
+initialise-binding initialise-storing initialise-giving finalise-failing decimal
   "0"

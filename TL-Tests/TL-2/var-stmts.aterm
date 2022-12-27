@@ -1,5 +1,5 @@
 L-start--L-pgm(
-  L-pgm--R-int-L-idlist-SEMI-L-stmt(
+  L-pgm--R-int-L-idlist-L-stmt-S(
     L-idlist--L-id-C-COMMA-L-idlist-D-Q(
       LEX-id("x")
     , Some(
@@ -11,6 +11,14 @@ L-start--L-pgm(
         )
       )
     )
-  , L-stmt--R-print-L-exp(L-exp--L-id(LEX-id("z")))
+  , [ L-stmt--L-id-EQUALS-L-aexp(LEX-id("x"), L-aexp--L-int(LEX-int("3")))
+    , L-stmt--L-id-EQUALS-L-aexp(
+        LEX-id("y")
+      , L-aexp--L-aexp-PLUS-L-aexp(L-aexp--L-int(LEX-int("7")), L-aexp--L-int(LEX-int("1")))
+      )
+    , L-stmt--R-print-L-exp(L-exp--L-aexp(L-aexp--L-id(LEX-id("x"))))
+    , L-stmt--R-print-L-exp(L-exp--L-aexp(L-aexp--L-id(LEX-id("y"))))
+    , L-stmt--R-print-L-exp(L-exp--L-aexp(L-aexp--L-id(LEX-id("z"))))
+    ]
   )
 )

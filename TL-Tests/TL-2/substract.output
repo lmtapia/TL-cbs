@@ -1,8 +1,8 @@
-bool-eq:
+substract:
 
 ===================
 Result:
-false
+31
 
 Mutable Entity: store
 

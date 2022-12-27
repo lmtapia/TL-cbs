@@ -1,1 +1,1 @@
-L-start--L-exp(L-exp--L-id(LEX-id("x")))
+L-start--L-pgm(L-pgm--L-exp(L-exp--L-aexp(L-aexp--L-id(LEX-id("x")))))

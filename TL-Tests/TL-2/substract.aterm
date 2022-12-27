@@ -1,0 +1,10 @@
+L-start--L-pgm(
+  L-pgm--L-exp(
+    L-exp--L-aexp(
+      L-aexp--L-aexp-DASH-L-aexp(
+        L-aexp--L-aexp-DASH-L-aexp(L-aexp--L-int(LEX-int("45")), L-aexp--L-int(LEX-int("6")))
+      , L-aexp--L-int(LEX-int("8"))
+      )
+    )
+  )
+)

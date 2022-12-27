@@ -1,0 +1,38 @@
+L-start--L-pgm(
+  L-pgm--R-int-L-idlist-L-stmt-S(
+    L-idlist--L-id-C-COMMA-L-idlist-D-Q(
+      LEX-id("a")
+    , Some(
+        L-COMMA-L-idlist--COMMA-L-idlist(
+          L-idlist--L-id-C-COMMA-L-idlist-D-Q(
+            LEX-id("b")
+          , Some(L-COMMA-L-idlist--COMMA-L-idlist(L-idlist--L-id-C-COMMA-L-idlist-D-Q(LEX-id("c"), None())))
+          )
+        )
+      )
+    )
+  , [ L-stmt--L-id-EQUALS-L-aexp(LEX-id("a"), L-aexp--L-int(LEX-int("1071")))
+    , L-stmt--L-id-EQUALS-L-aexp(LEX-id("b"), L-aexp--L-int(LEX-int("462")))
+    , L-stmt--R-while-L-bexp-L-block(
+        L-bexp--L-aexp-GREATER-L-aexp(L-aexp--L-id(LEX-id("b")), L-aexp--L-int(LEX-int("0")))
+      , L-block--LBRACE-L-stmt-S-RBRACE(
+          [ L-stmt--L-id-EQUALS-L-aexp(LEX-id("c"), L-aexp--L-id(LEX-id("b")))
+          , L-stmt--L-id-EQUALS-L-aexp(
+              LEX-id("b")
+            , L-aexp--L-aexp-DASH-L-aexp(
+                L-aexp--L-id(LEX-id("a"))
+              , L-aexp--L-aexp-STAR-L-aexp(
+                  L-aexp--LPAREN-L-aexp-RPAREN(L-aexp--L-aexp-SLASH-L-aexp(L-aexp--L-id(LEX-id("a")), L-aexp--L-id(LEX-id("b"))))
+                , L-aexp--L-id(LEX-id("b"))
+                )
+              )
+            )
+          , L-stmt--L-id-EQUALS-L-aexp(LEX-id("a"), L-aexp--L-id(LEX-id("c")))
+          , L-stmt--R-print-L-exp(L-exp--L-aexp(L-aexp--L-id(LEX-id("b"))))
+          ]
+        )
+      )
+    , L-stmt--R-print-L-exp(L-exp--L-aexp(L-aexp--L-id(LEX-id("a"))))
+    ]
+  )
+)
