@@ -1,8 +1,8 @@
-precedence-mul:
+sub-neg:
 
 ===================
 Result:
-18
+-53
 
 Mutable Entity: store
 

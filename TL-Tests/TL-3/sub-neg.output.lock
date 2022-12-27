@@ -1,8 +1,8 @@
-bool-eq:
+sub-neg:
 
 ===================
 Result:
-false
+-53
 
 Mutable Entity: store
 
