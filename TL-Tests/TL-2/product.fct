@@ -1,4 +1,4 @@
-initialise-binding initialise-storing initialise-giving finalise-failing int-mul
+initialise-binding finalise-failing int-mul
   (int-mul
      (decimal "23",
       decimal "67"),

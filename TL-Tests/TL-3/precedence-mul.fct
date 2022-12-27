@@ -1,5 +1,5 @@
-initialise-binding initialise-storing initialise-giving finalise-failing int-mul
-  (int-div
+initialise-binding finalise-failing int-mul
+  (checked int-div
      (decimal "15",
       decimal "4"),
    decimal "6")

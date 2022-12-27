@@ -1,4 +1,4 @@
-initialise-binding initialise-storing initialise-giving finalise-failing if-else
+initialise-binding finalise-failing if-else
   (false,
    true,
    if-else

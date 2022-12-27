@@ -1,2 +1,2 @@
-initialise-binding initialise-storing initialise-giving finalise-failing assigned bound
+initialise-binding finalise-failing assigned bound
   "aaa"
