@@ -6,6 +6,7 @@ Syntax
 Stmt: stmt ::= id '=' aexp
              | 'print' exp
              | 'if' bexp block 'else' block
+             | 'while' bexp block
              | block
              
 Block : block ::= '{' stmt* '}'          
@@ -21,7 +22,10 @@ Rule
     print ( to-string eval[[Exp]], "\n" )
 Rule
   execute[['if' BExp Block1 'else' Block2]] = 
-    if-else(eval-bool[[BExp]], execute[[Block1]], execute[[Block2]])    
+    if-else(eval-bool[[BExp]], execute[[Block1]], execute[[Block2]])
+Rule
+  execute[['while' BExp Block]] = 
+    while(eval-bool[[BExp]], execute[[Block]])    
 Rule
   execute[[ '{' Stmt* '}' ]] = execute[[ Stmt* ]]
 Rule

@@ -1,3 +1,5 @@
-L-start--L-exp(
-  L-exp--L-aexp(L-aexp--L-aexp-PLUS-L-aexp(L-aexp--L-int(LEX-int("34")), L-aexp--L-int(LEX-int("17"))))
+L-start--L-pgm(
+  L-pgm--L-exp(
+    L-exp--L-aexp(L-aexp--L-aexp-PLUS-L-aexp(L-aexp--L-int(LEX-int("34")), L-aexp--L-int(LEX-int("17"))))
+  )
 )

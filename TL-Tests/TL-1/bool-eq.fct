@@ -1,0 +1,5 @@
+initialise-binding initialise-storing initialise-giving finalise-failing is-eq
+  (not false,
+   is-less
+     (decimal "7",
+      decimal "0"))

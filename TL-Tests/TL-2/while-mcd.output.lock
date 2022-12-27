@@ -1,13 +1,14 @@
-if-stmt:
+while-mcd:
 
 ===================
 Result:
 null-value
 
 Mutable Entity: store
-@1 |-> 5
+@1 |-> 21
 @2 |-> 0
+@3 |-> 21
 
 Output Entity: standard-out
-"5","\n"
+"147","\n","21","\n","0","\n","21","\n"
 

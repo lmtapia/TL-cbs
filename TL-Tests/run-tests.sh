@@ -1,4 +1,6 @@
 #!/bin/bash
+# usage: run-tests [file.fct]
+# without filename runs all compatible test cases
 
 runfct="runfct"
 fileext="tl"
@@ -10,7 +12,6 @@ function run-test {
   testTitle=$1
   testNumber=$2
   testDir=$3
-<<<<<<< HEAD
   echo **$testNumber ${testDir}${testTitle}
   echo "${testTitle}:" | tee ${testDir}${testTitle}.output
   echo "===== Program ====="  # | tee ${testDir}${testTitle}.output
@@ -19,14 +20,8 @@ function run-test {
   ${runfct} --config ${lang}.config ${testDir}${testTitle}.fct | tee -a ${testDir}${testTitle}.output
   
   ((i=i+1))
-=======
-  echo "**$testNumber ${testTitle}:"
-  echo "===== Program =====" | tee ${testDir}${testTitle}.output
-  cat ${testDir}${testTitle}.$fileext | tee -a ${testDir}${testTitle}.output
-  echo $'\n'"===================" | tee -a ${testDir}${testTitle}.output
-  ${runfct} --config ${lang}.config ${testDir}${testTitle}.fct | tee -a ${testDir}/${testTitle}.output
->>>>>>> b7a67fa (var calling works, updated TL-Editor)
 }
+
 
 
 if [[ -n "$1" && -f $1 ]]; then

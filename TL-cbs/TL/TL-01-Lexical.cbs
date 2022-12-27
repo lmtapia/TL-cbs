@@ -19,7 +19,7 @@ Rule val-bool[['true']] = true
 Rule val-bool[['false']] = false 
 
 
-Lexis keyword ::= 'false' | 'true' | 'and' | 'or' | 'int' | 'if' | 'else'
+Lexis keyword ::= 'false' | 'true' | 'and' | 'or' | 'int' | 'if' | 'else' | 'while'
 
 #1.1 Desambiguation
 
@@ -35,15 +35,21 @@ Syntax SDF
 /*
 context-free syntax
 
+``aexp ::= aexp '*' aexp`` {left}
 ``aexp ::= aexp '/' aexp`` {left}
 ``aexp ::= aexp '+' aexp`` {left}
+``aexp ::= aexp '-' aexp`` {left}
 
 context-free priorities
-
+{
+``aexp ::= aexp '*' aexp`` 
 ``aexp ::= aexp '/' aexp``
+}
 >
+{
 ``aexp ::= aexp '+' aexp``
-
+``aexp ::= aexp '-' aexp``
+}
 context-free syntax
 
 ``bexp ::= bexp 'and' bexp`` {left}

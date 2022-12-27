@@ -1,3 +1,5 @@
-L-start--L-exp(
-  L-exp--L-aexp(L-aexp--L-aexp-SLASH-L-aexp(L-aexp--L-int(LEX-int("8")), L-aexp--L-int(LEX-int("3"))))
+L-start--L-pgm(
+  L-pgm--L-exp(
+    L-exp--L-aexp(L-aexp--L-aexp-SLASH-L-aexp(L-aexp--L-int(LEX-int("8")), L-aexp--L-int(LEX-int("3"))))
+  )
 )
