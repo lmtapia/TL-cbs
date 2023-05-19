@@ -1,0 +1,93 @@
+module TL-3 
+language TL 
+start symbol Start
+
+test TL-3 block-alone [[
+int a,b
+a = 4
+{
+	b=6
+}
+print a
+print b
+]] transform "Generate Funcons" to
+"initialise-binding finalise-failing scope
+  (collateral
+     (bind
+        (\"a\",
+         allocate-initialised-variable
+           (integers,
+            0)),
+      bind
+        (\"b\",
+         allocate-initialised-variable
+           (integers,
+            0))),
+   sequential
+     (assign
+        (bound
+           (\"a\"),
+         decimal \"4\"),
+      assign
+        (bound
+           (\"b\"),
+         decimal \"6\"),
+      print
+        (to-string assigned bound
+           \"a\",
+         \"
+\"),
+      print
+        (to-string assigned bound
+           \"b\",
+         \"
+\")))"
+test TL-3 negative [[
+-5 * 7 + 4 - 2 
+]] transform "Generate Funcons" to
+"initialise-binding finalise-failing int-add
+  (int-add
+     (int-mul
+        (int-neg
+           (decimal \"5\"),
+         decimal \"7\"),
+      decimal \"4\"),
+   int-neg
+     (decimal \"2\"))"
+test TL-3 precedence-and-or [[
+true and (false or true and false)
+]] transform "Generate Funcons" to
+"initialise-binding finalise-failing if-else
+  (true,
+   if-else
+     (false,
+      true,
+      if-else
+        (true,
+         false,
+         false)),
+   false)"
+test TL-3 precedence-mul [[
+15/4 * 6
+]] transform "Generate Funcons" to
+"initialise-binding finalise-failing int-mul
+  (checked int-div
+     (decimal \"15\",
+      decimal \"4\"),
+   decimal \"6\")"
+test TL-3 precedence-sum [[
+45 + 4 - 5
+]] transform "Generate Funcons" to
+"initialise-binding finalise-failing int-add
+  (int-add
+     (decimal \"45\",
+      decimal \"4\"),
+   int-neg
+     (decimal \"5\"))"
+test TL-3 sub-neg [[
+34 - 87
+]] transform "Generate Funcons" to
+"initialise-binding finalise-failing int-add
+  (decimal \"34\",
+   int-neg
+     (decimal \"87\"))"
