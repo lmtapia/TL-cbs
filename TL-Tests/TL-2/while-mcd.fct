@@ -1,4 +1,4 @@
-initialise-binding initialise-storing initialise-giving finalise-failing scope
+initialise-binding finalise-failing scope
   (collateral
      (bind
         ("a",
@@ -43,7 +43,7 @@ initialise-binding initialise-storing initialise-giving finalise-failing scope
                     "a",
                   int-neg
                     (int-mul
-                       (int-div
+                       (checked int-div
                           (assigned bound
                              "a",
                            assigned bound

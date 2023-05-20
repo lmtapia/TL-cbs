@@ -1,0 +1,3 @@
+initialise-binding finalise-failing checked int-div
+  (decimal "45",
+   decimal "0")

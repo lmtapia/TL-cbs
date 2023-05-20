@@ -1,0 +1,25 @@
+Language "TL"
+
+#4 Statements
+
+Syntax 
+Stmt: stmt ::= id '=' aexp
+             | 'print' exp
+             | 'if' bexp block 'else' block
+             | 'while' bexp block
+             | block
+             
+Block : block ::= '{' stmt* '}'          
+
+Semantics execute[[ _:stmt* ]] : =>null-type 
+Rule execute[[ ID '=' AExp ]] = 
+	assign(bound(id[[ID]]),eval[[AExp]])
+Rule execute[['print' Exp ]] = print(to-string eval[[Exp]], "\n")
+Rule execute[['if' BExp Block1 'else' Block2]] = if-else(
+    eval-bool[[BExp]], execute[[Block1]], execute[[Block2]])
+Rule execute[['while' BExp Block]] = 
+    while(eval-bool[[BExp]], execute[[ Block ]])    
+Rule execute[[ '{' Stmt* '}' ]] = execute[[ Stmt* ]]
+Rule execute[[ ]] = null-value
+Rule execute[[Stmt Stmt+]] = 
+	sequential(execute[[ Stmt ]],execute[[ Stmt+ ]])

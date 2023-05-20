@@ -11,12 +11,12 @@ L-start--L-pgm(
         )
       )
     )
-  , [ L-stmt--L-id-EQUALS-L-aexp(LEX-id("a"), L-aexp--L-int(LEX-int("16")))
-    , L-stmt--L-id-EQUALS-L-aexp(LEX-id("b"), L-aexp--L-int(LEX-int("60")))
+  , [ L-stmt--L-id-EQUALS-L-aexp(LEX-id("a"), L-aexp--L-int(LEX-int("1071")))
+    , L-stmt--L-id-EQUALS-L-aexp(LEX-id("b"), L-aexp--L-int(LEX-int("462")))
     , L-stmt--R-while-L-bexp-L-block(
-        L-bexp--L-aexp-LESS-L-aexp(L-aexp--L-id(LEX-id("b")), L-aexp--L-int(LEX-int("0")))
+        L-bexp--L-aexp-GREATER-L-aexp(L-aexp--L-id(LEX-id("b")), L-aexp--L-int(LEX-int("0")))
       , L-block--LBRACE-L-stmt-S-RBRACE(
-          [ L-stmt--L-id-EQUALS-L-aexp(LEX-id("a"), L-aexp--L-id(LEX-id("b")))
+          [ L-stmt--L-id-EQUALS-L-aexp(LEX-id("c"), L-aexp--L-id(LEX-id("b")))
           , L-stmt--L-id-EQUALS-L-aexp(
               LEX-id("b")
             , L-aexp--L-aexp-DASH-L-aexp(
@@ -27,6 +27,8 @@ L-start--L-pgm(
                 )
               )
             )
+          , L-stmt--L-id-EQUALS-L-aexp(LEX-id("a"), L-aexp--L-id(LEX-id("c")))
+          , L-stmt--R-print-L-exp(L-exp--L-aexp(L-aexp--L-id(LEX-id("b"))))
           ]
         )
       )

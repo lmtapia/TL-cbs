@@ -1,9 +1,9 @@
-initialise-binding initialise-storing initialise-giving finalise-failing int-add
+initialise-binding finalise-failing int-add
   (int-add
      (decimal "3",
-      int-div
+      checked int-div
         (decimal "4",
          decimal "2")),
-   int-div
+   checked int-div
      (decimal "5",
       decimal "3"))

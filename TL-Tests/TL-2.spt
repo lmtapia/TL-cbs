@@ -1,0 +1,486 @@
+module TL-2 
+language TL 
+start symbol Start
+
+test TL-2 if-stmt-id [[
+int a,b
+a = 5
+if a>0
+{ print a
+}
+else 
+{ print b
+}
+]] transform "Generate Funcons" to
+"initialise-binding finalise-failing scope
+  (collateral
+     (bind
+        (\"a\",
+         allocate-initialised-variable
+           (integers,
+            0)),
+      bind
+        (\"b\",
+         allocate-initialised-variable
+           (integers,
+            0))),
+   sequential
+     (assign
+        (bound
+           (\"a\"),
+         decimal \"5\"),
+      if-else
+        (is-greater
+           (assigned bound
+              \"a\",
+            decimal \"0\"),
+         print
+           (to-string assigned bound
+              \"a\",
+            \"
+\"),
+         print
+           (to-string assigned bound
+              \"b\",
+            \"
+\"))))"
+test TL-2 if-stmt [[
+int a,b
+a = 5
+if true
+{ print a
+}
+else 
+{ print b
+}
+]] transform "Generate Funcons" to
+"initialise-binding finalise-failing scope
+  (collateral
+     (bind
+        (\"a\",
+         allocate-initialised-variable
+           (integers,
+            0)),
+      bind
+        (\"b\",
+         allocate-initialised-variable
+           (integers,
+            0))),
+   sequential
+     (assign
+        (bound
+           (\"a\"),
+         decimal \"5\"),
+      if-else
+        (true,
+         print
+           (to-string assigned bound
+              \"a\",
+            \"
+\"),
+         print
+           (to-string assigned bound
+              \"b\",
+            \"
+\"))))"
+test TL-2 product [[
+23 * 67 * 5
+]] transform "Generate Funcons" to
+"initialise-binding finalise-failing int-mul
+  (int-mul
+     (decimal \"23\",
+      decimal \"67\"),
+   decimal \"5\")"
+test TL-2 substract [[
+45 - 6 - 8
+]] transform "Generate Funcons" to
+"initialise-binding finalise-failing int-add
+  (int-add
+     (decimal \"45\",
+      int-neg
+        (decimal \"6\")),
+   int-neg
+     (decimal \"8\"))"
+test TL-2 var-exp [[
+int a,b,c
+a = 5
+b = 6
+c =  a + b + 2 
+print c
+]] transform "Generate Funcons" to
+"initialise-binding finalise-failing scope
+  (collateral
+     (bind
+        (\"a\",
+         allocate-initialised-variable
+           (integers,
+            0)),
+      bind
+        (\"b\",
+         allocate-initialised-variable
+           (integers,
+            0)),
+      bind
+        (\"c\",
+         allocate-initialised-variable
+           (integers,
+            0))),
+   sequential
+     (assign
+        (bound
+           (\"a\"),
+         decimal \"5\"),
+      assign
+        (bound
+           (\"b\"),
+         decimal \"6\"),
+      assign
+        (bound
+           (\"c\"),
+         int-add
+           (int-add
+              (assigned bound
+                 \"a\",
+               assigned bound
+                 \"b\"),
+            decimal \"2\")),
+      print
+        (to-string assigned bound
+           \"c\",
+         \"
+\")))"
+test TL-2 vars [[
+int x,y
+y=9
+
+]] transform "Generate Funcons" to
+"initialise-binding finalise-failing scope
+  (collateral
+     (bind
+        (\"x\",
+         allocate-initialised-variable
+           (integers,
+            0)),
+      bind
+        (\"y\",
+         allocate-initialised-variable
+           (integers,
+            0))),
+   assign
+     (bound
+        (\"y\"),
+      decimal \"9\"))"
+test TL-2 var-stmts [[
+int x,y,z
+x=3
+y= 7+1
+print x
+print y
+print z
+]] transform "Generate Funcons" to
+"initialise-binding finalise-failing scope
+  (collateral
+     (bind
+        (\"x\",
+         allocate-initialised-variable
+           (integers,
+            0)),
+      bind
+        (\"y\",
+         allocate-initialised-variable
+           (integers,
+            0)),
+      bind
+        (\"z\",
+         allocate-initialised-variable
+           (integers,
+            0))),
+   sequential
+     (assign
+        (bound
+           (\"x\"),
+         decimal \"3\"),
+      assign
+        (bound
+           (\"y\"),
+         int-add
+           (decimal \"7\",
+            decimal \"1\")),
+      print
+        (to-string assigned bound
+           \"x\",
+         \"
+\"),
+      print
+        (to-string assigned bound
+           \"y\",
+         \"
+\"),
+      print
+        (to-string assigned bound
+           \"z\",
+         \"
+\")))"
+test TL-2 var [[
+int a
+a = 5
+print a
+
+]] transform "Generate Funcons" to
+"initialise-binding finalise-failing scope
+  (collateral
+     (bind
+        (\"a\",
+         allocate-initialised-variable
+           (integers,
+            0))),
+   sequential
+     (assign
+        (bound
+           (\"a\"),
+         decimal \"5\"),
+      print
+        (to-string assigned bound
+           \"a\",
+         \"
+\")))"
+test TL-2 while1 [[
+int a,b,c
+a = 5
+b = 0
+c = 1
+while b<a
+{	b = b+1
+	c = c*b
+}
+print c
+
+]] transform "Generate Funcons" to
+"initialise-binding finalise-failing scope
+  (collateral
+     (bind
+        (\"a\",
+         allocate-initialised-variable
+           (integers,
+            0)),
+      bind
+        (\"b\",
+         allocate-initialised-variable
+           (integers,
+            0)),
+      bind
+        (\"c\",
+         allocate-initialised-variable
+           (integers,
+            0))),
+   sequential
+     (assign
+        (bound
+           (\"a\"),
+         decimal \"5\"),
+      assign
+        (bound
+           (\"b\"),
+         decimal \"0\"),
+      assign
+        (bound
+           (\"c\"),
+         decimal \"1\"),
+      while
+        (is-less
+           (assigned bound
+              \"b\",
+            assigned bound
+              \"a\"),
+         sequential
+           (assign
+              (bound
+                 (\"b\"),
+               int-add
+                 (assigned bound
+                    \"b\",
+                  decimal \"1\")),
+            assign
+              (bound
+                 (\"c\"),
+               int-mul
+                 (assigned bound
+                    \"c\",
+                  assigned bound
+                    \"b\")))),
+      print
+        (to-string assigned bound
+           \"c\",
+         \"
+\")))"
+test TL-2 while-mcd [[
+int a,b,c
+a = 1071
+b = 462
+
+while b>0
+{	c = b
+	b = a - (a/b) * b
+	a = c
+	print b
+}
+print a
+
+]] transform "Generate Funcons" to
+"initialise-binding finalise-failing scope
+  (collateral
+     (bind
+        (\"a\",
+         allocate-initialised-variable
+           (integers,
+            0)),
+      bind
+        (\"b\",
+         allocate-initialised-variable
+           (integers,
+            0)),
+      bind
+        (\"c\",
+         allocate-initialised-variable
+           (integers,
+            0))),
+   sequential
+     (assign
+        (bound
+           (\"a\"),
+         decimal \"1071\"),
+      assign
+        (bound
+           (\"b\"),
+         decimal \"462\"),
+      while
+        (is-greater
+           (assigned bound
+              \"b\",
+            decimal \"0\"),
+         sequential
+           (assign
+              (bound
+                 (\"c\"),
+               assigned bound
+                 \"b\"),
+            assign
+              (bound
+                 (\"b\"),
+               int-add
+                 (assigned bound
+                    \"a\",
+                  int-neg
+                    (int-mul
+                       (checked int-div
+                          (assigned bound
+                             \"a\",
+                           assigned bound
+                             \"b\"),
+                        assigned bound
+                          \"b\")))),
+            assign
+              (bound
+                 (\"a\"),
+               assigned bound
+                 \"c\"),
+            print
+              (to-string assigned bound
+                 \"b\",
+               \"
+\"))),
+      print
+        (to-string assigned bound
+           \"a\",
+         \"
+\")))"
+test TL-2 while-prime [[
+int x,d,ds
+
+x = 471
+d = 2
+while no ((x/d) * d == x)
+{
+	d = d+1
+}
+if(d*d == x or d*d > x ){
+	print true
+}
+else
+{
+	print false
+}
+
+]] transform "Generate Funcons" to
+"initialise-binding finalise-failing scope
+  (collateral
+     (bind
+        (\"x\",
+         allocate-initialised-variable
+           (integers,
+            0)),
+      bind
+        (\"d\",
+         allocate-initialised-variable
+           (integers,
+            0)),
+      bind
+        (\"ds\",
+         allocate-initialised-variable
+           (integers,
+            0))),
+   sequential
+     (assign
+        (bound
+           (\"x\"),
+         decimal \"471\"),
+      assign
+        (bound
+           (\"d\"),
+         decimal \"2\"),
+      while
+        (not is-eq
+           (int-mul
+              (checked int-div
+                 (assigned bound
+                    \"x\",
+                  assigned bound
+                    \"d\"),
+               assigned bound
+                 \"d\"),
+            assigned bound
+              \"x\"),
+         assign
+           (bound
+              (\"d\"),
+            int-add
+              (assigned bound
+                 \"d\",
+               decimal \"1\"))),
+      if-else
+        (if-else
+           (is-eq
+              (int-mul
+                 (assigned bound
+                    \"d\",
+                  assigned bound
+                    \"d\"),
+               assigned bound
+                 \"x\"),
+            true,
+            is-greater
+              (int-mul
+                 (assigned bound
+                    \"d\",
+                  assigned bound
+                    \"d\"),
+               assigned bound
+                 \"x\")),
+         print
+           (to-string true,
+            \"
+\"),
+         print
+           (to-string false,
+            \"
+\"))))"

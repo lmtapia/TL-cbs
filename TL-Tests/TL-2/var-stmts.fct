@@ -1,4 +1,4 @@
-initialise-binding initialise-storing initialise-giving finalise-failing scope
+initialise-binding finalise-failing scope
   (collateral
      (bind
         ("x",

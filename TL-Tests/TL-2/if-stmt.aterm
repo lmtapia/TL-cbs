@@ -7,8 +7,8 @@ L-start--L-pgm(
   , [ L-stmt--L-id-EQUALS-L-aexp(LEX-id("a"), L-aexp--L-int(LEX-int("5")))
     , L-stmt--R-if-L-bexp-L-block-R-else-L-block(
         L-bexp--L-bool(LEX-bool("true"))
-      , L-block--LBRACE-L-stmt-S-RBRACE([L-stmt--R-print-L-exp(L-exp--L-id(LEX-id("a")))])
-      , L-block--LBRACE-L-stmt-S-RBRACE([L-stmt--R-print-L-exp(L-exp--L-id(LEX-id("b")))])
+      , L-block--LBRACE-L-stmt-S-RBRACE([L-stmt--R-print-L-exp(L-exp--L-aexp(L-aexp--L-id(LEX-id("a"))))])
+      , L-block--LBRACE-L-stmt-S-RBRACE([L-stmt--R-print-L-exp(L-exp--L-aexp(L-aexp--L-id(LEX-id("b"))))])
       )
     ]
   )

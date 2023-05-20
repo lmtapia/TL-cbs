@@ -6,11 +6,11 @@
 runfct="runfct"
 fileext="tl"
 lang="TL"
-dTool="colordiff"
+dTool="colordiff --strip-trailing-cr"
 
 $dTool --help &> /dev/null
 if [[ $? != 0 ]]; then
-  dTool="diff" 
+  dTool="diff --strip-trailing-cr" 
 fi
 
 i=1

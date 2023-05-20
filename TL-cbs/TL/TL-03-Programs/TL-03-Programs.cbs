@@ -1,0 +1,19 @@
+Language "TL"
+
+#3 Programs
+
+Syntax
+  Pgm : pgm ::= 'int' idlist stmt*
+              | exp
+
+Semantics  run[[ _:pgm ]] : =>values
+Rule run[[ 'int' IL Stmt* ]] = 
+    scope(collateral(declare-int-vars[[ IL ]]), execute[[ Stmt* ]])
+Rule run[[Exp]] = eval[[Exp]]
+
+Syntax IL : idlist ::= id (',' idlist)?
+Semantics declare-int-vars[[ _: idlist ]] : (=>environments)+
+Rule declare-int-vars[[ ID ]] =
+    bind(id[[ ID ]], allocate-initialised-variable(integers, 0))
+Rule declare-int-vars[[ ID ',' IL ]] = 
+    declare-int-vars[[ ID ]], declare-int-vars[[ IL ]]

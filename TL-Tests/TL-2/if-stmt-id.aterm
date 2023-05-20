@@ -1,0 +1,15 @@
+L-start--L-pgm(
+  L-pgm--R-int-L-idlist-L-stmt-S(
+    L-idlist--L-id-C-COMMA-L-idlist-D-Q(
+      LEX-id("a")
+    , Some(L-COMMA-L-idlist--COMMA-L-idlist(L-idlist--L-id-C-COMMA-L-idlist-D-Q(LEX-id("b"), None())))
+    )
+  , [ L-stmt--L-id-EQUALS-L-aexp(LEX-id("a"), L-aexp--L-int(LEX-int("5")))
+    , L-stmt--R-if-L-bexp-L-block-R-else-L-block(
+        L-bexp--L-aexp-GREATER-L-aexp(L-aexp--L-id(LEX-id("a")), L-aexp--L-int(LEX-int("0")))
+      , L-block--LBRACE-L-stmt-S-RBRACE([L-stmt--R-print-L-exp(L-exp--L-aexp(L-aexp--L-id(LEX-id("a"))))])
+      , L-block--LBRACE-L-stmt-S-RBRACE([L-stmt--R-print-L-exp(L-exp--L-aexp(L-aexp--L-id(LEX-id("b"))))])
+      )
+    ]
+  )
+)

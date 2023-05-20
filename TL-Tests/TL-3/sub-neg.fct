@@ -1,0 +1,4 @@
+initialise-binding finalise-failing int-add
+  (decimal "34",
+   int-neg
+     (decimal "87"))

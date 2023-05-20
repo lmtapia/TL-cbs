@@ -1,0 +1,9 @@
+initialise-binding finalise-failing int-add
+  (int-add
+     (int-mul
+        (int-neg
+           (decimal "5"),
+         decimal "7"),
+      decimal "4"),
+   int-neg
+     (decimal "2"))
