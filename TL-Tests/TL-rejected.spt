@@ -1,0 +1,24 @@
+module TL-rejected
+language TL
+start symbol Start
+
+test no keyword as id [[
+int a,b,no
+]] parse fails
+
+test false keyword as id [[
+int a,b,false
+]] parse fails
+
+test keywords as id [[
+int false,true,and,or,no,int,if,else,while
+]] parse fails
+
+// parse to ATerm
+test id with number [[
+int 34
+]] parse to FCTApp("int", FCTInt("34"))
+
+test id with number no funcons [[
+int 34
+]] run generate-fct fails

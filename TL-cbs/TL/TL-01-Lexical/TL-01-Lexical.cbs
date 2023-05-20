@@ -15,7 +15,7 @@ Semantics val-bool[[ _:bool ]]: => bools
 Rule val-bool[['true']] = true 
 Rule val-bool[['false']] = false 
 
-Lexis keyword ::= 'false' | 'true' | 'and' | 'or' 
+Lexis keyword ::= 'false' | 'true' | 'and' | 'or' | 'no'
                 | 'int' | 'if' | 'else' | 'while'
 
 #1.1 Desambiguation
