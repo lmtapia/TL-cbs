@@ -1,53 +1,49 @@
 #!/bin/bash
-# usage: run-tests [file.fct] [-c] 
-# without filename runs all compatible test cases
-# option -c only compares without running funcon terms
+# usage: run-tests [-c <CONFIG>] [-o <OPTIONS>] [-f <FILE|DIR>] 
+# without options runs all funcons files each one with its config
 
 runfct="runfct"
-fileext="tl"
-lang="TL"
-dTool="colordiff --strip-trailing-cr"
+opt_runfct=
+langext=tl
 
-$dTool --help &> /dev/null
-if [[ $? != 0 ]]; then
-  dTool="diff --strip-trailing-cr" 
-fi
+while getopts "c:o:f:" option
+do
+  case "$option" in
+    c) output=true
+       config="--config ${OPTARG}";;
+    o) opt_runfct="${OPTARG}";;
+    f) from="${OPTARG}";;
+  esac 
+done
 
 i=1
 errors=0
-
+names= 
 function run-test {
-  testTitle=$1
-  testNumber=$2
-  testDir=$3
-  echo **$testNumber ${testDir}${testTitle}
-  if [[ -z "$4" || "$4" != "-c" ]]; then
-    echo "${testTitle}:" | tee ${testDir}${testTitle}.output
-    echo "===== Program ====="  # | tee ${testDir}${testTitle}.output
-    cat ${testDir}${testTitle}.$fileext # | tee -a ${testDir}${testTitle}.output
-    echo $'\n'"===================" | tee -a ${testDir}${testTitle}.output
-    ${runfct} --config ${lang}.config ${testDir}${testTitle}.fct | tee -a ${testDir}${testTitle}.output
-  fi
-  $dTool ${testDir}${testTitle}.output ${testDir}${testTitle}.output.lock
-  if [[ $? != 0 ]]; then
+  test=$1
+  name=${test::-4}
+  echo '*** Test' $i $test
+  if [ "$output" == "true" ]; then 
+    echo $(basename "${name}")":" | tee ${name}.output
+    echo '===== Program ====='  
+    cat ${name}.${langext} 
+    echo $'\n''===================' | tee -a ${name}.output
+    $runfct $config $test | tee -a ${name}.output
+  else
+    $runfct $opt_runfct $test
+  fi  
+  if [[ $? != 0 ]]; then 
+    names="$names $name"
     ((errors=errors+1))
   fi
   ((i=i+1))
+
 }
 
-
-
-if [[ -n "$1" && -f $1 ]]; then
-  run-test $(basename $1 .fct) "Test ${i}" $(dirname $1)/ $2
-else  
-  for dir in $lang-*/;
-  do
-    echo -e "$dir"
-    for filefct in $dir*.fct;
-    do
-      file=$(basename $filefct .fct)
-      run-test $file "Test ${i}" "$dir" $1
-    done
-  done
-fi
-echo "***********" Failed tests: $errors/$((i - 1))
+if [[ -f $from ]]; then run-test $from; exit; fi
+if [[ -d $from ]]; then dir=$from; else dir=.; fi    
+ 
+for file in $(find $dir -name '*.fct'); do 
+  run-test $file; 
+done
+echo '*********** Failed tests:' $errors/$((i - 1)) "$names"
