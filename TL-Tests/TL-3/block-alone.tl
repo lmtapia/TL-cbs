@@ -3,5 +3,5 @@ a = 4
 {
 	b=6
 }
-print a
-print b
+print(a)
+print(b)

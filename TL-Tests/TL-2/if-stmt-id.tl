@@ -1,8 +1,8 @@
 int a,b
 a = 5
 if a>0
-{ print a
+{ print(a)
 }
 else 
-{ print b
+{ print(b)
 }

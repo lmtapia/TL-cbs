@@ -1,0 +1,12 @@
+general {
+  interactive-mode: false;
+}
+
+inputs {
+  standard-in:[int(3)];
+}
+
+tests { 
+  result-term:null-value;
+  standard-out:["54","\n"];
+}
