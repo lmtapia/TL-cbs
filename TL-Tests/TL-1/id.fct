@@ -1,2 +1,3 @@
-initialise-binding finalise-failing assigned bound
-  "x"
+initialise-binding finalise-failing sequential
+  (assigned bound
+     "x")

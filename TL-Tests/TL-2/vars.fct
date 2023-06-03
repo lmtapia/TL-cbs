@@ -10,7 +10,9 @@ initialise-binding finalise-failing scope
          allocate-initialised-variable
            (integers,
             0))),
-   assign
-     (bound
-        ("y"),
-      decimal "9"))
+   sequential
+     (null-value,
+      assign
+        (bound
+           ("y"),
+         decimal-natural "9")))

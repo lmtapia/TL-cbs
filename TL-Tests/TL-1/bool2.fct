@@ -1,9 +1,10 @@
-initialise-binding finalise-failing if-else
-  (false,
-   true,
-   if-else
-     (is-greater
-        (decimal "5",
-         decimal "4"),
+initialise-binding finalise-failing sequential
+  (if-else
+     (false,
       true,
-      false))
+      if-else
+        (is-greater
+           (decimal-natural "5",
+            decimal-natural "4"),
+         true,
+         false)))

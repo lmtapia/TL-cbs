@@ -11,7 +11,7 @@ initialise-binding finalise-failing scope
         (assign
            (bound
               ("a"),
-            decimal-natural "5")),
+            read)),
       print
         (to-string assigned bound
            "a",

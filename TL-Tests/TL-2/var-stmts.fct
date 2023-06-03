@@ -16,26 +16,31 @@ initialise-binding finalise-failing scope
            (integers,
             0))),
    sequential
-     (assign
-        (bound
-           ("x"),
-         decimal "3"),
-      assign
-        (bound
-           ("y"),
-         int-add
-           (decimal "7",
-            decimal "1")),
-      print
-        (to-string assigned bound
-           "x",
-         "
-"),
-      print
-        (to-string assigned bound
-           "y",
-         "
-"),
+     (null-value,
+      effect
+        (assign
+           (bound
+              ("x"),
+            decimal-natural "3")),
+      effect
+        (assign
+           (bound
+              ("y"),
+            int-add
+              (decimal-natural "7",
+               decimal-natural "1"))),
+      effect
+        (print
+           (to-string assigned bound
+              "x",
+            "
+")),
+      effect
+        (print
+           (to-string assigned bound
+              "y",
+            "
+")),
       print
         (to-string assigned bound
            "z",

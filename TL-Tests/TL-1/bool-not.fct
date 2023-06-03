@@ -1,5 +1,6 @@
-initialise-binding finalise-failing is-eq
-  (not false,
-   is-less
-     (decimal "7",
-      decimal "0"))
+initialise-binding finalise-failing sequential
+  (is-eq
+     (not false,
+      is-less
+        (decimal-natural "7",
+         decimal-natural "0")))

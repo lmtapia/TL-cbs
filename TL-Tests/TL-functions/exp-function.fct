@@ -1,0 +1,70 @@
+initialise-binding finalise-failing scope
+  (collateral
+     (bind
+        ("divide",
+         allocate-variable functions
+           (tuples
+              ((values)*),
+            values)),
+      bind
+        ("a",
+         allocate-initialised-variable
+           (integers,
+            0)),
+      bind
+        ("b",
+         allocate-initialised-variable
+           (integers,
+            0))),
+   sequential
+     (assign
+        (bound
+           ("divide"),
+         function closure scope
+           (match
+              (given,
+               tuple
+                 (pattern closure
+                    (bind
+                       ("x1",
+                        allocate-initialised-variable
+                          (values,
+                           given))),
+                  pattern closure
+                    (bind
+                       ("x2",
+                        allocate-initialised-variable
+                          (values,
+                           given))))),
+            give
+              (handle-return sequential
+                 (checked int-div
+                    (assigned bound
+                       "x1",
+                     assigned bound
+                       "x2")),
+               sequential
+                 (recycle-variables bound-directly
+                    ("x1"),
+                  recycle-variables bound-directly
+                    ("x2"),
+                  given)))),
+      null-value,
+      effect
+        (assign
+           (bound
+              ("a"),
+            decimal-natural "64")),
+      effect
+        (assign
+           (bound
+              ("b"),
+            apply
+              (assigned bound
+                 "divide",
+               tuple
+                 (assigned bound
+                    "a",
+                  decimal-natural "12")))),
+      assigned bound
+        "b"))

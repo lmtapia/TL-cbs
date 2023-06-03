@@ -1,9 +1,10 @@
-initialise-binding finalise-failing int-add
+initialise-binding finalise-failing sequential
   (int-add
-     (int-mul
-        (int-neg
-           (decimal "5"),
-         decimal "7"),
-      decimal "4"),
-   int-neg
-     (decimal "2"))
+     (int-add
+        (int-mul
+           (integer-negate
+              (decimal-natural "5"),
+            decimal-natural "7"),
+         decimal-natural "4"),
+      int-neg
+        (decimal-natural "2")))

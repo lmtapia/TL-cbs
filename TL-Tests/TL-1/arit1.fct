@@ -1,5 +1,6 @@
-initialise-binding finalise-failing checked int-div
-  (int-add
-     (decimal "34",
-      decimal "6"),
-   decimal "2")
+initialise-binding finalise-failing sequential
+  (checked int-div
+     (int-add
+        (decimal-natural "34",
+         decimal-natural "6"),
+      decimal-natural "2"))

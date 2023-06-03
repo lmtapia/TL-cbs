@@ -1,0 +1,50 @@
+# Custom Funcons 
+
+[
+	Funcon while-true-values
+]
+
+Meta-variables 
+  T <: values
+  T? <: values?
+  V <: ground-values
+
+
+### Flowing
+
+Funcon
+  while-values(B:=>booleans, X+:(=>values)+) : (=>values)?
+    ~> if-true-empty(B, left-to-right(X+, while-values(B, X+)))
+  
+Funcon
+  if-true-empty(_:booleans, _:(=>T)+) : (=>T)* 
+Rule  
+  if-true-empty(true, X+) ~> X+
+Rule  
+  if-true-empty(false,X+) ~> ()
+
+Funcon
+  sequential-values(_:(=>values)*, _:=>values) : =>values
+Alias
+  seq-val = sequential-values
+
+Rule
+                  X ---> X'
+  -------------------------------------------------------
+  sequential-values(X, Y+) ---> sequential-values(X', Y+)
+Rule
+  sequential-values(V, Y+) ~> sequential-values(Y+)
+Rule
+  sequential-values(Y) ~> Y
+
+
+### Sequences
+
+Funcon
+  last(_:(T)*) : =>T?
+Rule
+  last(V:T) ~> V
+Rule
+  last(_:T, V+:(T)+) ~> last(V+)
+Rule
+  last(( )) ~> ( )

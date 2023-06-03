@@ -16,33 +16,37 @@ initialise-binding finalise-failing scope
            (integers,
             0))),
    sequential
-     (assign
-        (bound
-           ("x"),
-         decimal "471"),
-      assign
-        (bound
-           ("d"),
-         decimal "2"),
-      while
-        (not is-eq
-           (int-mul
-              (checked int-div
-                 (assigned bound
-                    "x",
+     (null-value,
+      effect
+        (assign
+           (bound
+              ("x"),
+            decimal-natural "471")),
+      effect
+        (assign
+           (bound
+              ("d"),
+            decimal-natural "2")),
+      effect
+        (last while-values
+           (not is-eq
+              (int-mul
+                 (checked int-div
+                    (assigned bound
+                       "x",
+                     assigned bound
+                       "d"),
                   assigned bound
                     "d"),
                assigned bound
-                 "d"),
-            assigned bound
-              "x"),
-         assign
-           (bound
-              ("d"),
-            int-add
-              (assigned bound
-                 "d",
-               decimal "1"))),
+                 "x"),
+            assign
+              (bound
+                 ("d"),
+               int-add
+                 (assigned bound
+                    "d",
+                  decimal-natural "1")))),
       if-else
         (if-else
            (is-eq

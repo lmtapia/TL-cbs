@@ -16,32 +16,37 @@ initialise-binding finalise-failing scope
            (integers,
             0))),
    sequential
-     (assign
-        (bound
-           ("a"),
-         decimal "5"),
-      assign
-        (bound
-           ("b"),
-         decimal "0"),
-      assign
-        (bound
-           ("c"),
-         decimal "1"),
-      while
-        (is-less
-           (assigned bound
-              "b",
-            assigned bound
-              "a"),
-         sequential
-           (assign
-              (bound
-                 ("b"),
-               int-add
-                 (assigned bound
-                    "b",
-                  decimal "1")),
+     (null-value,
+      effect
+        (assign
+           (bound
+              ("a"),
+            decimal-natural "5")),
+      effect
+        (assign
+           (bound
+              ("b"),
+            decimal-natural "0")),
+      effect
+        (assign
+           (bound
+              ("c"),
+            decimal-natural "1")),
+      effect
+        (last while-values
+           (is-less
+              (assigned bound
+                 "b",
+               assigned bound
+                 "a"),
+            effect
+              (assign
+                 (bound
+                    ("b"),
+                  int-add
+                    (assigned bound
+                       "b",
+                     decimal-natural "1"))),
             assign
               (bound
                  ("c"),

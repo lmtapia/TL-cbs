@@ -1,2 +1,2 @@
-initialise-binding finalise-failing decimal
-  "35"
+initialise-binding finalise-failing sequential
+  (decimal-natural "35")

@@ -6,7 +6,7 @@ Syntax FD :  funDecl ::= 'fun' id '(' idList? ')' block
 
 Semantics declare-fun[[ _:funDecl ]] : =>environments
 Rule declare-fun[[ 'fun' ID '(' IL? ')' Block ]] =
-	bind( id[[ ID ]], allocate-variable(functions(tuples(values*),values)))
+	bind( id[[ ID ]], allocate-variable functions(tuples(values*),values))
 
 
 Semantics initialise-funs[[ _:decl+ ]] : (=>null-type)*
@@ -18,11 +18,10 @@ Semantics initialise-fun[[_:funDecl]] : =>null-type
 Rule initialise-fun[[ 'fun' ID '(' IL? ')' Block ]] =  
   assign(
       bound(id[[ ID ]]),
-      function closure(
-        scope(
+      function closure scope(
           match(given,tuple(patts[[ IL? ]])),
-          give(handle-return(execute[[ Block]]), 
-               sequential(free[[IL?]], given )))))  
+          give(handle-return sequential(execute[[ Block]]), 
+               sequential(free[[IL?]], given ))))  
   
 
 Semantics patts[[ _:idList? ]] : patterns*
@@ -33,8 +32,8 @@ Semantics patts[[ _:idList? ]] : patterns*
 
 Semantics free[[ _:idList? ]] : =>null-type
      Rule free[[ ]] = null-value
-     Rule free[[ ID ]] = recycle-variables(bound-directly(id[[ID]]))
-     Rule free[[ ID ',' IL ]] = free[[  ID ]], free[[ IL ]]
+     Rule free[[ ID ]] = recycle-variables bound-directly(id[[ID]])
+     Rule free[[ ID ',' IL ]] = free[[ ID ]], free[[ IL ]]
       
     
     

@@ -1,5 +1,6 @@
-initialise-binding finalise-failing int-mul
+initialise-binding finalise-failing sequential
   (int-mul
-     (decimal "23",
-      decimal "67"),
-   decimal "5")
+     (int-mul
+        (decimal-natural "23",
+         decimal-natural "67"),
+      decimal-natural "5"))
