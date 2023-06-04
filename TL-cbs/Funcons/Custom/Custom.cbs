@@ -1,7 +1,9 @@
-# Custom Funcons 
+# Custom 
 
 [
-	Funcon while-true-values
+	Funcon while-values
+	Funcon if-true-empty
+	Funcon last
 ]
 
 Meta-variables 
@@ -9,8 +11,19 @@ Meta-variables
   T? <: values?
   V <: ground-values
 
+## Sequences
 
-### Flowing
+Funcon
+  last(_:(T)*) : =>T?
+Rule
+  last(V:T) ~> V
+Rule
+  last(_:T, V+:(T)+) ~> last(V+)
+Rule
+  last(( )) ~> ( )
+
+
+## Flowing
 
 Funcon
   while-values(B:=>booleans, X+:(=>values)+) : (=>values)?
@@ -37,14 +50,3 @@ Rule
 Rule
   sequential-values(Y) ~> Y
 
-
-### Sequences
-
-Funcon
-  last(_:(T)*) : =>T?
-Rule
-  last(V:T) ~> V
-Rule
-  last(_:T, V+:(T)+) ~> last(V+)
-Rule
-  last(( )) ~> ( )
