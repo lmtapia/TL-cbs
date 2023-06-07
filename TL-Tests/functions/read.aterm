@@ -1,0 +1,6 @@
+L-start--L-pgm(
+  L-pgm--L-decl-P-L-stmt-P(
+    [L-decl--L-varDecl(L-varDecl--R-int-L-idList(L-idList--L-id-C-COMMA-L-idList-D-Q(LEX-id("a"), None())))]
+  , [L-stmt--L-id-EQUALS-L-aexp(LEX-id("a"), L-aexp--R-read-LPAREN-RPAREN()), L-stmt--R-print-LPAREN-L-exp-RPAREN(L-exp--L-aexp(L-aexp--L-id(LEX-id("a"))))]
+  )
+)

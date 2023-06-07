@@ -20,7 +20,7 @@ Rule
 Rule
   last(_:T, V+:(T)+) ~> last(V+)
 Rule
-  last(( )) ~> ( )
+  last(( )) ~> null-value
 
 
 ## Flowing
@@ -36,17 +36,4 @@ Rule
 Rule  
   if-true-empty(false,X+) ~> ()
 
-Funcon
-  sequential-values(_:(=>values)*, _:=>values) : =>values
-Alias
-  seq-val = sequential-values
-
-Rule
-                  X ---> X'
-  -------------------------------------------------------
-  sequential-values(X, Y+) ---> sequential-values(X', Y+)
-Rule
-  sequential-values(V, Y+) ~> sequential-values(Y+)
-Rule
-  sequential-values(Y) ~> Y
 

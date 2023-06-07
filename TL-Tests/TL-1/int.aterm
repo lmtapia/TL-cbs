@@ -1,1 +1,5 @@
-L-start--L-pgm(L-pgm--L-exp(L-exp--L-aexp(L-aexp--L-int(LEX-int("35")))))
+L-start--L-pgm(
+  L-pgm--L-stmt-P(
+    [L-stmt--L-exp(L-exp--L-aexp(L-aexp--L-int(L-int--TILDE-Q-L-natural(None(), LEX-natural("35")))))]
+  )
+)

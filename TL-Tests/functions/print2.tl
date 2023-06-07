@@ -4,7 +4,6 @@ fun print2(x,y) {
 }
 
 int a, b
-a = 5
-b = 36
-
+a = read()
+b = read()
 print2(a, b)

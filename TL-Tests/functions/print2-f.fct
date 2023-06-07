@@ -60,12 +60,12 @@ initialise-binding finalise-failing scope
         (assign
            (bound
               ("a"),
-            decimal-natural "5")),
+            read)),
       effect
         (assign
            (bound
               ("b"),
-            decimal-natural "36")),
+            read)),
       apply
         (assigned bound
            "print2",

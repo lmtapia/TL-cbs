@@ -1,0 +1,73 @@
+initialise-binding finalise-failing scope
+  (collateral
+     (bind
+        ("first",
+         allocate-variable functions
+           (tuples
+              ((values)*),
+            values)),
+      bind
+        ("s",
+         allocate-initialised-variable
+           (integers,
+            0))),
+   sequential
+     (assign
+        (bound
+           ("first"),
+         function closure scope
+           (match
+              (given,
+               tuple
+                 (pattern closure
+                    (bind
+                       ("a",
+                        allocate-initialised-variable
+                          (values,
+                           given))),
+                  pattern closure
+                    (bind
+                       ("b",
+                        allocate-initialised-variable
+                          (values,
+                           given))))),
+            give
+              (handle-return sequential
+                 (assigned bound
+                    "a"),
+               sequential
+                 (recycle-variables bound-directly
+                    ("a"),
+                  recycle-variables bound-directly
+                    ("b"),
+                  given)))),
+      null-value,
+      effect
+        (assign
+           (bound
+              ("s"),
+            decimal-natural "10")),
+      last while-values
+        (is-greater
+           (assigned bound
+              "s",
+            decimal-natural "0"),
+         effect
+           (apply
+              (assigned bound
+                 "first",
+               tuple
+                 (assigned bound
+                    "s",
+                  decimal-natural "0"))),
+         effect
+           (assign
+              (bound
+                 ("s"),
+               int-add
+                 (assigned bound
+                    "s",
+                  int-neg
+                    (decimal-natural "1")))),
+         assigned bound
+           "s")))

@@ -1,0 +1,52 @@
+L-start--L-pgm(
+  L-pgm--L-decl-P-L-stmt-P(
+    [ L-decl--L-funDecl(
+        L-funDecl--R-fun-L-id-LPAREN-L-idList-Q-RPAREN-L-block(
+          LEX-id("first")
+        , Some(
+            L-idList--L-id-C-COMMA-L-idList-D-Q(
+              LEX-id("a")
+            , Some(L-COMMA-L-idList--COMMA-L-idList(L-idList--L-id-C-COMMA-L-idList-D-Q(LEX-id("b"), None())))
+            )
+          )
+        , L-block--LBRACE-L-stmt-S-RBRACE([L-stmt--L-exp(L-exp--L-aexp(L-aexp--L-id(LEX-id("a"))))])
+        )
+      )
+    , L-decl--L-varDecl(L-varDecl--R-int-L-idList(L-idList--L-id-C-COMMA-L-idList-D-Q(LEX-id("s"), None())))
+    ]
+  , [ L-stmt--L-id-EQUALS-L-aexp(LEX-id("s"), L-aexp--L-int(L-int--TILDE-Q-L-natural(None(), LEX-natural("10"))))
+    , L-stmt--R-while-L-bexp-L-block(
+        L-bexp--L-aexp-GREATER-L-aexp(
+          L-aexp--L-id(LEX-id("s"))
+        , L-aexp--L-int(L-int--TILDE-Q-L-natural(None(), LEX-natural("0")))
+        )
+      , L-block--LBRACE-L-stmt-S-RBRACE(
+          [ L-stmt--L-exp(
+              L-exp--L-aexp(
+                L-aexp--L-id-LPAREN-L-args-Q-RPAREN(
+                  LEX-id("first")
+                , Some(
+                    L-args--L-aexp-C-COMMA-L-args-D-Q(
+                      L-aexp--L-id(LEX-id("s"))
+                    , Some(
+                        L-COMMA-L-args--COMMA-L-args(L-args--L-aexp-C-COMMA-L-args-D-Q(L-aexp--L-int(L-int--TILDE-Q-L-natural(None(), LEX-natural("0"))), None()))
+                      )
+                    )
+                  )
+                )
+              )
+            )
+          , L-stmt--L-id-EQUALS-L-aexp(
+              LEX-id("s")
+            , L-aexp--L-aexp-DASH-L-aexp(
+                L-aexp--L-id(LEX-id("s"))
+              , L-aexp--L-int(L-int--TILDE-Q-L-natural(None(), LEX-natural("1")))
+              )
+            )
+          , L-stmt--L-exp(L-exp--L-aexp(L-aexp--L-id(LEX-id("s"))))
+          ]
+        )
+      )
+    ]
+  )
+)

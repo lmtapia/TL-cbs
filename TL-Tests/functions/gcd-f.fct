@@ -92,12 +92,12 @@ initialise-binding finalise-failing scope
         (assign
            (bound
               ("x"),
-            decimal-natural "1071")),
+            read)),
       effect
         (assign
            (bound
               ("y"),
-            decimal-natural "462")),
+            read)),
       effect
         (print
            (to-string apply
@@ -107,15 +107,14 @@ initialise-binding finalise-failing scope
                  (assigned bound
                     "x",
                   assigned bound
-                    "y")),
+                    "y",
+                  decimal-natural "0")),
             "
 ")),
-      print
-        (to-string apply
-           (assigned bound
-              "gcd",
-            tuple
-              (decimal-natural "360",
-               decimal-natural "139")),
-         "
-")))
+      apply
+        (assigned bound
+           "gcd",
+         tuple
+           (read,
+            read,
+            decimal-natural "0"))))

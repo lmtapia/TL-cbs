@@ -1,0 +1,150 @@
+initialise-binding finalise-failing scope
+  (collateral
+     (bind
+        ("mod",
+         allocate-variable functions
+           (tuples
+              ((values)*),
+            values)),
+      bind
+        ("mult",
+         allocate-variable functions
+           (tuples
+              ((values)*),
+            values))),
+   sequential
+     (assign
+        (bound
+           ("mod"),
+         function closure scope
+           (match
+              (given,
+               tuple
+                 (pattern closure
+                    (bind
+                       ("a",
+                        allocate-initialised-variable
+                          (values,
+                           given))),
+                  pattern closure
+                    (bind
+                       ("b",
+                        allocate-initialised-variable
+                          (values,
+                           given))))),
+            give
+              (handle-return sequential
+                 (int-add
+                    (assigned bound
+                       "a",
+                     int-neg
+                       (int-mul
+                          (checked int-div
+                             (assigned bound
+                                "a",
+                              assigned bound
+                                "b"),
+                           assigned bound
+                             "b")))),
+               sequential
+                 (recycle-variables bound-directly
+                    ("a"),
+                  recycle-variables bound-directly
+                    ("b"),
+                  given)))),
+      assign
+        (bound
+           ("mult"),
+         function closure scope
+           (match
+              (given,
+               tuple
+                 (pattern closure
+                    (bind
+                       ("a",
+                        allocate-initialised-variable
+                          (values,
+                           given))),
+                  pattern closure
+                    (bind
+                       ("b",
+                        allocate-initialised-variable
+                          (values,
+                           given))),
+                  pattern closure
+                    (bind
+                       ("c",
+                        allocate-initialised-variable
+                          (values,
+                           given))))),
+            give
+              (handle-return sequential
+                 (effect
+                    (last while-values
+                       (is-greater
+                          (assigned bound
+                             "a",
+                           decimal-natural "0"),
+                        effect
+                          (if-else
+                             (is-greater
+                                (apply
+                                   (assigned bound
+                                      "mod",
+                                    tuple
+                                      (assigned bound
+                                         "a",
+                                       decimal-natural "2")),
+                                 decimal-natural "0"),
+                              assign
+                                (bound
+                                   ("c"),
+                                 int-add
+                                   (assigned bound
+                                      "c",
+                                    assigned bound
+                                      "b")),
+                              null-value)),
+                        effect
+                          (assign
+                             (bound
+                                ("a"),
+                              checked int-div
+                                (assigned bound
+                                   "a",
+                                 decimal-natural "2"))),
+                        assign
+                          (bound
+                             ("b"),
+                           int-mul
+                             (assigned bound
+                                "b",
+                              decimal-natural "2")))),
+                  assigned bound
+                    "c"),
+               sequential
+                 (recycle-variables bound-directly
+                    ("a"),
+                  recycle-variables bound-directly
+                    ("b"),
+                  recycle-variables bound-directly
+                    ("c"),
+                  given)))),
+      effect
+        (print
+           (to-string apply
+              (assigned bound
+                 "mult",
+               tuple
+                 (read,
+                  read,
+                  decimal-natural "0")),
+            "
+")),
+      apply
+        (assigned bound
+           "mult",
+         tuple
+           (read,
+            read,
+            decimal-natural "0"))))

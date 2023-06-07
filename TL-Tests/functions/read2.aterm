@@ -9,14 +9,10 @@ L-start--L-pgm(
         )
       )
     ]
-  , [ L-stmt--L-id-EQUALS-L-aexp(LEX-id("a"), L-aexp--L-int(L-int--TILDE-Q-L-natural(None(), LEX-natural("4"))))
-    , L-stmt--L-block(
-        L-block--LBRACE-L-stmt-S-RBRACE(
-          [L-stmt--L-id-EQUALS-L-aexp(LEX-id("b"), L-aexp--L-int(L-int--TILDE-Q-L-natural(None(), LEX-natural("6"))))]
-        )
-      )
+  , [ L-stmt--L-id-EQUALS-L-aexp(LEX-id("a"), L-aexp--R-read-LPAREN-RPAREN())
+    , L-stmt--L-id-EQUALS-L-aexp(LEX-id("b"), L-aexp--R-read-LPAREN-RPAREN())
     , L-stmt--R-print-LPAREN-L-exp-RPAREN(L-exp--L-aexp(L-aexp--L-id(LEX-id("a"))))
-    , L-stmt--R-print-LPAREN-L-exp-RPAREN(L-exp--L-aexp(L-aexp--L-id(LEX-id("b"))))
+    , L-stmt--L-exp(L-exp--L-aexp(L-aexp--L-id(LEX-id("b"))))
     ]
   )
 )

@@ -1,9 +1,14 @@
 L-start--L-pgm(
-  L-pgm--R-int-L-idlist-L-stmt-S(
-    L-idlist--L-id-C-COMMA-L-idlist-D-Q(
-      LEX-id("x")
-    , Some(L-COMMA-L-idlist--COMMA-L-idlist(L-idlist--L-id-C-COMMA-L-idlist-D-Q(LEX-id("y"), None())))
-    )
-  , [L-stmt--L-id-EQUALS-L-aexp(LEX-id("y"), L-aexp--L-int(LEX-int("9")))]
+  L-pgm--L-decl-P-L-stmt-P(
+    [ L-decl--L-varDecl(
+        L-varDecl--R-int-L-idList(
+          L-idList--L-id-C-COMMA-L-idList-D-Q(
+            LEX-id("x")
+          , Some(L-COMMA-L-idList--COMMA-L-idList(L-idList--L-id-C-COMMA-L-idList-D-Q(LEX-id("y"), None())))
+          )
+        )
+      )
+    ]
+  , [L-stmt--L-id-EQUALS-L-aexp(LEX-id("y"), L-aexp--L-int(L-int--TILDE-Q-L-natural(None(), LEX-natural("9"))))]
   )
 )

@@ -1,0 +1,57 @@
+initialise-binding finalise-failing scope
+  (collateral
+     (bind
+        ("fact",
+         allocate-variable functions
+           (tuples
+              ((values)*),
+            values))),
+   sequential
+     (assign
+        (bound
+           ("fact"),
+         function closure scope
+           (match
+              (given,
+               tuple
+                 (pattern closure
+                    (bind
+                       ("n",
+                        allocate-initialised-variable
+                          (values,
+                           given))))),
+            give
+              (handle-return sequential
+                 (if-else
+                    (is-greater
+                       (assigned bound
+                          "n",
+                        decimal-natural "1"),
+                     int-mul
+                       (assigned bound
+                          "n",
+                        apply
+                          (assigned bound
+                             "fact",
+                           tuple
+                             (int-add
+                                (assigned bound
+                                   "n",
+                                 int-neg
+                                   (decimal-natural "1"))))),
+                     decimal-natural "1")),
+               sequential
+                 (recycle-variables bound-directly
+                    ("n"),
+                  given)))),
+      effect
+        (apply
+           (assigned bound
+              "fact",
+            tuple
+              (read))),
+      apply
+        (assigned bound
+           "fact",
+         tuple
+           (read))))

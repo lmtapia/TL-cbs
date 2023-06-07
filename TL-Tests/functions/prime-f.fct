@@ -5,7 +5,12 @@ initialise-binding finalise-failing scope
          allocate-variable functions
            (tuples
               ((values)*),
-            values))),
+            values)),
+      bind
+        ("n",
+         allocate-initialised-variable
+           (integers,
+            0))),
    sequential
      (assign
         (bound
@@ -50,7 +55,7 @@ initialise-binding finalise-failing scope
                               decimal-natural "1")))),
                   if-else
                     (if-else
-                       (is-eq
+                       (is-greater
                           (int-mul
                              (assigned bound
                                 "div",
@@ -59,7 +64,7 @@ initialise-binding finalise-failing scope
                            assigned bound
                              "x"),
                         true,
-                        is-greater
+                        is-eq
                           (int-mul
                              (assigned bound
                                 "div",
@@ -81,30 +86,29 @@ initialise-binding finalise-failing scope
                   recycle-variables bound-directly
                     ("div"),
                   given)))),
+      null-value,
       effect
-        (apply
+        (assign
+           (bound
+              ("n"),
+            decimal-natural "4")),
+      last while-values
+        (is-greater
+           (assigned bound
+              "n",
+            decimal-natural "0"),
+         effect
+           (assign
+              (bound
+                 ("n"),
+               int-add
+                 (assigned bound
+                    "n",
+                  int-neg
+                    (decimal-natural "1")))),
+         apply
            (assigned bound
               "prime",
             tuple
-              (decimal-natural "17",
-               decimal-natural "2"))),
-      effect
-        (apply
-           (assigned bound
-              "prime",
-            tuple
-              (decimal-natural "83",
-               decimal-natural "2"))),
-      effect
-        (apply
-           (assigned bound
-              "prime",
-            tuple
-              (decimal-natural "71",
-               decimal-natural "2"))),
-      apply
-        (assigned bound
-           "prime",
-         tuple
-           (decimal-natural "169",
-            decimal-natural "2"))))
+              (read,
+               decimal-natural "2")))))

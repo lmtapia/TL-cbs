@@ -39,18 +39,6 @@ initialise-binding finalise-failing scope
            (bound
               ("x"),
             decimal-natural "4")),
-      effect
-        (apply
-           (assigned bound
-              "id",
-            tuple
-              (assigned bound
-                 "x"))),
-      effect
-        (assign
-           (bound
-              ("x"),
-            decimal-natural "45")),
       apply
         (assigned bound
            "id",
