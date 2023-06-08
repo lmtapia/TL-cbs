@@ -37,7 +37,7 @@ initialise-binding finalise-failing scope
                           (values,
                            given))))),
             give
-              (handle-return sequential
+              (sequential
                  (effect
                     (print
                        (to-string assigned bound

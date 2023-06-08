@@ -1,0 +1,28 @@
+
+name:               funcons-TL
+version:            0.1.0.0
+
+synopsis:           A modular interpreter for executing TL funcons
+
+
+-- description:
+license:            MIT
+license-file:       LICENSE
+author:             lmtapia
+maintainer:         lmtapia1024@gmail.com
+category:           Compilers/Interpreters
+
+build-type:         Simple
+cabal-version:      >=1.10
+executable runfct-TL
+    main-is:          Main.hs
+
+    -- Modules included in this executable, other than Main.
+    other-modules: Funcons.TL.Custom.Custom, Funcons.TL.Library
+
+    
+    build-depends:    base >=4.8 && <= 5
+                     ,funcons-tools >= 0.2.0.15
+                     ,funcons-values >= 0.1.0.9
+    hs-source-dirs:   src
+    default-language: Haskell2010

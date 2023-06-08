@@ -33,7 +33,7 @@ initialise-binding finalise-failing scope
                           (values,
                            given))))),
             give
-              (handle-return sequential
+              (sequential
                  (int-add
                     (assigned bound
                        "a",
@@ -78,7 +78,7 @@ initialise-binding finalise-failing scope
                           (values,
                            given))))),
             give
-              (handle-return sequential
+              (sequential
                  (effect
                     (last while-values
                        (is-greater

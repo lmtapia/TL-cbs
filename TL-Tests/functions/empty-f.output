@@ -1,0 +1,9 @@
+empty-f:
+
+===================
+Result:
+null-value
+
+Mutable Entity: store
+@1 |-> function(abstraction(closed(scope("...",scope(match(given,tuple()),give(sequential(null-value),sequential(null-value,given)))))))
+

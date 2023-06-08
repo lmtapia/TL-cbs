@@ -75,4 +75,5 @@ context-free syntax
 
 ``stmt ::= exp`` {longest-match}
 
+``stmt ::= id '=' aexp``{longest-match}
 */

@@ -1,0 +1,10 @@
+id-f:
+
+===================
+Result:
+4
+
+Mutable Entity: store
+@1 |-> function(abstraction(closed(scope("...",scope(match(given,tuple(pattern(closure(bind("a",allocate-initialised-variable(values,given)))))),give(sequential(assigned(bound("a"))),sequential(recycle-variables(bound-directly("a")),given)))))))
+@2 |-> 4
+

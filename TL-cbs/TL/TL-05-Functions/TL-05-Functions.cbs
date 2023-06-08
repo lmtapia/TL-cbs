@@ -20,7 +20,7 @@ Rule initialise-fun[[ 'fun' ID '(' IL? ')' Block ]] =
       bound(id[[ ID ]]),
       function closure scope(
           match(given,tuple(patts[[ IL? ]])),
-          give(handle-return sequential(execute[[ Block]]), 
+          give(sequential(execute[[ Block]]), 
                sequential(free[[IL?]], given ))))  
   
 

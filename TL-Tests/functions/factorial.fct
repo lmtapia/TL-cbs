@@ -21,7 +21,7 @@ initialise-binding finalise-failing scope
                           (values,
                            given))))),
             give
-              (handle-return sequential
+              (sequential
                  (if-else
                     (is-greater
                        (assigned bound

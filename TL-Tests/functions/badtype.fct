@@ -1,0 +1,105 @@
+initialise-binding finalise-failing scope
+  (collateral
+     (bind
+        ("mod",
+         allocate-variable functions
+           (tuples
+              ((values)*),
+            values)),
+      bind
+        ("even",
+         allocate-variable functions
+           (tuples
+              ((values)*),
+            values)),
+      bind
+        ("a",
+         allocate-initialised-variable
+           (integers,
+            0))),
+   sequential
+     (assign
+        (bound
+           ("mod"),
+         function closure scope
+           (match
+              (given,
+               tuple
+                 (pattern closure
+                    (bind
+                       ("x",
+                        allocate-initialised-variable
+                          (values,
+                           given))),
+                  pattern closure
+                    (bind
+                       ("d",
+                        allocate-initialised-variable
+                          (values,
+                           given))))),
+            give
+              (sequential
+                 (int-add
+                    (assigned bound
+                       "x",
+                     int-neg
+                       (int-mul
+                          (checked int-div
+                             (assigned bound
+                                "x",
+                              assigned bound
+                                "d"),
+                           assigned bound
+                             "d")))),
+               sequential
+                 (recycle-variables bound-directly
+                    ("x"),
+                  recycle-variables bound-directly
+                    ("d"),
+                  given)))),
+      assign
+        (bound
+           ("even"),
+         function closure scope
+           (match
+              (given,
+               tuple
+                 (pattern closure
+                    (bind
+                       ("a",
+                        allocate-initialised-variable
+                          (values,
+                           given))))),
+            give
+              (sequential
+                 (is-eq
+                    (apply
+                       (assigned bound
+                          "mod",
+                        tuple
+                          (assigned bound
+                             "a",
+                           decimal-natural "2")),
+                     decimal-natural "0")),
+               sequential
+                 (recycle-variables bound-directly
+                    ("a"),
+                  given)))),
+      null-value,
+      effect
+        (assign
+           (bound
+              ("a"),
+            apply
+              (assigned bound
+                 "even",
+               tuple
+                 (decimal-natural "6")))),
+      effect
+        (print
+           (to-string assigned bound
+              "a",
+            "
+")),
+      assigned bound
+        "a"))

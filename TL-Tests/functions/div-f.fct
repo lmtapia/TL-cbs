@@ -37,7 +37,7 @@ initialise-binding finalise-failing scope
                           (values,
                            given))))),
             give
-              (handle-return sequential
+              (sequential
                  (checked int-div
                     (assigned bound
                        "x1",
