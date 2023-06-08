@@ -11,10 +11,12 @@ initialise-binding finalise-failing scope
            (integers,
             0))),
    sequential
-     (assign
-        (bound
-           ("a"),
-         decimal "5"),
+     (null-value,
+      effect
+        (assign
+           (bound
+              ("a"),
+            decimal-natural "5")),
       if-else
         (true,
          print

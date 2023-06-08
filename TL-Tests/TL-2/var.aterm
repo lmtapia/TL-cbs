@@ -1,8 +1,8 @@
 L-start--L-pgm(
-  L-pgm--R-int-L-idlist-L-stmt-S(
-    L-idlist--L-id-C-COMMA-L-idlist-D-Q(LEX-id("a"), None())
-  , [ L-stmt--L-id-EQUALS-L-aexp(LEX-id("a"), L-aexp--L-int(LEX-int("5")))
-    , L-stmt--R-print-L-exp(L-exp--L-aexp(L-aexp--L-id(LEX-id("a"))))
+  L-pgm--L-decl-P-L-stmt-P(
+    [L-decl--L-varDecl(L-varDecl--R-int-L-idList(L-idList--L-id-C-COMMA-L-idList-D-Q(LEX-id("a"), None())))]
+  , [ L-stmt--L-id-EQUALS-L-aexp(LEX-id("a"), L-aexp--L-int(L-int--TILDE-Q-L-natural(None(), LEX-natural("5"))))
+    , L-stmt--R-print-LPAREN-L-exp-RPAREN(L-exp--L-aexp(L-aexp--L-id(LEX-id("a"))))
     ]
   )
 )

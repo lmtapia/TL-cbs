@@ -11,19 +11,23 @@ initialise-binding finalise-failing scope
            (integers,
             0))),
    sequential
-     (assign
-        (bound
-           ("a"),
-         decimal "4"),
-      assign
-        (bound
-           ("b"),
-         decimal "6"),
-      print
-        (to-string assigned bound
-           "a",
-         "
-"),
+     (null-value,
+      effect
+        (assign
+           (bound
+              ("a"),
+            decimal-natural "4")),
+      effect
+        (assign
+           (bound
+              ("b"),
+            decimal-natural "6")),
+      effect
+        (print
+           (to-string assigned bound
+              "a",
+            "
+")),
       print
         (to-string assigned bound
            "b",

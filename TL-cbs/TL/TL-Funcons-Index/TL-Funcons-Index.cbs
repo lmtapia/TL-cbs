@@ -5,8 +5,15 @@
 ### Flowing
 [
   Funcon   sequential      Alias seq
+  Funcon   effect
   Funcon   if-true-else    Alias if-else
   Funcon   while-true      Alias while
+]
+
+### Giving
+[
+  Funcon   give
+  Funcon   given
 ]
 
 ### Binding
@@ -15,6 +22,7 @@
   Datatype identifiers        Alias ids
   Funcon   initialise-binding
   Funcon   bind-value         Alias bind
+  Funcon   bound-directly
   Funcon   bound-value        Alias bound
   Funcon   scope
   Funcon   collateral
@@ -22,12 +30,19 @@
 
 ### Storing
 [
+  Funcon   allocate-variable             Alias alloc
+  Funcon   recycle-variables             Alias recycle
   Funcon   allocate-initialised-variable Alias alloc-init
   Funcon   assign
   Funcon   assigned
 ]
 
 ### Interacting
+
+#### Input
+[
+  Funcon   read
+]
 
 #### Output
 [
@@ -81,8 +96,33 @@
 
 ## Composite values
 
+### Tuples
+[
+  Datatype tuples
+]
+
 ### Strings
 [
   Funcon   to-string
 ]
 
+## Abstraction values
+
+### Generic abstractions
+[
+  Funcon   closure
+]
+
+### Functions
+[
+  Datatype functions
+  Funcon   function
+  Funcon   apply
+]
+
+### Patterns
+[
+  Datatype patterns
+  Funcon   pattern
+  Funcon   match
+]

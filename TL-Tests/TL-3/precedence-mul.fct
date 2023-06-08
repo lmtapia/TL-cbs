@@ -1,5 +1,6 @@
-initialise-binding finalise-failing int-mul
-  (checked int-div
-     (decimal "15",
-      decimal "4"),
-   decimal "6")
+initialise-binding finalise-failing sequential
+  (int-mul
+     (checked int-div
+        (decimal-natural "15",
+         decimal-natural "4"),
+      decimal-natural "6"))

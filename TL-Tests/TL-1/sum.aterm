@@ -1,5 +1,13 @@
 L-start--L-pgm(
-  L-pgm--L-exp(
-    L-exp--L-aexp(L-aexp--L-aexp-PLUS-L-aexp(L-aexp--L-int(LEX-int("34")), L-aexp--L-int(LEX-int("17"))))
+  L-pgm--L-stmt-P(
+    [ L-stmt--L-exp(
+        L-exp--L-aexp(
+          L-aexp--L-aexp-PLUS-L-aexp(
+            L-aexp--L-int(L-int--TILDE-Q-L-natural(None(), LEX-natural("34")))
+          , L-aexp--L-int(L-int--TILDE-Q-L-natural(None(), LEX-natural("17")))
+          )
+        )
+      )
+    ]
   )
 )

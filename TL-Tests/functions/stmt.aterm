@@ -1,0 +1,8 @@
+L-start--L-pgm(
+  L-pgm--L-stmt-P(
+    [ L-stmt--R-print-LPAREN-L-exp-RPAREN(L-exp--L-aexp(L-aexp--L-int(L-int--TILDE-Q-L-natural(None(), LEX-natural("1")))))
+    , L-stmt--R-print-LPAREN-L-exp-RPAREN(L-exp--L-aexp(L-aexp--L-int(L-int--TILDE-Q-L-natural(None(), LEX-natural("2")))))
+    , L-stmt--R-print-LPAREN-L-exp-RPAREN(L-exp--L-aexp(L-aexp--L-int(L-int--TILDE-Q-L-natural(None(), LEX-natural("3")))))
+    ]
+  )
+)

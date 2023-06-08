@@ -1,15 +1,22 @@
 L-start--L-pgm(
-  L-pgm--R-int-L-idlist-L-stmt-S(
-    L-idlist--L-id-C-COMMA-L-idlist-D-Q(
-      LEX-id("a")
-    , Some(L-COMMA-L-idlist--COMMA-L-idlist(L-idlist--L-id-C-COMMA-L-idlist-D-Q(LEX-id("b"), None())))
-    )
-  , [ L-stmt--L-id-EQUALS-L-aexp(LEX-id("a"), L-aexp--L-int(LEX-int("4")))
-    , L-stmt--L-block(
-        L-block--LBRACE-L-stmt-S-RBRACE([L-stmt--L-id-EQUALS-L-aexp(LEX-id("b"), L-aexp--L-int(LEX-int("6")))])
+  L-pgm--L-decl-P-L-stmt-P(
+    [ L-decl--L-varDecl(
+        L-varDecl--R-int-L-idList(
+          L-idList--L-id-C-COMMA-L-idList-D-Q(
+            LEX-id("a")
+          , Some(L-COMMA-L-idList--COMMA-L-idList(L-idList--L-id-C-COMMA-L-idList-D-Q(LEX-id("b"), None())))
+          )
+        )
       )
-    , L-stmt--R-print-L-exp(L-exp--L-aexp(L-aexp--L-id(LEX-id("a"))))
-    , L-stmt--R-print-L-exp(L-exp--L-aexp(L-aexp--L-id(LEX-id("b"))))
+    ]
+  , [ L-stmt--L-id-EQUALS-L-aexp(LEX-id("a"), L-aexp--L-int(L-int--TILDE-Q-L-natural(None(), LEX-natural("4"))))
+    , L-stmt--L-block(
+        L-block--LBRACE-L-stmt-S-RBRACE(
+          [L-stmt--L-id-EQUALS-L-aexp(LEX-id("b"), L-aexp--L-int(L-int--TILDE-Q-L-natural(None(), LEX-natural("6"))))]
+        )
+      )
+    , L-stmt--R-print-LPAREN-L-exp-RPAREN(L-exp--L-aexp(L-aexp--L-id(LEX-id("a"))))
+    , L-stmt--R-print-LPAREN-L-exp-RPAREN(L-exp--L-aexp(L-aexp--L-id(LEX-id("b"))))
     ]
   )
 )

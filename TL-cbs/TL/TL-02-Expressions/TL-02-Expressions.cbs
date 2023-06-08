@@ -6,22 +6,23 @@ Syntax Exp:exp ::= aexp
 			     | bexp
 			   			   
 Semantics eval[[ _:exp ]] : => values
-Rule eval[[ AExp ]] = eval-arith[[ AExp ]]
-Rule eval[[ BExp ]] = eval-bool[[ BExp ]]
+     Rule eval[[ AExp ]] = eval-arith[[ AExp ]]
+     Rule eval[[ BExp ]] = eval-bool[[ BExp ]]
 
-Syntax AExp : aexp ::= '-' aexp
-					 | id
+
+Syntax AExp : aexp ::= id
                      | int
 				     | aexp '+' aexp
 				     | aexp '-' aexp
 				     | aexp '*' aexp
 				     | aexp '/' aexp
 					 | '(' aexp ')'
-				  
+					 | id '(' args? ')' 
+					 | 'read' '(' ')' 
+		  
 Semantics eval-arith[[ _:aexp ]]: => integers
-Rule eval-arith[['-' AExp ]] = int-neg(eval-arith[[AExp]])
 Rule eval-arith[[ ID ]] = assigned bound id[[ ID ]]
-Rule eval-arith[[ N ]] = int[[ N ]]
+Rule eval-arith[[ Z ]] = integer[[ Z ]]
 Rule eval-arith[[ AExp1 '+' AExp2]] = 
 	int-add(eval-arith[[AExp1]],eval-arith[[AExp2]])
 Rule eval-arith[[ AExp1 '-' AExp2]] = 
@@ -31,6 +32,22 @@ Rule eval-arith[[ AExp1 '*' AExp2]] =
 Rule eval-arith[[ AExp1 '/' AExp2]] = 
 	checked int-div(eval-arith[[AExp1]],eval-arith[[AExp2]])
 Rule eval-arith[[ '(' AExp ')' ]]= eval-arith[[ AExp ]]
+Rule eval-arith[[ ID '(' Args? ')']] = 
+    apply (assigned bound id[[ID]], tuple(eval-args[[ Args? ]]))
+Rule eval-arith[[ 'read' '(' ')' ]] = read
+
+
+Syntax Z:int ::= '~'? natural  
+Semantics integer[[ _:int ]] : =>integers
+     Rule integer[[ N ]] = decimal-natural \"N\" 
+     Rule integer[['~' N ]] = integer-negate(integer[[ N ]])
+   
+Syntax Args : args ::= aexp (',' args)?
+     
+Semantics eval-args[[_:args?]] : (=>integers)*
+     Rule eval-args[[]] = ()
+     Rule eval-args[[ AExp ]] = eval-arith[[ AExp ]]
+     Rule eval-args[[ AExp ',' Args ]] = eval-args[[ AExp ]], eval-args[[ Args ]]
 			
 Syntax BExp : bexp ::= bool
                      | 'no' bexp  
@@ -42,16 +59,16 @@ Syntax BExp : bexp ::= bool
 					 | '(' bexp ')'
 					 
 Semantics eval-bool[[ _:bexp ]]: => booleans
-Rule eval-bool[[ B ]] = val-bool[[B]]
-Rule eval-bool[[ 'no' BExp ]] = not eval-bool[[BExp]]
-Rule eval-bool[[ BExp1 'and' BExp2]] = 
-	if-else(eval-bool[[ BExp1 ]],eval-bool[[ BExp2 ]],false)
-Rule eval-bool[[ BExp1 'or' BExp2]] = 
-	if-else(eval-bool[[ BExp1 ]],true,eval-bool[[ BExp2 ]])
-Rule eval-bool[[ AExp1 '<' AExp2]] = 
-	is-less(eval-arith[[AExp1]],eval-arith[[AExp2]])
-Rule eval-bool[[ AExp1 '>' AExp2]] = 
-	is-greater(eval-arith[[AExp1]],eval-arith[[AExp2]])
-Rule eval-bool[[ Exp1 '==' Exp2]] = 
-	is-eq(eval[[Exp1]],eval[[Exp2]])
-Rule eval-bool[[ '(' BExp ')' ]] = eval-bool[[ BExp ]]
+     Rule eval-bool[[ B ]] = val-bool[[B]]
+     Rule eval-bool[[ 'no' BExp ]] = not eval-bool[[BExp]]
+     Rule eval-bool[[ BExp1 'and' BExp2]] = 
+	   if-else(eval-bool[[ BExp1 ]],eval-bool[[ BExp2 ]],false)
+     Rule eval-bool[[ BExp1 'or' BExp2]] = 
+	   if-else(eval-bool[[ BExp1 ]],true,eval-bool[[ BExp2 ]])
+     Rule eval-bool[[ AExp1 '<' AExp2]] = 
+	   is-less(eval-arith[[AExp1]],eval-arith[[AExp2]])
+     Rule eval-bool[[ AExp1 '>' AExp2]] = 
+ 	   is-greater(eval-arith[[AExp1]],eval-arith[[AExp2]])
+     Rule eval-bool[[ Exp1 '==' Exp2]] = 
+	   is-eq(eval[[Exp1]],eval[[Exp2]])
+     Rule eval-bool[[ '(' BExp ')' ]] = eval-bool[[ BExp ]]

@@ -1,0 +1,12 @@
+stmt:
+
+===================
+Result:
+null-value
+
+Mutable Entity: store
+
+
+Output Entity: standard-out
+"1","\n","2","\n","3","\n"
+

@@ -16,24 +16,28 @@ initialise-binding finalise-failing scope
            (integers,
             0))),
    sequential
-     (assign
-        (bound
-           ("a"),
-         decimal "5"),
-      assign
-        (bound
-           ("b"),
-         decimal "6"),
-      assign
-        (bound
-           ("c"),
-         int-add
-           (int-add
-              (assigned bound
-                 "a",
-               assigned bound
-                 "b"),
-            decimal "2")),
+     (null-value,
+      effect
+        (assign
+           (bound
+              ("a"),
+            decimal-natural "5")),
+      effect
+        (assign
+           (bound
+              ("b"),
+            decimal-natural "6")),
+      effect
+        (assign
+           (bound
+              ("c"),
+            int-add
+              (int-add
+                 (assigned bound
+                    "a",
+                  assigned bound
+                    "b"),
+               decimal-natural "2"))),
       print
         (to-string assigned bound
            "c",

@@ -7,9 +7,9 @@ while no ((x/d) * d == x)
 	d = d+1
 }
 if(d*d == x or d*d > x ){
-	print true
+	print(true)
 }
 else
 {
-	print false
+	print(false)
 }

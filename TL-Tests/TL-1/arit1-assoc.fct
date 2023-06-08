@@ -1,9 +1,10 @@
-initialise-binding finalise-failing int-add
+initialise-binding finalise-failing sequential
   (int-add
-     (decimal "3",
+     (int-add
+        (decimal-natural "3",
+         checked int-div
+           (decimal-natural "4",
+            decimal-natural "2")),
       checked int-div
-        (decimal "4",
-         decimal "2")),
-   checked int-div
-     (decimal "5",
-      decimal "3"))
+        (decimal-natural "5",
+         decimal-natural "3")))

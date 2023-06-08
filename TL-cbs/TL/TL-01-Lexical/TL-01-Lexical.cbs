@@ -1,22 +1,24 @@
 Language "TL"
 
 #1 Lexical
-					   
-Lexis  N:int ::= ('0'-'9')+    
-Semantics int[[ N:int ]] : => integers
-            = decimal \"N\"
+
+Lexis N:natural ::= ('0'-'9')+ 
     
-Lexis  ID:id  ::= ('a'-'z') ('a'-'z'|'0'-'9')*
+Lexis  ID:id ::= ('a'-'z') ('A'-'Z'|'a'-'z'|'0'-'9')*
+
 Semantics id[[ ID:id ]] : => identifiers
             = \"ID\"
+     
 
 Lexis B:bool ::= 'true' | 'false'
 Semantics val-bool[[ _:bool ]]: => bools 
-Rule val-bool[['true']] = true 
-Rule val-bool[['false']] = false 
+    Rule val-bool[[ 'true' ]] = true 
+    Rule val-bool[[ 'false' ]] = false 
 
 Lexis keyword ::= 'false' | 'true' | 'and' | 'or' | 'no'
-                | 'int' | 'if' | 'else' | 'while'
+                | 'int' | 'if' | 'else' | 'while' | 'print'
+                | 'read' | 'fun'                 
+                 
 
 #1.1 Desambiguation
 
@@ -26,32 +28,31 @@ lexical syntax
   ``id`` = ``keyword`` {reject}
 lexical restrictions
   ``id`` -/- [A-Za-z0-9]
+  ``natural`` -/- [0-9]
 */
 
 Syntax SDF
 /*
 context-free syntax
-
 ``aexp ::= aexp '*' aexp`` {left}
 ``aexp ::= aexp '/' aexp`` {left}
 ``aexp ::= aexp '+' aexp`` {left}
 ``aexp ::= aexp '-' aexp`` {left}
 
 context-free priorities
-{ ``aexp ::= '-' aexp``
-} >
 {left:
 ``aexp ::= aexp '*' aexp`` 
 ``aexp ::= aexp '/' aexp``
-}
->
+} >
 {left:
 ``aexp ::= aexp '+' aexp``
 ``aexp ::= aexp '-' aexp``
 }
+
 context-free syntax
 ``bexp ::= bexp 'and' bexp`` {left}
 ``bexp ::= bexp 'or' bexp`` {left}
+
 context-free priorities
 { ``bexp ::= 'no' bexp``
 } >
@@ -65,5 +66,14 @@ context-free priorities
 {``bexp ::= bexp 'and' bexp``}
 >
 {``bexp ::= bexp 'or' bexp`` }
+*/
 
+Syntax SDF 
+/*
+context-free syntax
+``aexp ::= id '(' args? ')'`` {longest-match}
+
+``stmt ::= exp`` {longest-match}
+
+``stmt ::= id '=' aexp``{longest-match}
 */

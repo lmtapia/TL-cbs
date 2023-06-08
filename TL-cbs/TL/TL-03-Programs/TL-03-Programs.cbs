@@ -3,17 +3,32 @@ Language "TL"
 #3 Programs
 
 Syntax
-  Pgm : pgm ::= 'int' idlist stmt*
-              | exp
+  Pgm : pgm ::= decl+ stmt+ | stmt+       
 
 Semantics  run[[ _:pgm ]] : =>values
-Rule run[[ 'int' IL Stmt* ]] = 
-    scope(collateral(declare-int-vars[[ IL ]]), execute[[ Stmt* ]])
-Rule run[[Exp]] = eval[[Exp]]
+      Rule run[[Decl+ Stmt+ ]] = 
+        scope(collateral(declare[[Decl+]]), 
+              sequential(initialise-funs[[ Decl+ ]], 
+                         execute[[ Stmt+ ]]))
+      Rule run [[ Stmt+ ]] = sequential (execute[[ Stmt+ ]])                     
 
-Syntax IL : idlist ::= id (',' idlist)?
-Semantics declare-int-vars[[ _: idlist ]] : (=>environments)+
-Rule declare-int-vars[[ ID ]] =
-    bind(id[[ ID ]], allocate-initialised-variable(integers, 0))
-Rule declare-int-vars[[ ID ',' IL ]] = 
-    declare-int-vars[[ ID ]], declare-int-vars[[ IL ]]
+Syntax  Decl: decl ::= varDecl | funDecl
+Semantics declare [[ _ : decl+ ]] : (=>environments)+
+     Rule declare [[ VD ]] = declare-vars[[ VD ]]
+     Rule declare [[ FD ]] = declare-fun[[ FD ]]
+     Rule declare [[ Decl Decl+ ]] = declare[[ Decl ]], declare[[ Decl+ ]]
+
+Syntax IL : idList ::= id (',' idList)?
+
+Syntax VD: varDecl ::= 'int' idList
+  
+Semantics declare-vars [[ _: varDecl ]]: (=>environments)+
+     Rule declare-vars [[ 'int' IL ]] = declare-int-vars[[IL]]
+
+Semantics declare-int-vars[[ _: idList ]] : (=>environments)+
+     Rule declare-int-vars[[ ID ]] =
+       bind(id[[ ID ]], allocate-initialised-variable(integers, 0))
+     Rule declare-int-vars[[ ID ',' IL ]] = 
+       declare-int-vars[[ ID ]], declare-int-vars[[ IL ]]
+
+

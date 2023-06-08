@@ -1,0 +1,11 @@
+print2-f:
+
+===================
+Result:
+null-value
+
+Mutable Entity: store
+@1 |-> function(abstraction(closed(scope("...",scope(match(given,tuple(pattern(closure(bind("x",allocate-initialised-variable(values,given)))),pattern(closure(bind("y",allocate-initialised-variable(values,given)))))),give(sequential(effect(print(to-string(assigned(bound("x"))),"\n")),print(to-string(assigned(bound("y"))),"\n")),sequential(recycle-variables(bound-directly("x")),recycle-variables(bound-directly("y")),given)))))))
+@2 |-> 0
+@3 |-> 0
+

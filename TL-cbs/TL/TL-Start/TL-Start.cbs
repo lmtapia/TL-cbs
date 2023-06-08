@@ -5,12 +5,10 @@ Language "TL"
 #2 Expressions
 #3 Programs
 #4 Statements
+#5 Functions
 ]
 
 # Top level
 Syntax START:start ::= pgm
 Semantics start[[ _:start ]]: =>values
-Rule start[[ Pgm ]] = 
-	initialise-binding 
-	finalise-failing 
-		run[[ Pgm ]]
+     Rule start[[ Pgm ]] = initialise-binding finalise-failing run[[ Pgm ]] 	

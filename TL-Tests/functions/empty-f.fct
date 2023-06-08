@@ -1,0 +1,28 @@
+initialise-binding finalise-failing scope
+  (collateral
+     (bind
+        ("empty",
+         allocate-variable functions
+           (tuples
+              ((values)*),
+            values))),
+   sequential
+     (assign
+        (bound
+           ("empty"),
+         function closure scope
+           (match
+              (given,
+               tuple
+                 ( )),
+            give
+              (sequential
+                 (null-value),
+               sequential
+                 (null-value,
+                  given)))),
+      apply
+        (assigned bound
+           "empty",
+         tuple
+           ( ))))

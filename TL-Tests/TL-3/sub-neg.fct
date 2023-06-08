@@ -1,4 +1,5 @@
-initialise-binding finalise-failing int-add
-  (decimal "34",
-   int-neg
-     (decimal "87"))
+initialise-binding finalise-failing sequential
+  (int-add
+     (decimal-natural "34",
+      int-neg
+        (decimal-natural "87")))

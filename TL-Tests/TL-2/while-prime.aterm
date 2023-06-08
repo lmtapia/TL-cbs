@@ -1,18 +1,23 @@
 L-start--L-pgm(
-  L-pgm--R-int-L-idlist-L-stmt-S(
-    L-idlist--L-id-C-COMMA-L-idlist-D-Q(
-      LEX-id("x")
-    , Some(
-        L-COMMA-L-idlist--COMMA-L-idlist(
-          L-idlist--L-id-C-COMMA-L-idlist-D-Q(
-            LEX-id("d")
-          , Some(L-COMMA-L-idlist--COMMA-L-idlist(L-idlist--L-id-C-COMMA-L-idlist-D-Q(LEX-id("ds"), None())))
+  L-pgm--L-decl-P-L-stmt-P(
+    [ L-decl--L-varDecl(
+        L-varDecl--R-int-L-idList(
+          L-idList--L-id-C-COMMA-L-idList-D-Q(
+            LEX-id("x")
+          , Some(
+              L-COMMA-L-idList--COMMA-L-idList(
+                L-idList--L-id-C-COMMA-L-idList-D-Q(
+                  LEX-id("d")
+                , Some(L-COMMA-L-idList--COMMA-L-idList(L-idList--L-id-C-COMMA-L-idList-D-Q(LEX-id("ds"), None())))
+                )
+              )
+            )
           )
         )
       )
-    )
-  , [ L-stmt--L-id-EQUALS-L-aexp(LEX-id("x"), L-aexp--L-int(LEX-int("471")))
-    , L-stmt--L-id-EQUALS-L-aexp(LEX-id("d"), L-aexp--L-int(LEX-int("2")))
+    ]
+  , [ L-stmt--L-id-EQUALS-L-aexp(LEX-id("x"), L-aexp--L-int(L-int--TILDE-Q-L-natural(None(), LEX-natural("471"))))
+    , L-stmt--L-id-EQUALS-L-aexp(LEX-id("d"), L-aexp--L-int(L-int--TILDE-Q-L-natural(None(), LEX-natural("2"))))
     , L-stmt--R-while-L-bexp-L-block(
         L-bexp--R-no-L-bexp(
           L-bexp--LPAREN-L-bexp-RPAREN(
@@ -30,7 +35,10 @@ L-start--L-pgm(
       , L-block--LBRACE-L-stmt-S-RBRACE(
           [ L-stmt--L-id-EQUALS-L-aexp(
               LEX-id("d")
-            , L-aexp--L-aexp-PLUS-L-aexp(L-aexp--L-id(LEX-id("d")), L-aexp--L-int(LEX-int("1")))
+            , L-aexp--L-aexp-PLUS-L-aexp(
+                L-aexp--L-id(LEX-id("d"))
+              , L-aexp--L-int(L-int--TILDE-Q-L-natural(None(), LEX-natural("1")))
+              )
             )
           ]
         )
@@ -48,8 +56,8 @@ L-start--L-pgm(
             )
           )
         )
-      , L-block--LBRACE-L-stmt-S-RBRACE([L-stmt--R-print-L-exp(L-exp--L-bexp(L-bexp--L-bool(LEX-bool("true"))))])
-      , L-block--LBRACE-L-stmt-S-RBRACE([L-stmt--R-print-L-exp(L-exp--L-bexp(L-bexp--L-bool(LEX-bool("false"))))])
+      , L-block--LBRACE-L-stmt-S-RBRACE([L-stmt--R-print-LPAREN-L-exp-RPAREN(L-exp--L-bexp(L-bexp--L-bool(LEX-bool("true"))))])
+      , L-block--LBRACE-L-stmt-S-RBRACE([L-stmt--R-print-LPAREN-L-exp-RPAREN(L-exp--L-bexp(L-bexp--L-bool(LEX-bool("false"))))])
       )
     ]
   )

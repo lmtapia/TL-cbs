@@ -1,3 +1,4 @@
-initialise-binding finalise-failing checked int-div
-  (decimal "45",
-   decimal "0")
+initialise-binding finalise-failing sequential
+  (checked int-div
+     (decimal-natural "45",
+      decimal-natural "0"))

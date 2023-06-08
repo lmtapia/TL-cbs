@@ -1,10 +1,16 @@
 L-start--L-pgm(
-  L-pgm--L-exp(
-    L-exp--L-aexp(
-      L-aexp--L-aexp-STAR-L-aexp(
-        L-aexp--L-aexp-STAR-L-aexp(L-aexp--L-int(LEX-int("23")), L-aexp--L-int(LEX-int("67")))
-      , L-aexp--L-int(LEX-int("5"))
+  L-pgm--L-stmt-P(
+    [ L-stmt--L-exp(
+        L-exp--L-aexp(
+          L-aexp--L-aexp-STAR-L-aexp(
+            L-aexp--L-aexp-STAR-L-aexp(
+              L-aexp--L-int(L-int--TILDE-Q-L-natural(None(), LEX-natural("23")))
+            , L-aexp--L-int(L-int--TILDE-Q-L-natural(None(), LEX-natural("67")))
+            )
+          , L-aexp--L-int(L-int--TILDE-Q-L-natural(None(), LEX-natural("5")))
+          )
+        )
       )
-    )
+    ]
   )
 )

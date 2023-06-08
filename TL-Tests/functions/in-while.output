@@ -1,0 +1,10 @@
+in-while:
+
+===================
+Result:
+0
+
+Mutable Entity: store
+@1 |-> function(abstraction(closed(scope("...",scope(match(given,tuple(pattern(closure(bind("a",allocate-initialised-variable(values,given)))),pattern(closure(bind("b",allocate-initialised-variable(values,given)))))),give(sequential(assigned(bound("a"))),sequential(recycle-variables(bound-directly("a")),recycle-variables(bound-directly("b")),given)))))))
+@2 |-> 0
+

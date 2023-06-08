@@ -16,45 +16,51 @@ initialise-binding finalise-failing scope
            (integers,
             0))),
    sequential
-     (assign
-        (bound
-           ("a"),
-         decimal "1071"),
-      assign
-        (bound
-           ("b"),
-         decimal "462"),
-      while
-        (is-greater
-           (assigned bound
-              "b",
-            decimal "0"),
-         sequential
-           (assign
-              (bound
-                 ("c"),
-               assigned bound
-                 "b"),
-            assign
-              (bound
-                 ("b"),
-               int-add
-                 (assigned bound
-                    "a",
-                  int-neg
-                    (int-mul
-                       (checked int-div
-                          (assigned bound
-                             "a",
+     (null-value,
+      effect
+        (assign
+           (bound
+              ("a"),
+            decimal-natural "1071")),
+      effect
+        (assign
+           (bound
+              ("b"),
+            decimal-natural "462")),
+      effect
+        (last while-values
+           (is-greater
+              (assigned bound
+                 "b",
+               decimal-natural "0"),
+            effect
+              (assign
+                 (bound
+                    ("c"),
+                  assigned bound
+                    "b")),
+            effect
+              (assign
+                 (bound
+                    ("b"),
+                  int-add
+                    (assigned bound
+                       "a",
+                     int-neg
+                       (int-mul
+                          (checked int-div
+                             (assigned bound
+                                "a",
+                              assigned bound
+                                "b"),
                            assigned bound
-                             "b"),
-                        assigned bound
-                          "b")))),
-            assign
-              (bound
-                 ("a"),
-               assigned bound
-                 "c"),
+                             "b"))))),
+            effect
+              (assign
+                 (bound
+                    ("a"),
+                  assigned bound
+                    "c")),
             print
               (to-string assigned bound
                  "b",

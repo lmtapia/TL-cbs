@@ -1,3 +1,4 @@
-initialise-binding finalise-failing checked int-div
-  (decimal "8",
-   decimal "3")
+initialise-binding finalise-failing sequential
+  (checked int-div
+     (decimal-natural "8",
+      decimal-natural "3"))

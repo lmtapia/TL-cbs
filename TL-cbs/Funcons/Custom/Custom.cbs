@@ -1,0 +1,39 @@
+# Custom 
+
+[
+	Funcon while-values
+	Funcon if-true-empty
+	Funcon last
+]
+
+Meta-variables 
+  T <: values
+  T? <: values?
+  V <: ground-values
+
+## Sequences
+
+Funcon
+  last(_:(T)*) : =>T?
+Rule
+  last(V:T) ~> V
+Rule
+  last(_:T, V+:(T)+) ~> last(V+)
+Rule
+  last(( )) ~> null-value
+
+
+## Flowing
+
+Funcon
+  while-values(B:=>booleans, X+:(=>values)+) : (=>values)?
+    ~> if-true-empty(B, left-to-right(X+, while-values(B, X+)))
+  
+Funcon
+  if-true-empty(_:booleans, _:(=>T)+) : (=>T)* 
+Rule  
+  if-true-empty(true, X+) ~> X+
+Rule  
+  if-true-empty(false,X+) ~> ()
+
+

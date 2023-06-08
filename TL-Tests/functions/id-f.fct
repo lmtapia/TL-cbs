@@ -1,0 +1,47 @@
+initialise-binding finalise-failing scope
+  (collateral
+     (bind
+        ("id",
+         allocate-variable functions
+           (tuples
+              ((values)*),
+            values)),
+      bind
+        ("x",
+         allocate-initialised-variable
+           (integers,
+            0))),
+   sequential
+     (assign
+        (bound
+           ("id"),
+         function closure scope
+           (match
+              (given,
+               tuple
+                 (pattern closure
+                    (bind
+                       ("a",
+                        allocate-initialised-variable
+                          (values,
+                           given))))),
+            give
+              (sequential
+                 (assigned bound
+                    "a"),
+               sequential
+                 (recycle-variables bound-directly
+                    ("a"),
+                  given)))),
+      null-value,
+      effect
+        (assign
+           (bound
+              ("x"),
+            decimal-natural "4")),
+      apply
+        (assigned bound
+           "id",
+         tuple
+           (assigned bound
+              "x"))))

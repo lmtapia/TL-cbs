@@ -1,0 +1,120 @@
+initialise-binding finalise-failing scope
+  (collateral
+     (bind
+        ("x",
+         allocate-initialised-variable
+           (integers,
+            0)),
+      bind
+        ("y",
+         allocate-initialised-variable
+           (integers,
+            0)),
+      bind
+        ("gcd",
+         allocate-variable functions
+           (tuples
+              ((values)*),
+            values))),
+   sequential
+     (null-value,
+      assign
+        (bound
+           ("gcd"),
+         function closure scope
+           (match
+              (given,
+               tuple
+                 (pattern closure
+                    (bind
+                       ("a",
+                        allocate-initialised-variable
+                          (values,
+                           given))),
+                  pattern closure
+                    (bind
+                       ("b",
+                        allocate-initialised-variable
+                          (values,
+                           given))),
+                  pattern closure
+                    (bind
+                       ("aux",
+                        allocate-initialised-variable
+                          (values,
+                           given))))),
+            give
+              (sequential
+                 (effect
+                    (last while-values
+                       (is-greater
+                          (assigned bound
+                             "b",
+                           decimal-natural "0"),
+                        effect
+                          (assign
+                             (bound
+                                ("aux"),
+                              assigned bound
+                                "b")),
+                        effect
+                          (assign
+                             (bound
+                                ("b"),
+                              int-add
+                                (assigned bound
+                                   "a",
+                                 int-neg
+                                   (int-mul
+                                      (checked int-div
+                                         (assigned bound
+                                            "a",
+                                          assigned bound
+                                            "b"),
+                                       assigned bound
+                                         "b"))))),
+                        assign
+                          (bound
+                             ("a"),
+                           assigned bound
+                             "aux"))),
+                  assigned bound
+                    "a"),
+               sequential
+                 (recycle-variables bound-directly
+                    ("a"),
+                  recycle-variables bound-directly
+                    ("b"),
+                  recycle-variables bound-directly
+                    ("aux"),
+                  given)))),
+      effect
+        (assign
+           (bound
+              ("x"),
+            read)),
+      effect
+        (assign
+           (bound
+              ("y"),
+            read)),
+      effect
+        (print
+           (to-string apply
+              (assigned bound
+                 "gcd",
+               tuple
+                 (assigned bound
+                    "x",
+                  assigned bound
+                    "y",
+                  decimal-natural "0")),
+            "
+")),
+      apply
+        (assigned bound
+           "gcd",
+         tuple
+           (read,
+            read,
+            decimal-natural "0"))))

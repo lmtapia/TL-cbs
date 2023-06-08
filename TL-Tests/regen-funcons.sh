@@ -3,19 +3,23 @@
 fileext="tl"
 lang="TL"
 goal="Generate Funcons"
+editor="../${lang}-Editor"
+sunshine="$editor/sunshine2.jar"
 
-SpooDir="../../../cbs-beta-tools"
+while getopts "f:n:l:" option
+do
+  case "$option" in
+    n) goal="$OPTARG" ;;
+    f) from="$OPTARG" ;;
+  esac 
+done
 
-
-#java -jar ${SpooDir}/spoofax-sunshine.jar --auto-lang ${SpooDir}/include --project "$1" --builder "Generate Funcons" --build-on-all ./ --non-incremental
-if [[ -z $1 || -d $1 ]]; then
-	echo "Generating funcons for all .$fileext files in ./$1"
-	java -jar ${SpooDir}/sunshine2.jar build -l ../${lang}-Editor -p "$1" -n "Generate Funcons" -f ".*.$fileext"
+if [[ "$from" == "" || -d "$from" ]]; then
+	echo "$goal for all .$fileext files in ./$from"
+	java -jar $sunshine build -l $editor -p "$from" -n "$goal" -f ".*.$fileext"
+elif [[ -f "$from" ]]; then
+	echo "Transforming single file $from"
+	java -jar $sunshine transform -l $editor -i "$from" -p "." -n "$goal"
 else 
-	echo "Transforming single file $1"
-	if [[ -n $2 ]]; then 
-		goal=$2 
-		# echo $goal
-	fi
-	java -jar ${SpooDir}/sunshine2.jar transform -l ../${lang}-Editor -i "$1" -p "$(pwd)" -n "$goal"
+	echo "$from doesn't exist"
 fi

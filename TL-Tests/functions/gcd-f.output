@@ -1,0 +1,11 @@
+gcd-f:
+
+===================
+Result:
+null-value
+
+Mutable Entity: store
+@1 |-> 0
+@2 |-> 0
+@3 |-> function(abstraction(closed(scope("...",scope(match(given,tuple(pattern(closure(bind("a",allocate-initialised-variable(values,given)))),pattern(closure(bind("b",allocate-initialised-variable(values,given)))),pattern(closure(bind("aux",allocate-initialised-variable(values,given)))))),give(sequential(effect(last(while-values(is-greater(assigned(bound("b")),decimal-natural("0")),effect(assign(bound("aux"),assigned(bound("b")))),effect(assign(bound("b"),int-add(assigned(bound("a")),int-neg(int-mul(checked(int-div(assigned(bound("a")),assigned(bound("b")))),assigned(bound("b"))))))),assign(bound("a"),assigned(bound("aux")))))),assigned(bound("a"))),sequential(recycle-variables(bound-directly("a")),recycle-variables(bound-directly("b")),recycle-variables(bound-directly("aux")),given)))))))
+

@@ -6,6 +6,6 @@ while b>0
 {	c = b
 	b = a - (a/b) * b
 	a = c
-	print b
+	print(b)
 }
-print a
+print(a)

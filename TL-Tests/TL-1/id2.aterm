@@ -1,1 +1,1 @@
-L-start--L-pgm(L-pgm--L-exp(L-exp--L-aexp(L-aexp--L-id(LEX-id("aaa")))))
+L-start--L-pgm(L-pgm--L-stmt-P([L-stmt--L-exp(L-exp--L-aexp(L-aexp--L-id(LEX-id("aaa"))))]))

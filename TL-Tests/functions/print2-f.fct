@@ -1,0 +1,76 @@
+initialise-binding finalise-failing scope
+  (collateral
+     (bind
+        ("print2",
+         allocate-variable functions
+           (tuples
+              ((values)*),
+            values)),
+      bind
+        ("a",
+         allocate-initialised-variable
+           (integers,
+            0)),
+      bind
+        ("b",
+         allocate-initialised-variable
+           (integers,
+            0))),
+   sequential
+     (assign
+        (bound
+           ("print2"),
+         function closure scope
+           (match
+              (given,
+               tuple
+                 (pattern closure
+                    (bind
+                       ("x",
+                        allocate-initialised-variable
+                          (values,
+                           given))),
+                  pattern closure
+                    (bind
+                       ("y",
+                        allocate-initialised-variable
+                          (values,
+                           given))))),
+            give
+              (sequential
+                 (effect
+                    (print
+                       (to-string assigned bound
+                          "x",
+                        "
+")),
+                  print
+                    (to-string assigned bound
+                       "y",
+                     "
+")),
+               sequential
+                 (recycle-variables bound-directly
+                    ("x"),
+                  recycle-variables bound-directly
+                    ("y"),
+                  given)))),
+      null-value,
+      effect
+        (assign
+           (bound
+              ("a"),
+            read)),
+      effect
+        (assign
+           (bound
+              ("b"),
+            read)),
+      apply
+        (assigned bound
+           "print2",
+         tuple
+           (assigned bound
+              "a",
+            assigned bound
+              "b"))))
