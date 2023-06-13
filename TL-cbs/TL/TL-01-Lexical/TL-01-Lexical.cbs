@@ -17,7 +17,7 @@ Semantics val-bool[[ _:bool ]]: => bools
 
 Lexis keyword ::= 'false' | 'true' | 'and' | 'or' | 'no'
                 | 'int' | 'if' | 'else' | 'while' | 'print'
-                | 'read' | 'fun'                 
+                | 'read' | 'fun' | 'return'                
                  
 
 #1.1 Desambiguation
@@ -76,4 +76,5 @@ context-free syntax
 ``stmt ::= exp`` {longest-match}
 
 ``stmt ::= id '=' aexp``{longest-match}
+
 */

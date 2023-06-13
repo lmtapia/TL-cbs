@@ -8,7 +8,7 @@ Syntax
 Semantics  run[[ _:pgm ]] : =>values
       Rule run[[Decl+ Stmt+ ]] = 
         scope(collateral(declare[[Decl+]]), 
-              sequential(initialise-funs[[ Decl+ ]], 
+                         handle-return sequential(initialise-funs[[ Decl+ ]], 
                          execute[[ Stmt+ ]]))
       Rule run [[ Stmt+ ]] = sequential (execute[[ Stmt+ ]])                     
 
@@ -22,8 +22,10 @@ Syntax IL : idList ::= id (',' idList)?
 
 Syntax VD: varDecl ::= 'int' idList
   
-Semantics declare-vars [[ _: varDecl ]]: (=>environments)+
+Semantics declare-vars [[ _: varDecl? ]]: (=>environments)*
+     Rule declare-vars [[ ]] = ()
      Rule declare-vars [[ 'int' IL ]] = declare-int-vars[[IL]]
+    
 
 Semantics declare-int-vars[[ _: idList ]] : (=>environments)+
      Rule declare-int-vars[[ ID ]] =

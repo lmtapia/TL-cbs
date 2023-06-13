@@ -1,17 +1,17 @@
 # Custom 
-
 [
 	Funcon while-values
 	Funcon if-true-empty
 	Funcon last
 ]
 
+## Sequences
+
 Meta-variables 
   T <: values
   T? <: values?
   V <: ground-values
 
-## Sequences
 
 Funcon
   last(_:(T)*) : =>T?

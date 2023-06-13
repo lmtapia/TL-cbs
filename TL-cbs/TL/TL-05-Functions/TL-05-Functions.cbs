@@ -2,38 +2,44 @@ Language "TL"
 
 #5 Functions
 
-Syntax FD :  funDecl ::= 'fun' id '(' idList? ')' block
+Syntax FD :  funDecl ::= 'fun' id '(' idList? ')' '{' varDecl? stmt+ '}'
 
 Semantics declare-fun[[ _:funDecl ]] : =>environments
-Rule declare-fun[[ 'fun' ID '(' IL? ')' Block ]] =
+Rule declare-fun[[ 'fun' ID '(' IL? ')' '{' VD? Stmt+ '}' ]] =
 	bind( id[[ ID ]], allocate-variable functions(tuples(values*),values))
 
 
 Semantics initialise-funs[[ _:decl+ ]] : (=>null-type)*
-Rule initialise-funs[[ VD ]] = null-value
-Rule initialise-funs[[ FD ]] = initialise-fun[[ FD ]]
-Rule initialise-funs[[ Decl Decl+]] = initialise-funs[[ Decl ]] , initialise-funs[[ Decl+ ]]
+     Rule initialise-funs[[ VD ]] = null-value
+     Rule initialise-funs[[ FD ]] = initialise-fun[[ FD ]]
+     Rule initialise-funs[[ Decl Decl+]] = initialise-funs[[ Decl ]] , 
+                                           initialise-funs[[ Decl+ ]]
 
 Semantics initialise-fun[[_:funDecl]] : =>null-type
-Rule initialise-fun[[ 'fun' ID '(' IL? ')' Block ]] =  
-  assign(
-      bound(id[[ ID ]]),
-      function closure scope(
-          match(given,tuple(patts[[ IL? ]])),
-          give(sequential(execute[[ Block]]), 
-               sequential(free[[IL?]], given ))))  
-  
+     Rule initialise-fun[[ 'fun' ID '(' IL? ')' '{' VD? Stmt+ '}' ]] =  
+       assign(
+         bound(id[[ ID ]]),
+         function closure scope( 
+           collateral(declare-vars[[ VD? ]],
+             match(given,tuple(patts[[ IL? ]]))), 
+           give(handle-return sequential(execute[[ Stmt+ ]]), 
+             sequential(free[[ IL? ]], free-decl-vars[[ VD? ]], given ))))
+               
 
 Semantics patts[[ _:idList? ]] : patterns*
      Rule patts[[ ]] = ()
-     Rule patts[[ ID ]] = pattern closure(bind(id[[ ID ]],                          
+     Rule patts[[ ID ]] = pattern closure(bind(id[[ ID ]],
                             allocate-initialised-variable(values, given)))
      Rule patts[[ ID ',' IL ]] = patts[[ ID ]] , patts[[ IL ]]
 
-Semantics free[[ _:idList? ]] : =>null-type
+Semantics free[[ _:idList?  ]] : =>null-type
      Rule free[[ ]] = null-value
      Rule free[[ ID ]] = recycle-variables bound-directly(id[[ID]])
      Rule free[[ ID ',' IL ]] = free[[ ID ]], free[[ IL ]]
+
+Semantics free-decl-vars[[ _:varDecl? ]] : =>null-type
+     Rule free-decl-vars[[ ]] = null-value
+     Rule free-decl-vars[[ 'int' IL ]] = free[[IL]]
       
     
     

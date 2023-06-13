@@ -6,22 +6,24 @@ initialise-binding finalise-failing scope
            (tuples
               ((values)*),
             values))),
-   sequential
+   handle-return sequential
      (assign
         (bound
            ("fact"),
          function closure scope
-           (match
-              (given,
-               tuple
-                 (pattern closure
-                    (bind
-                       ("n",
-                        allocate-initialised-variable
-                          (values,
-                           given))))),
+           (collateral
+              (( ),
+               match
+                 (given,
+                  tuple
+                    (pattern closure
+                       (bind
+                          ("n",
+                           allocate-initialised-variable
+                             (values,
+                              given)))))),
             give
-              (sequential
+              (handle-return sequential
                  (if-else
                     (is-greater
                        (assigned bound
@@ -43,6 +45,7 @@ initialise-binding finalise-failing scope
                sequential
                  (recycle-variables bound-directly
                     ("n"),
+                  null-value,
                   given)))),
       effect
         (apply

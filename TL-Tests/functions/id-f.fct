@@ -11,27 +11,30 @@ initialise-binding finalise-failing scope
          allocate-initialised-variable
            (integers,
             0))),
-   sequential
+   handle-return sequential
      (assign
         (bound
            ("id"),
          function closure scope
-           (match
-              (given,
-               tuple
-                 (pattern closure
-                    (bind
-                       ("a",
-                        allocate-initialised-variable
-                          (values,
-                           given))))),
+           (collateral
+              (( ),
+               match
+                 (given,
+                  tuple
+                    (pattern closure
+                       (bind
+                          ("a",
+                           allocate-initialised-variable
+                             (values,
+                              given)))))),
             give
-              (sequential
+              (handle-return sequential
                  (assigned bound
                     "a"),
                sequential
                  (recycle-variables bound-directly
                     ("a"),
+                  null-value,
                   given)))),
       null-value,
       effect

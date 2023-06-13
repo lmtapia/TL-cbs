@@ -1,10 +1,11 @@
 L-start--L-pgm(
   L-pgm--L-decl-P-L-stmt-P(
     [ L-decl--L-funDecl(
-        L-funDecl--R-fun-L-id-LPAREN-L-idList-Q-RPAREN-L-block(
+        L-funDecl--R-fun-L-id-LPAREN-L-idList-Q-RPAREN-LBRACE-L-varDecl-Q-L-stmt-P-RBRACE(
           LEX-id("id")
         , Some(L-idList--L-id-C-COMMA-L-idList-D-Q(LEX-id("a"), None()))
-        , L-block--LBRACE-L-stmt-S-RBRACE([L-stmt--L-exp(L-exp--L-aexp(L-aexp--L-id(LEX-id("a"))))])
+        , None()
+        , [L-stmt--L-exp(L-exp--L-aexp(L-aexp--L-id(LEX-id("a"))))]
         )
       )
     , L-decl--L-varDecl(L-varDecl--R-int-L-idList(L-idList--L-id-C-COMMA-L-idList-D-Q(LEX-id("x"), None())))

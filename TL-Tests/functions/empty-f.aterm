@@ -1,6 +1,14 @@
 L-start--L-pgm(
   L-pgm--L-decl-P-L-stmt-P(
-    [L-decl--L-funDecl(L-funDecl--R-fun-L-id-LPAREN-L-idList-Q-RPAREN-L-block(LEX-id("empty"), None(), L-block--LBRACE-L-stmt-S-RBRACE([])))]
+    [ L-decl--L-funDecl(
+        L-funDecl--R-fun-L-id-LPAREN-L-idList-Q-RPAREN-LBRACE-L-varDecl-Q-L-stmt-P-RBRACE(
+          LEX-id("empty")
+        , None()
+        , None()
+        , [L-stmt--L-block(L-block--LBRACE-L-stmt-S-RBRACE([]))]
+        )
+      )
+    ]
   , [L-stmt--L-exp(L-exp--L-aexp(L-aexp--L-id-LPAREN-L-args-Q-RPAREN(LEX-id("empty"), None())))]
   )
 )

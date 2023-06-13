@@ -10,7 +10,7 @@ initialise-binding finalise-failing scope
          allocate-initialised-variable
            (integers,
             0))),
-   sequential
+   handle-return sequential
      (null-value,
       assign
         (bound

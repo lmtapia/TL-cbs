@@ -16,35 +16,37 @@ initialise-binding finalise-failing scope
            (tuples
               ((values)*),
             values))),
-   sequential
+   handle-return sequential
      (null-value,
       assign
         (bound
            ("gcd"),
          function closure scope
-           (match
-              (given,
-               tuple
-                 (pattern closure
-                    (bind
-                       ("a",
-                        allocate-initialised-variable
-                          (values,
-                           given))),
-                  pattern closure
-                    (bind
-                       ("b",
-                        allocate-initialised-variable
-                          (values,
-                           given))),
-                  pattern closure
-                    (bind
-                       ("aux",
-                        allocate-initialised-variable
-                          (values,
-                           given))))),
+           (collateral
+              (( ),
+               match
+                 (given,
+                  tuple
+                    (pattern closure
+                       (bind
+                          ("a",
+                           allocate-initialised-variable
+                             (values,
+                              given))),
+                     pattern closure
+                       (bind
+                          ("b",
+                           allocate-initialised-variable
+                             (values,
+                              given))),
+                     pattern closure
+                       (bind
+                          ("aux",
+                           allocate-initialised-variable
+                             (values,
+                              given)))))),
             give
-              (sequential
+              (handle-return sequential
                  (effect
                     (last while-values
                        (is-greater
@@ -87,6 +89,7 @@ initialise-binding finalise-failing scope
                     ("b"),
                   recycle-variables bound-directly
                     ("aux"),
+                  null-value,
                   given)))),
       effect
         (assign

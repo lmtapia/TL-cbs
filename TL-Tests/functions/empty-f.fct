@@ -6,20 +6,23 @@ initialise-binding finalise-failing scope
            (tuples
               ((values)*),
             values))),
-   sequential
+   handle-return sequential
      (assign
         (bound
            ("empty"),
          function closure scope
-           (match
-              (given,
-               tuple
-                 ( )),
+           (collateral
+              (( ),
+               match
+                 (given,
+                  tuple
+                    ( ))),
             give
-              (sequential
+              (handle-return sequential
                  (null-value),
                sequential
                  (null-value,
+                  null-value,
                   given)))),
       apply
         (assigned bound

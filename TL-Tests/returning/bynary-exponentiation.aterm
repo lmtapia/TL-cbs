@@ -1,0 +1,115 @@
+L-start--L-pgm(
+  L-pgm--L-decl-P-L-stmt-P(
+    [ L-decl--L-funDecl(
+        L-funDecl--R-fun-L-id-LPAREN-L-idList-Q-RPAREN-LBRACE-L-varDecl-Q-L-stmt-P-RBRACE(
+          LEX-id("binpow")
+        , Some(
+            L-idList--L-id-C-COMMA-L-idList-D-Q(
+              LEX-id("a")
+            , Some(L-COMMA-L-idList--COMMA-L-idList(L-idList--L-id-C-COMMA-L-idList-D-Q(LEX-id("b"), None())))
+            )
+          )
+        , Some(L-varDecl--R-int-L-idList(L-idList--L-id-C-COMMA-L-idList-D-Q(LEX-id("res"), None())))
+        , [ L-stmt--R-if-L-bexp-L-block-R-else-L-block(
+              L-bexp--L-exp-EQUALS-EQUALS-L-exp(
+                L-exp--L-aexp(L-aexp--L-id(LEX-id("b")))
+              , L-exp--L-aexp(L-aexp--L-int(L-int--TILDE-Q-L-natural(None(), LEX-natural("0"))))
+              )
+            , L-block--LBRACE-L-stmt-S-RBRACE(
+                [L-stmt--R-return-L-exp(L-exp--L-aexp(L-aexp--L-int(L-int--TILDE-Q-L-natural(None(), LEX-natural("1")))))]
+              )
+            , L-block--LBRACE-L-stmt-S-RBRACE([])
+            )
+          , L-stmt--L-id-EQUALS-L-aexp(
+              LEX-id("res")
+            , L-aexp--L-id-LPAREN-L-args-Q-RPAREN(
+                LEX-id("binpow")
+              , Some(
+                  L-args--L-aexp-C-COMMA-L-args-D-Q(
+                    L-aexp--L-id(LEX-id("a"))
+                  , Some(
+                      L-COMMA-L-args--COMMA-L-args(
+                        L-args--L-aexp-C-COMMA-L-args-D-Q(
+                          L-aexp--L-aexp-SLASH-L-aexp(
+                            L-aexp--L-id(LEX-id("b"))
+                          , L-aexp--L-int(L-int--TILDE-Q-L-natural(None(), LEX-natural("2")))
+                          )
+                        , None()
+                        )
+                      )
+                    )
+                  )
+                )
+              )
+            )
+          , L-stmt--R-if-L-bexp-L-block-R-else-L-block(
+              L-bexp--L-aexp-GREATER-L-aexp(
+                L-aexp--L-id-LPAREN-L-args-Q-RPAREN(
+                  LEX-id("mod")
+                , Some(
+                    L-args--L-aexp-C-COMMA-L-args-D-Q(
+                      L-aexp--L-id(LEX-id("b"))
+                    , Some(
+                        L-COMMA-L-args--COMMA-L-args(L-args--L-aexp-C-COMMA-L-args-D-Q(L-aexp--L-int(L-int--TILDE-Q-L-natural(None(), LEX-natural("2"))), None()))
+                      )
+                    )
+                  )
+                )
+              , L-aexp--L-int(L-int--TILDE-Q-L-natural(None(), LEX-natural("0")))
+              )
+            , L-block--LBRACE-L-stmt-S-RBRACE(
+                [ L-stmt--R-return-L-exp(
+                    L-exp--L-aexp(
+                      L-aexp--L-aexp-STAR-L-aexp(
+                        L-aexp--L-aexp-STAR-L-aexp(L-aexp--L-id(LEX-id("res")), L-aexp--L-id(LEX-id("res")))
+                      , L-aexp--L-id(LEX-id("a"))
+                      )
+                    )
+                  )
+                ]
+              )
+            , L-block--LBRACE-L-stmt-S-RBRACE(
+                [L-stmt--R-return-L-exp(
+                   L-exp--L-aexp(L-aexp--L-aexp-STAR-L-aexp(L-aexp--L-id(LEX-id("res")), L-aexp--L-id(LEX-id("res"))))
+                 )]
+              )
+            )
+          ]
+        )
+      )
+    , L-decl--L-funDecl(
+        L-funDecl--R-fun-L-id-LPAREN-L-idList-Q-RPAREN-LBRACE-L-varDecl-Q-L-stmt-P-RBRACE(
+          LEX-id("mod")
+        , Some(
+            L-idList--L-id-C-COMMA-L-idList-D-Q(
+              LEX-id("x")
+            , Some(L-COMMA-L-idList--COMMA-L-idList(L-idList--L-id-C-COMMA-L-idList-D-Q(LEX-id("d"), None())))
+            )
+          )
+        , None()
+        , [ L-stmt--L-exp(
+              L-exp--L-aexp(
+                L-aexp--L-aexp-DASH-L-aexp(
+                  L-aexp--L-id(LEX-id("x"))
+                , L-aexp--L-aexp-STAR-L-aexp(
+                    L-aexp--L-aexp-SLASH-L-aexp(L-aexp--L-id(LEX-id("x")), L-aexp--L-id(LEX-id("d")))
+                  , L-aexp--L-id(LEX-id("d"))
+                  )
+                )
+              )
+            )
+          ]
+        )
+      )
+    ]
+  , [ L-stmt--R-print-LPAREN-L-exp-RPAREN(
+        L-exp--L-aexp(
+          L-aexp--L-id-LPAREN-L-args-Q-RPAREN(
+            LEX-id("binpow")
+          , Some(L-args--L-aexp-C-COMMA-L-args-D-Q(L-aexp--R-read-LPAREN-RPAREN(), Some(L-COMMA-L-args--COMMA-L-args(L-args--L-aexp-C-COMMA-L-args-D-Q(L-aexp--R-read-LPAREN-RPAREN(), None())))))
+          )
+        )
+      )
+    ]
+  )
+)

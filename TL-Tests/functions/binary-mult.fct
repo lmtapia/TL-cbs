@@ -12,28 +12,30 @@ initialise-binding finalise-failing scope
            (tuples
               ((values)*),
             values))),
-   sequential
+   handle-return sequential
      (assign
         (bound
            ("mod"),
          function closure scope
-           (match
-              (given,
-               tuple
-                 (pattern closure
-                    (bind
-                       ("a",
-                        allocate-initialised-variable
-                          (values,
-                           given))),
-                  pattern closure
-                    (bind
-                       ("b",
-                        allocate-initialised-variable
-                          (values,
-                           given))))),
+           (collateral
+              (( ),
+               match
+                 (given,
+                  tuple
+                    (pattern closure
+                       (bind
+                          ("a",
+                           allocate-initialised-variable
+                             (values,
+                              given))),
+                     pattern closure
+                       (bind
+                          ("b",
+                           allocate-initialised-variable
+                             (values,
+                              given)))))),
             give
-              (sequential
+              (handle-return sequential
                  (int-add
                     (assigned bound
                        "a",
@@ -51,34 +53,37 @@ initialise-binding finalise-failing scope
                     ("a"),
                   recycle-variables bound-directly
                     ("b"),
+                  null-value,
                   given)))),
       assign
         (bound
            ("mult"),
          function closure scope
-           (match
-              (given,
-               tuple
-                 (pattern closure
-                    (bind
-                       ("a",
-                        allocate-initialised-variable
-                          (values,
-                           given))),
-                  pattern closure
-                    (bind
-                       ("b",
-                        allocate-initialised-variable
-                          (values,
-                           given))),
-                  pattern closure
-                    (bind
-                       ("c",
-                        allocate-initialised-variable
-                          (values,
-                           given))))),
+           (collateral
+              (( ),
+               match
+                 (given,
+                  tuple
+                    (pattern closure
+                       (bind
+                          ("a",
+                           allocate-initialised-variable
+                             (values,
+                              given))),
+                     pattern closure
+                       (bind
+                          ("b",
+                           allocate-initialised-variable
+                             (values,
+                              given))),
+                     pattern closure
+                       (bind
+                          ("c",
+                           allocate-initialised-variable
+                             (values,
+                              given)))))),
             give
-              (sequential
+              (handle-return sequential
                  (effect
                     (last while-values
                        (is-greater
@@ -129,6 +134,7 @@ initialise-binding finalise-failing scope
                     ("b"),
                   recycle-variables bound-directly
                     ("c"),
+                  null-value,
                   given)))),
       effect
         (print

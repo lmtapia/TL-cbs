@@ -16,28 +16,30 @@ initialise-binding finalise-failing scope
          allocate-initialised-variable
            (integers,
             0))),
-   sequential
+   handle-return sequential
      (assign
         (bound
            ("divide"),
          function closure scope
-           (match
-              (given,
-               tuple
-                 (pattern closure
-                    (bind
-                       ("x1",
-                        allocate-initialised-variable
-                          (values,
-                           given))),
-                  pattern closure
-                    (bind
-                       ("x2",
-                        allocate-initialised-variable
-                          (values,
-                           given))))),
+           (collateral
+              (( ),
+               match
+                 (given,
+                  tuple
+                    (pattern closure
+                       (bind
+                          ("x1",
+                           allocate-initialised-variable
+                             (values,
+                              given))),
+                     pattern closure
+                       (bind
+                          ("x2",
+                           allocate-initialised-variable
+                             (values,
+                              given)))))),
             give
-              (sequential
+              (handle-return sequential
                  (checked int-div
                     (assigned bound
                        "x1",
@@ -48,6 +50,7 @@ initialise-binding finalise-failing scope
                     ("x1"),
                   recycle-variables bound-directly
                     ("x2"),
+                  null-value,
                   given)))),
       null-value,
       effect

@@ -8,6 +8,7 @@ Syntax
                | 'print' '(' exp ')'
                | 'if' bexp block 'else' block
                | 'while' bexp block
+               | 'return' exp
                | block
               
   Block : block ::= '{' stmt* '}'          
@@ -20,6 +21,8 @@ Semantics execute[[ _:stmt+ ]] : =>values
        if-else(eval-bool[[ BExp ]], execute[[Block1]], execute[[ Block2 ]])
      Rule execute[[ 'while' BExp Block ]] =
        last while-values(eval-bool[[ BExp ]], execute[[ Block ]])     
+     
+     Rule execute[[ 'return' Exp ]] = return eval[[ Exp ]]
      Rule execute[[ '{' '}' ]] = null-value
      Rule execute[[ '{' Stmt+ '}' ]] = execute[[ Stmt+ ]]
      Rule execute[[ Stmt Stmt+ ]] = effect(execute[[ Stmt ]]),execute[[ Stmt+ ]]

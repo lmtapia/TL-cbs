@@ -11,28 +11,30 @@ initialise-binding finalise-failing scope
          allocate-initialised-variable
            (integers,
             0))),
-   sequential
+   handle-return sequential
      (assign
         (bound
            ("prime"),
          function closure scope
-           (match
-              (given,
-               tuple
-                 (pattern closure
-                    (bind
-                       ("x",
-                        allocate-initialised-variable
-                          (values,
-                           given))),
-                  pattern closure
-                    (bind
-                       ("div",
-                        allocate-initialised-variable
-                          (values,
-                           given))))),
+           (collateral
+              (( ),
+               match
+                 (given,
+                  tuple
+                    (pattern closure
+                       (bind
+                          ("x",
+                           allocate-initialised-variable
+                             (values,
+                              given))),
+                     pattern closure
+                       (bind
+                          ("div",
+                           allocate-initialised-variable
+                             (values,
+                              given)))))),
             give
-              (sequential
+              (handle-return sequential
                  (effect
                     (last while-values
                        (not is-eq
@@ -85,6 +87,7 @@ initialise-binding finalise-failing scope
                     ("x"),
                   recycle-variables bound-directly
                     ("div"),
+                  null-value,
                   given)))),
       null-value,
       effect
