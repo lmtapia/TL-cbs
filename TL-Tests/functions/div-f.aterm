@@ -1,7 +1,7 @@
 L-start--L-pgm(
-  L-pgm--L-decl-P-L-stmt-P(
+  L-pgm--L-decl-S-L-stmt-P(
     [ L-decl--L-funDecl(
-        L-funDecl--R-fun-L-id-LPAREN-L-idList-Q-RPAREN-LBRACE-L-varDecl-Q-L-stmt-P-RBRACE(
+        L-funDecl--R-fun-L-id-LPAREN-L-idList-Q-RPAREN-LBRACE-L-varDecl-Q-L-stmt-S-RBRACE(
           LEX-id("divide")
         , Some(
             L-idList--L-id-C-COMMA-L-idList-D-Q(

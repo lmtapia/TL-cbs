@@ -39,22 +39,23 @@ initialise-binding finalise-failing scope
                  "b",
                assigned bound
                  "a"),
-            effect
-              (assign
+            sequential
+              (effect
+                 (assign
+                    (bound
+                       ("b"),
+                     int-add
+                       (assigned bound
+                          "b",
+                        decimal-natural "1"))),
+               assign
                  (bound
-                    ("b"),
-                  int-add
+                    ("c"),
+                  int-mul
                     (assigned bound
-                       "b",
-                     decimal-natural "1"))),
-            assign
-              (bound
-                 ("c"),
-               int-mul
-                 (assigned bound
-                    "c",
-                  assigned bound
-                    "b")))),
+                       "c",
+                     assigned bound
+                       "b"))))),
       print
         (to-string assigned bound
            "c",

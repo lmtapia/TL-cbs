@@ -29,19 +29,21 @@ initialise-binding finalise-failing scope
                        (assigned bound
                           "n",
                         decimal-natural "1"),
-                     int-mul
-                       (assigned bound
-                          "n",
-                        apply
+                     sequential
+                       (int-mul
                           (assigned bound
-                             "fact",
-                           tuple
-                             (int-add
-                                (assigned bound
-                                   "n",
-                                 int-neg
-                                   (decimal-natural "1"))))),
-                     decimal-natural "1")),
+                             "n",
+                           apply
+                             (assigned bound
+                                "fact",
+                              tuple
+                                (int-add
+                                   (assigned bound
+                                      "n",
+                                    int-neg
+                                      (decimal-natural "1")))))),
+                     sequential
+                       (decimal-natural "1"))),
                sequential
                  (recycle-variables bound-directly
                     ("n"),

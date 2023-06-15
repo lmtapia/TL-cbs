@@ -1,6 +1,7 @@
 L-start--L-pgm(
-  L-pgm--L-stmt-P(
-    [ L-stmt--L-exp(
+  L-pgm--L-decl-S-L-stmt-P(
+    []
+  , [ L-stmt--L-exp(
         L-exp--L-bexp(
           L-bexp--L-exp-EQUALS-EQUALS-L-exp(
             L-exp--L-bexp(L-bexp--R-no-L-bexp(L-bexp--L-bool(LEX-bool("false"))))

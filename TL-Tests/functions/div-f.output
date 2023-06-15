@@ -5,7 +5,7 @@ Result:
 5
 
 Mutable Entity: store
-@1 |-> function(abstraction(closed(scope("...",scope(match(given,tuple(pattern(closure(bind("x1",allocate-initialised-variable(values,given)))),pattern(closure(bind("x2",allocate-initialised-variable(values,given)))))),give(sequential(checked(int-div(assigned(bound("x1")),assigned(bound("x2"))))),sequential(recycle-variables(bound-directly("x1")),recycle-variables(bound-directly("x2")),given)))))))
+@1 |-> function(abstraction(closed(scope("...",scope(collateral(match(given,tuple(pattern(closure(bind("x1",allocate-initialised-variable(values,given)))),pattern(closure(bind("x2",allocate-initialised-variable(values,given))))))),give(handle-return(sequential(checked(int-div(assigned(bound("x1")),assigned(bound("x2")))))),sequential(recycle-variables(bound-directly("x1")),recycle-variables(bound-directly("x2")),null-value,given)))))))
 @2 |-> 64
 @3 |-> 5
 

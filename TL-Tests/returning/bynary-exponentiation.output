@@ -1,0 +1,10 @@
+bynary-exponentiation:
+
+===================
+Result:
+null-value
+
+Mutable Entity: store
+@1 |-> function(abstraction(closed(scope("...",scope(collateral(bind("res",allocate-initialised-variable(integers,0)),match(given,tuple(pattern(closure(bind("a",allocate-initialised-variable(values,given)))),pattern(closure(bind("b",allocate-initialised-variable(values,given))))))),give(handle-return(sequential(effect(if-else(is-eq(assigned(bound("b")),decimal-natural("0")),sequential(return(decimal-natural("1"))),sequential(null-value))),effect(assign(bound("res"),apply(assigned(bound("binpow")),tuple(assigned(bound("a")),checked(int-div(assigned(bound("b")),decimal-natural("2"))))))),if-else(is-greater(apply(assigned(bound("mod")),tuple(assigned(bound("b")),decimal-natural("2"))),decimal-natural("0")),sequential(return(int-mul(int-mul(assigned(bound("res")),assigned(bound("res"))),assigned(bound("a"))))),sequential(return(int-mul(assigned(bound("res")),assigned(bound("res")))))))),sequential(recycle-variables(bound-directly("a")),recycle-variables(bound-directly("b")),recycle-variables(bound-directly("res")),given)))))))
+@2 |-> function(abstraction(closed(scope("...",scope(collateral(match(given,tuple(pattern(closure(bind("x",allocate-initialised-variable(values,given)))),pattern(closure(bind("d",allocate-initialised-variable(values,given))))))),give(handle-return(sequential(int-add(assigned(bound("x")),int-neg(int-mul(checked(int-div(assigned(bound("x")),assigned(bound("d")))),assigned(bound("d"))))))),sequential(recycle-variables(bound-directly("x")),recycle-variables(bound-directly("d")),null-value,given)))))))
+

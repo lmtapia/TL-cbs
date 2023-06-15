@@ -1,4 +1,4 @@
-initialise-binding finalise-failing sequential
+initialise-binding finalise-failing handle-return sequential
   (effect
      (print
         (to-string decimal-natural

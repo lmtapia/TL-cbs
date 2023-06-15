@@ -2,10 +2,10 @@ Language "TL"
 
 #5 Functions
 
-Syntax FD :  funDecl ::= 'fun' id '(' idList? ')' '{' varDecl? stmt+ '}'
+Syntax FD :  funDecl ::= 'fun' id '(' idList? ')' '{' varDecl? stmt* '}'
 
 Semantics declare-fun[[ _:funDecl ]] : =>environments
-Rule declare-fun[[ 'fun' ID '(' IL? ')' '{' VD? Stmt+ '}' ]] =
+Rule declare-fun[[ 'fun' ID '(' IL? ')' '{' VD? Stmt* '}'  ]] =
 	bind( id[[ ID ]], allocate-variable functions(tuples(values*),values))
 
 
@@ -16,15 +16,14 @@ Semantics initialise-funs[[ _:decl+ ]] : (=>null-type)*
                                            initialise-funs[[ Decl+ ]]
 
 Semantics initialise-fun[[_:funDecl]] : =>null-type
-     Rule initialise-fun[[ 'fun' ID '(' IL? ')' '{' VD? Stmt+ '}' ]] =  
+     Rule initialise-fun[[ 'fun' ID '(' IL? ')' '{' VD? Stmt* '}' ]] =  
        assign(
          bound(id[[ ID ]]),
          function closure scope( 
            collateral(declare-vars[[ VD? ]],
              match(given,tuple(patts[[ IL? ]]))), 
-           give(handle-return sequential(execute[[ Stmt+ ]]), 
-             sequential(free[[ IL? ]], free-decl-vars[[ VD? ]], given ))))
-               
+           give(handle-return sequential(execute[[ Stmt* ]]), 
+             sequential(free[[ IL? ]], free-decl-vars[[ VD? ]], given ))))          
 
 Semantics patts[[ _:idList? ]] : patterns*
      Rule patts[[ ]] = ()

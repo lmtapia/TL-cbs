@@ -1,4 +1,4 @@
-initialise-binding finalise-failing sequential
+initialise-binding finalise-failing handle-return sequential
   (int-add
      (decimal-natural "34",
       decimal-natural "17"))

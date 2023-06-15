@@ -1,2 +1,2 @@
-fun empty() {{}}
+fun empty() {}
 empty()

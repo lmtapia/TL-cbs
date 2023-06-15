@@ -1,4 +1,4 @@
-initialise-binding finalise-failing sequential
+initialise-binding finalise-failing handle-return sequential
   (checked int-div
      (decimal-natural "45",
       decimal-natural "0"))

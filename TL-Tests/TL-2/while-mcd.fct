@@ -33,39 +33,40 @@ initialise-binding finalise-failing scope
               (assigned bound
                  "b",
                decimal-natural "0"),
-            effect
-              (assign
-                 (bound
-                    ("c"),
-                  assigned bound
-                    "b")),
-            effect
-              (assign
-                 (bound
-                    ("b"),
-                  int-add
-                    (assigned bound
-                       "a",
-                     int-neg
-                       (int-mul
-                          (checked int-div
-                             (assigned bound
-                                "a",
+            sequential
+              (effect
+                 (assign
+                    (bound
+                       ("c"),
+                     assigned bound
+                       "b")),
+               effect
+                 (assign
+                    (bound
+                       ("b"),
+                     int-add
+                       (assigned bound
+                          "a",
+                        int-neg
+                          (int-mul
+                             (checked int-div
+                                (assigned bound
+                                   "a",
+                                 assigned bound
+                                   "b"),
                               assigned bound
-                                "b"),
-                           assigned bound
-                             "b"))))),
-            effect
-              (assign
-                 (bound
-                    ("a"),
-                  assigned bound
-                    "c")),
-            print
-              (to-string assigned bound
-                 "b",
-               "
-"))),
+                                "b"))))),
+               effect
+                 (assign
+                    (bound
+                       ("a"),
+                     assigned bound
+                       "c")),
+               print
+                 (to-string assigned bound
+                    "b",
+                  "
+")))),
       print
         (to-string assigned bound
            "a",

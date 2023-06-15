@@ -1,0 +1,12 @@
+greater-print:
+
+===================
+Result:
+null-value
+
+Mutable Entity: store
+@1 |-> function(abstraction(closed(scope("...",scope(collateral(match(given,tuple(pattern(closure(bind("x",allocate-initialised-variable(values,given)))),pattern(closure(bind("y",allocate-initialised-variable(values,given))))))),give(handle-return(sequential(if-else(is-greater(assigned(bound("x")),assigned(bound("y"))),sequential(effect(print(to-string(assigned(bound("x"))),"\n")),effect(print(to-string(assigned(bound("y"))),"\n")),assigned(bound("x"))),sequential(effect(print(to-string(assigned(bound("y"))),"\n")),effect(print(to-string(assigned(bound("x"))),"\n")),assigned(bound("y")))))),sequential(recycle-variables(bound-directly("x")),recycle-variables(bound-directly("y")),null-value,given)))))))
+
+Output Entity: standard-out
+"5","\n","4","\n","5","\n","5","\n","3","\n","5","\n"
+

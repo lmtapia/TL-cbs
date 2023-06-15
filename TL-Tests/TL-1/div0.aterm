@@ -1,6 +1,7 @@
 L-start--L-pgm(
-  L-pgm--L-stmt-P(
-    [ L-stmt--L-exp(
+  L-pgm--L-decl-S-L-stmt-P(
+    []
+  , [ L-stmt--L-exp(
         L-exp--L-aexp(
           L-aexp--L-aexp-SLASH-L-aexp(
             L-aexp--L-int(L-int--TILDE-Q-L-natural(None(), LEX-natural("45")))

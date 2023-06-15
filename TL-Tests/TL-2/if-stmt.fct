@@ -19,13 +19,15 @@ initialise-binding finalise-failing scope
             decimal-natural "5")),
       if-else
         (true,
-         print
-           (to-string assigned bound
-              "a",
-            "
-"),
-         print
-           (to-string assigned bound
-              "b",
-            "
-"))))
+         sequential
+           (print
+              (to-string assigned bound
+                 "a",
+               "
+")),
+         sequential
+           (print
+              (to-string assigned bound
+                 "b",
+               "
+")))))

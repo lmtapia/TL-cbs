@@ -1,0 +1,35 @@
+initialise-binding finalise-failing scope
+  (collateral
+     (bind
+        ("hello",
+         allocate-variable functions
+           (tuples
+              ((values)*),
+            values))),
+   handle-return sequential
+     (assign
+        (bound
+           ("hello"),
+         function closure scope
+           (collateral
+              (( ),
+               match
+                 (given,
+                  tuple
+                    ( ))),
+            give
+              (handle-return sequential
+                 (print
+                    (to-string decimal-natural
+                       "123",
+                     "
+")),
+               sequential
+                 (null-value,
+                  null-value,
+                  given)))),
+      apply
+        (assigned bound
+           "hello",
+         tuple
+           ( ))))

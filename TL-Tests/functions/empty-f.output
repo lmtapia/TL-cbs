@@ -5,5 +5,5 @@ Result:
 null-value
 
 Mutable Entity: store
-@1 |-> function(abstraction(closed(scope("...",scope(match(given,tuple()),give(sequential(null-value),sequential(null-value,given)))))))
+@1 |-> function(abstraction(closed(scope("...",scope(collateral(match(given,tuple())),give(handle-return(sequential(null-value)),sequential(null-value,null-value,given)))))))
 

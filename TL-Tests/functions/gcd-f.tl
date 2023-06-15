@@ -7,6 +7,7 @@ fun gcd(a,b,aux) {
 	  a = aux		  
   } 
   a
+ 
 }
 
 x = read()

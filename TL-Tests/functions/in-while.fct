@@ -55,22 +55,23 @@ initialise-binding finalise-failing scope
            (assigned bound
               "s",
             decimal-natural "0"),
-         effect
-           (apply
-              (assigned bound
-                 "first",
-               tuple
+         sequential
+           (effect
+              (apply
                  (assigned bound
-                    "s",
-                  decimal-natural "0"))),
-         effect
-           (assign
-              (bound
-                 ("s"),
-               int-add
-                 (assigned bound
-                    "s",
-                  int-neg
-                    (decimal-natural "1")))),
-         assigned bound
-           "s")))
+                    "first",
+                  tuple
+                    (assigned bound
+                       "s",
+                     decimal-natural "0"))),
+            effect
+              (assign
+                 (bound
+                    ("s"),
+                  int-add
+                    (assigned bound
+                       "s",
+                     int-neg
+                       (decimal-natural "1")))),
+            assigned bound
+              "s"))))

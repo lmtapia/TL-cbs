@@ -18,10 +18,11 @@ initialise-binding finalise-failing scope
               ("a"),
             decimal-natural "4")),
       effect
-        (assign
-           (bound
-              ("b"),
-            decimal-natural "6")),
+        (sequential
+           (assign
+              (bound
+                 ("b"),
+               decimal-natural "6"))),
       effect
         (print
            (to-string assigned bound

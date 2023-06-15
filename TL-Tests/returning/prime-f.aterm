@@ -1,0 +1,101 @@
+L-start--L-pgm(
+  L-pgm--L-decl-S-L-stmt-P(
+    [ L-decl--L-funDecl(
+        L-funDecl--R-fun-L-id-LPAREN-L-idList-Q-RPAREN-LBRACE-L-varDecl-Q-L-stmt-S-RBRACE(
+          LEX-id("prime")
+        , Some(L-idList--L-id-C-COMMA-L-idList-D-Q(LEX-id("x"), None()))
+        , Some(L-varDecl--R-int-L-idList(L-idList--L-id-C-COMMA-L-idList-D-Q(LEX-id("div"), None())))
+        , [ L-stmt--R-if-L-bexp-L-block-R-else-L-block(
+              L-bexp--L-aexp-LESS-L-aexp(
+                L-aexp--L-id(LEX-id("x"))
+              , L-aexp--L-int(L-int--TILDE-Q-L-natural(None(), LEX-natural("2")))
+              )
+            , L-block--LBRACE-L-stmt-S-RBRACE([L-stmt--R-print-LPAREN-L-exp-RPAREN(L-exp--L-bexp(L-bexp--L-bool(LEX-bool("false"))))])
+            , L-block--LBRACE-L-stmt-S-RBRACE(
+                [ L-stmt--R-if-L-bexp-L-block-R-else-L-block(
+                    L-bexp--L-bexp-R-or-L-bexp(
+                      L-bexp--L-exp-EQUALS-EQUALS-L-exp(
+                        L-exp--L-aexp(L-aexp--L-id(LEX-id("x")))
+                      , L-exp--L-aexp(L-aexp--L-int(L-int--TILDE-Q-L-natural(None(), LEX-natural("2"))))
+                      )
+                    , L-bexp--L-exp-EQUALS-EQUALS-L-exp(
+                        L-exp--L-aexp(L-aexp--L-id(LEX-id("x")))
+                      , L-exp--L-aexp(L-aexp--L-int(L-int--TILDE-Q-L-natural(None(), LEX-natural("3"))))
+                      )
+                    )
+                  , L-block--LBRACE-L-stmt-S-RBRACE([L-stmt--R-print-LPAREN-L-exp-RPAREN(L-exp--L-bexp(L-bexp--L-bool(LEX-bool("true"))))])
+                  , L-block--LBRACE-L-stmt-S-RBRACE(
+                      [ L-stmt--L-id-EQUALS-L-aexp(LEX-id("div"), L-aexp--L-int(L-int--TILDE-Q-L-natural(None(), LEX-natural("2"))))
+                      , L-stmt--R-while-L-bexp-L-block(
+                          L-bexp--R-no-L-bexp(
+                            L-bexp--LPAREN-L-bexp-RPAREN(
+                              L-bexp--L-exp-EQUALS-EQUALS-L-exp(
+                                L-exp--L-aexp(
+                                  L-aexp--L-aexp-STAR-L-aexp(
+                                    L-aexp--L-aexp-SLASH-L-aexp(L-aexp--L-id(LEX-id("x")), L-aexp--L-id(LEX-id("div")))
+                                  , L-aexp--L-id(LEX-id("div"))
+                                  )
+                                )
+                              , L-exp--L-aexp(L-aexp--L-id(LEX-id("x")))
+                              )
+                            )
+                          )
+                        , L-block--LBRACE-L-stmt-S-RBRACE(
+                            [ L-stmt--L-id-EQUALS-L-aexp(
+                                LEX-id("div")
+                              , L-aexp--L-aexp-PLUS-L-aexp(
+                                  L-aexp--L-id(LEX-id("div"))
+                                , L-aexp--L-int(L-int--TILDE-Q-L-natural(None(), LEX-natural("1")))
+                                )
+                              )
+                            ]
+                          )
+                        )
+                      , L-stmt--R-if-L-bexp-L-block-R-else-L-block(
+                          L-bexp--L-bexp-R-or-L-bexp(
+                            L-bexp--L-aexp-GREATER-L-aexp(
+                              L-aexp--L-aexp-STAR-L-aexp(L-aexp--L-id(LEX-id("div")), L-aexp--L-id(LEX-id("div")))
+                            , L-aexp--L-id(LEX-id("x"))
+                            )
+                          , L-bexp--L-exp-EQUALS-EQUALS-L-exp(
+                              L-exp--L-aexp(L-aexp--L-aexp-STAR-L-aexp(L-aexp--L-id(LEX-id("div")), L-aexp--L-id(LEX-id("div"))))
+                            , L-exp--L-aexp(L-aexp--L-id(LEX-id("x")))
+                            )
+                          )
+                        , L-block--LBRACE-L-stmt-S-RBRACE([L-stmt--R-print-LPAREN-L-exp-RPAREN(L-exp--L-bexp(L-bexp--L-bool(LEX-bool("true"))))])
+                        , L-block--LBRACE-L-stmt-S-RBRACE([L-stmt--R-print-LPAREN-L-exp-RPAREN(L-exp--L-bexp(L-bexp--L-bool(LEX-bool("false"))))])
+                        )
+                      ]
+                    )
+                  )
+                ]
+              )
+            )
+          ]
+        )
+      )
+    , L-decl--L-varDecl(L-varDecl--R-int-L-idList(L-idList--L-id-C-COMMA-L-idList-D-Q(LEX-id("n"), None())))
+    ]
+  , [ L-stmt--L-id-EQUALS-L-aexp(LEX-id("n"), L-aexp--L-int(L-int--TILDE-Q-L-natural(None(), LEX-natural("6"))))
+    , L-stmt--R-while-L-bexp-L-block(
+        L-bexp--L-aexp-GREATER-L-aexp(
+          L-aexp--L-id(LEX-id("n"))
+        , L-aexp--L-int(L-int--TILDE-Q-L-natural(None(), LEX-natural("0")))
+        )
+      , L-block--LBRACE-L-stmt-S-RBRACE(
+          [ L-stmt--L-id-EQUALS-L-aexp(
+              LEX-id("n")
+            , L-aexp--L-aexp-DASH-L-aexp(
+                L-aexp--L-id(LEX-id("n"))
+              , L-aexp--L-int(L-int--TILDE-Q-L-natural(None(), LEX-natural("1")))
+              )
+            )
+          , L-stmt--L-exp(
+              L-exp--L-aexp(L-aexp--L-id-LPAREN-L-args-Q-RPAREN(LEX-id("prime"), Some(L-args--L-aexp-C-COMMA-L-args-D-Q(L-aexp--R-read-LPAREN-RPAREN(), None()))))
+            )
+          ]
+        )
+      )
+    ]
+  )
+)

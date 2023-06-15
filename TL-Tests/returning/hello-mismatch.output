@@ -1,0 +1,9 @@
+hello-mismatch:
+
+===================
+Result:
+null-value
+
+Mutable Entity: store
+@1 |-> function(abstraction(closed(scope("...",scope(collateral(match(given,tuple())),give(handle-return(sequential(print(to-string(decimal-natural("123")),"\n"))),sequential(null-value,null-value,given)))))))
+

@@ -53,33 +53,34 @@ initialise-binding finalise-failing scope
                           (assigned bound
                              "b",
                            decimal-natural "0"),
-                        effect
-                          (assign
-                             (bound
-                                ("aux"),
-                              assigned bound
-                                "b")),
-                        effect
-                          (assign
-                             (bound
-                                ("b"),
-                              int-add
-                                (assigned bound
-                                   "a",
-                                 int-neg
-                                   (int-mul
-                                      (checked int-div
-                                         (assigned bound
-                                            "a",
+                        sequential
+                          (effect
+                             (assign
+                                (bound
+                                   ("aux"),
+                                 assigned bound
+                                   "b")),
+                           effect
+                             (assign
+                                (bound
+                                   ("b"),
+                                 int-add
+                                   (assigned bound
+                                      "a",
+                                    int-neg
+                                      (int-mul
+                                         (checked int-div
+                                            (assigned bound
+                                               "a",
+                                             assigned bound
+                                               "b"),
                                           assigned bound
-                                            "b"),
-                                       assigned bound
-                                         "b"))))),
-                        assign
-                          (bound
-                             ("a"),
-                           assigned bound
-                             "aux"))),
+                                            "b"))))),
+                           assign
+                             (bound
+                                ("a"),
+                              assigned bound
+                                "aux")))),
                   assigned bound
                     "a"),
                sequential

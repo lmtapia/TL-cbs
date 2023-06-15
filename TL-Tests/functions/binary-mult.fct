@@ -90,41 +90,44 @@ initialise-binding finalise-failing scope
                           (assigned bound
                              "a",
                            decimal-natural "0"),
-                        effect
-                          (if-else
-                             (is-greater
-                                (apply
-                                   (assigned bound
-                                      "mod",
-                                    tuple
+                        sequential
+                          (effect
+                             (if-else
+                                (is-greater
+                                   (apply
                                       (assigned bound
-                                         "a",
-                                       decimal-natural "2")),
-                                 decimal-natural "0"),
-                              assign
+                                         "mod",
+                                       tuple
+                                         (assigned bound
+                                            "a",
+                                          decimal-natural "2")),
+                                    decimal-natural "0"),
+                                 sequential
+                                   (assign
+                                      (bound
+                                         ("c"),
+                                       int-add
+                                         (assigned bound
+                                            "c",
+                                          assigned bound
+                                            "b"))),
+                                 sequential
+                                   (null-value))),
+                           effect
+                             (assign
                                 (bound
-                                   ("c"),
-                                 int-add
+                                   ("a"),
+                                 checked int-div
                                    (assigned bound
-                                      "c",
-                                    assigned bound
-                                      "b")),
-                              null-value)),
-                        effect
-                          (assign
+                                      "a",
+                                    decimal-natural "2"))),
+                           assign
                              (bound
-                                ("a"),
-                              checked int-div
+                                ("b"),
+                              int-mul
                                 (assigned bound
-                                   "a",
-                                 decimal-natural "2"))),
-                        assign
-                          (bound
-                             ("b"),
-                           int-mul
-                             (assigned bound
-                                "b",
-                              decimal-natural "2")))),
+                                   "b",
+                                 decimal-natural "2"))))),
                   assigned bound
                     "c"),
                sequential

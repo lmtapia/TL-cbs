@@ -1,0 +1,143 @@
+initialise-binding finalise-failing scope
+  (collateral
+     (bind
+        ("prime",
+         allocate-variable functions
+           (tuples
+              ((values)*),
+            values)),
+      bind
+        ("n",
+         allocate-initialised-variable
+           (integers,
+            0))),
+   handle-return sequential
+     (assign
+        (bound
+           ("prime"),
+         function closure scope
+           (collateral
+              (bind
+                 ("div",
+                  allocate-initialised-variable
+                    (integers,
+                     0)),
+               match
+                 (given,
+                  tuple
+                    (pattern closure
+                       (bind
+                          ("x",
+                           allocate-initialised-variable
+                             (values,
+                              given)))))),
+            give
+              (handle-return sequential
+                 (effect
+                    (if-else
+                       (is-less
+                          (assigned bound
+                             "x",
+                           decimal-natural "2"),
+                        sequential
+                          (return false),
+                        sequential
+                          (null-value))),
+                  if-else
+                    (if-else
+                       (is-eq
+                          (assigned bound
+                             "x",
+                           decimal-natural "2"),
+                        true,
+                        is-eq
+                          (assigned bound
+                             "x",
+                           decimal-natural "3")),
+                     sequential
+                       (true),
+                     sequential
+                       (effect
+                          (assign
+                             (bound
+                                ("div"),
+                              decimal-natural "2")),
+                        effect
+                          (last while-values
+                             (not is-eq
+                                (int-mul
+                                   (checked int-div
+                                      (assigned bound
+                                         "x",
+                                       assigned bound
+                                         "div"),
+                                    assigned bound
+                                      "div"),
+                                 assigned bound
+                                   "x"),
+                              sequential
+                                (assign
+                                   (bound
+                                      ("div"),
+                                    int-add
+                                      (assigned bound
+                                         "div",
+                                       decimal-natural "1"))))),
+                        if-else
+                          (if-else
+                             (is-greater
+                                (int-mul
+                                   (assigned bound
+                                      "div",
+                                    assigned bound
+                                      "div"),
+                                 assigned bound
+                                   "x"),
+                              true,
+                              is-eq
+                                (int-mul
+                                   (assigned bound
+                                      "div",
+                                    assigned bound
+                                      "div"),
+                                 assigned bound
+                                   "x")),
+                           sequential
+                             (true),
+                           sequential
+                             (false))))),
+               sequential
+                 (recycle-variables bound-directly
+                    ("x"),
+                  recycle-variables bound-directly
+                    ("div"),
+                  given)))),
+      null-value,
+      effect
+        (assign
+           (bound
+              ("n"),
+            decimal-natural "6")),
+      last while-values
+        (is-greater
+           (assigned bound
+              "n",
+            decimal-natural "0"),
+         sequential
+           (effect
+              (assign
+                 (bound
+                    ("n"),
+                  int-add
+                    (assigned bound
+                       "n",
+                     int-neg
+                       (decimal-natural "1")))),
+            print
+              (to-string apply
+                 (assigned bound
+                    "prime",
+                  tuple
+                    (read)),
+               "
+")))))

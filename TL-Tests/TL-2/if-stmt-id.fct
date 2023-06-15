@@ -22,13 +22,15 @@ initialise-binding finalise-failing scope
            (assigned bound
               "a",
             decimal-natural "0"),
-         print
-           (to-string assigned bound
-              "a",
-            "
-"),
-         print
-           (to-string assigned bound
-              "b",
-            "
-"))))
+         sequential
+           (print
+              (to-string assigned bound
+                 "a",
+               "
+")),
+         sequential
+           (print
+              (to-string assigned bound
+                 "b",
+               "
+")))))

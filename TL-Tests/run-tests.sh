@@ -2,7 +2,7 @@
 # usage: run-tests [-c <CONFIG>] [-o <OPTIONS>] [-f <FILE|DIR>] 
 # without options runs all funcons files each one with its config
 
-runfct="runfct"
+runfct="runfct-TL"
 opt_runfct=
 langext=tl
 
@@ -30,12 +30,16 @@ function run-test {
     echo $'\n''===================' | tee -a ${name}.output
     $runfct $config $test | tee -a ${name}.output
   else
-    $runfct $opt_runfct $test
+    $runfct $opt_runfct $test | tee ${name}.temp
+    lines=$(wc -l ${name}.temp| cut -d ' ' -f 1)
+    if [[ $? != 0 || $lines -gt 0 ]]; then 
+      names="$names $name"
+      ((errors=errors+1))
+    fi
+    lines=0
+    rm ${name}.temp
   fi  
-  if [[ $? != 0 ]]; then 
-    names="$names $name"
-    ((errors=errors+1))
-  fi
+  
   ((i=i+1))
 
 }

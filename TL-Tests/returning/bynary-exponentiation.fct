@@ -46,9 +46,11 @@ initialise-binding finalise-failing scope
                           (assigned bound
                              "b",
                            decimal-natural "0"),
-                        return decimal-natural
-                          "1",
-                        null-value)),
+                        sequential
+                          (return decimal-natural
+                             "1"),
+                        sequential
+                          (null-value))),
                   effect
                     (assign
                        (bound
@@ -73,19 +75,21 @@ initialise-binding finalise-failing scope
                                 "b",
                               decimal-natural "2")),
                         decimal-natural "0"),
-                     return int-mul
-                       (int-mul
+                     sequential
+                       (return int-mul
+                          (int-mul
+                             (assigned bound
+                                "res",
+                              assigned bound
+                                "res"),
+                           assigned bound
+                             "a")),
+                     sequential
+                       (return int-mul
                           (assigned bound
                              "res",
                            assigned bound
-                             "res"),
-                        assigned bound
-                          "a"),
-                     return int-mul
-                       (assigned bound
-                          "res",
-                        assigned bound
-                          "res"))),
+                             "res")))),
                sequential
                  (recycle-variables bound-directly
                     ("a"),

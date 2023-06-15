@@ -5,7 +5,7 @@ Result:
 null-value
 
 Mutable Entity: store
-@1 |-> function(abstraction(closed(scope("...",scope(match(given,tuple(pattern(closure(bind("x",allocate-initialised-variable(values,given)))),pattern(closure(bind("d",allocate-initialised-variable(values,given)))))),give(sequential(int-add(assigned(bound("x")),int-neg(int-mul(checked(int-div(assigned(bound("x")),assigned(bound("d")))),assigned(bound("d")))))),sequential(recycle-variables(bound-directly("x")),recycle-variables(bound-directly("d")),given)))))))
-@2 |-> function(abstraction(closed(scope("...",scope(match(given,tuple(pattern(closure(bind("a",allocate-initialised-variable(values,given)))))),give(sequential(is-eq(apply(assigned(bound("mod")),tuple(assigned(bound("a")),decimal-natural("2"))),decimal-natural("0"))),sequential(recycle-variables(bound-directly("a")),given)))))))
+@1 |-> function(abstraction(closed(scope("...",scope(collateral(match(given,tuple(pattern(closure(bind("x",allocate-initialised-variable(values,given)))),pattern(closure(bind("d",allocate-initialised-variable(values,given))))))),give(handle-return(sequential(int-add(assigned(bound("x")),int-neg(int-mul(checked(int-div(assigned(bound("x")),assigned(bound("d")))),assigned(bound("d"))))))),sequential(recycle-variables(bound-directly("x")),recycle-variables(bound-directly("d")),null-value,given)))))))
+@2 |-> function(abstraction(closed(scope("...",scope(collateral(match(given,tuple(pattern(closure(bind("a",allocate-initialised-variable(values,given))))))),give(handle-return(sequential(is-eq(apply(assigned(bound("mod")),tuple(assigned(bound("a")),decimal-natural("2"))),decimal-natural("0")))),sequential(recycle-variables(bound-directly("a")),null-value,given)))))))
 @3 |-> 0
 

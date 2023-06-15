@@ -1,0 +1,29 @@
+L-start--L-pgm(
+  L-pgm--L-decl-S-L-stmt-P(
+    [ L-decl--L-funDecl(
+        L-funDecl--R-fun-L-id-LPAREN-L-idList-Q-RPAREN-LBRACE-L-varDecl-Q-L-stmt-S-RBRACE(
+          LEX-id("hello")
+        , None()
+        , None()
+        , [L-stmt--R-print-LPAREN-L-exp-RPAREN(L-exp--L-aexp(L-aexp--L-int(L-int--TILDE-Q-L-natural(None(), LEX-natural("123")))))]
+        )
+      )
+    ]
+  , [ L-stmt--L-exp(
+        L-exp--L-aexp(
+          L-aexp--L-id-LPAREN-L-args-Q-RPAREN(
+            LEX-id("hello")
+          , Some(
+              L-args--L-aexp-C-COMMA-L-args-D-Q(
+                L-aexp--L-int(L-int--TILDE-Q-L-natural(None(), LEX-natural("4")))
+              , Some(
+                  L-COMMA-L-args--COMMA-L-args(L-args--L-aexp-C-COMMA-L-args-D-Q(L-aexp--L-int(L-int--TILDE-Q-L-natural(None(), LEX-natural("5"))), None()))
+                )
+              )
+            )
+          )
+        )
+      )
+    ]
+  )
+)

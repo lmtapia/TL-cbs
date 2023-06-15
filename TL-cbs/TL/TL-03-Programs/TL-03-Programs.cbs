@@ -3,14 +3,15 @@ Language "TL"
 #3 Programs
 
 Syntax
-  Pgm : pgm ::= decl+ stmt+ | stmt+       
+  Pgm : pgm ::= decl* stmt+       
 
-Semantics  run[[ _:pgm ]] : =>values
-      Rule run[[Decl+ Stmt+ ]] = 
+Semantics run[[ _:pgm ]] : =>values
+     Rule run[[ Stmt+ ]] = handle-return sequential(execute[[ Stmt+ ]])
+     Rule run[[ Decl+ Stmt+ ]] =
         scope(collateral(declare[[Decl+]]), 
                          handle-return sequential(initialise-funs[[ Decl+ ]], 
                          execute[[ Stmt+ ]]))
-      Rule run [[ Stmt+ ]] = sequential (execute[[ Stmt+ ]])                     
+                           
 
 Syntax  Decl: decl ::= varDecl | funDecl
 Semantics declare [[ _ : decl+ ]] : (=>environments)+
