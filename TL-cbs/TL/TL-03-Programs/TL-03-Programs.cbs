@@ -2,22 +2,20 @@ Language "TL"
 
 #3 Programs
 
-Syntax
-  Pgm : pgm ::= decl* stmt+       
-
+Syntax Pgm : pgm ::= decl* stmt+       
 Semantics run[[ _:pgm ]] : =>values
      Rule run[[ Stmt+ ]] = handle-return sequential(execute[[ Stmt+ ]])
      Rule run[[ Decl+ Stmt+ ]] =
-        scope(collateral(declare[[Decl+]]), 
-                         handle-return sequential(initialise-funs[[ Decl+ ]], 
-                         execute[[ Stmt+ ]]))
-                           
+       scope(collateral(declare[[Decl+]]), 
+             handle-return sequential(initialise-funs[[ Decl+ ]], 
+                                      execute[[ Stmt+ ]]))                           
 
-Syntax  Decl: decl ::= varDecl | funDecl
+Syntax Decl: decl ::= varDecl | funDecl
 Semantics declare [[ _ : decl+ ]] : (=>environments)+
      Rule declare [[ VD ]] = declare-vars[[ VD ]]
      Rule declare [[ FD ]] = declare-fun[[ FD ]]
-     Rule declare [[ Decl Decl+ ]] = declare[[ Decl ]], declare[[ Decl+ ]]
+     Rule declare [[ Decl Decl+ ]] = declare[[ Decl ]], 
+                                     declare[[ Decl+ ]]
 
 Syntax IL : idList ::= id (',' idList)?
 
@@ -27,7 +25,6 @@ Semantics declare-vars [[ _: varDecl? ]]: (=>environments)*
      Rule declare-vars [[ ]] = ()
      Rule declare-vars [[ 'int' IL ]] = declare-int-vars[[IL]]
     
-
 Semantics declare-int-vars[[ _: idList ]] : (=>environments)+
      Rule declare-int-vars[[ ID ]] =
        bind(id[[ ID ]], allocate-initialised-variable(integers, 0))

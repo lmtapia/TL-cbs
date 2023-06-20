@@ -1,27 +1,21 @@
 Language "TL"
 
 #1 Lexical
-
 Lexis N:natural ::= ('0'-'9')+ 
-    
 Lexis  ID:id ::= ('a'-'z') ('A'-'Z'|'a'-'z'|'0'-'9')*
-
 Semantics id[[ ID:id ]] : => identifiers
-            = \"ID\"
-     
+            = \"ID\"    
 
 Lexis B:bool ::= 'true' | 'false'
 Semantics val-bool[[ _:bool ]]: => bools 
-    Rule val-bool[[ 'true' ]] = true 
-    Rule val-bool[[ 'false' ]] = false 
+     Rule val-bool[[ 'true' ]] = true 
+     Rule val-bool[[ 'false' ]] = false 
 
 Lexis keyword ::= 'false' | 'true' | 'and' | 'or' | 'no'
                 | 'int' | 'if' | 'else' | 'while' | 'print'
                 | 'read' | 'fun' | 'return'                
                  
-
 #1.1 Desambiguation
-
 Lexis SDF
 /*
 lexical syntax 
@@ -72,9 +66,6 @@ Syntax SDF
 /*
 context-free syntax
 ``aexp ::= id '(' args? ')'`` {longest-match}
-
 ``stmt ::= exp`` {longest-match}
-
 ``stmt ::= id '=' aexp``{longest-match}
-
 */

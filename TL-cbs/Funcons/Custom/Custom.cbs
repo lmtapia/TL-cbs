@@ -7,7 +7,7 @@
 
 ## Sequences
 
-Meta-variables 
+Meta-variables
   T <: values
   T? <: values?
   V <: ground-values

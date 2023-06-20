@@ -11,4 +11,5 @@ Language "TL"
 # Top level
 Syntax START:start ::= pgm
 Semantics start[[ _:start ]]: =>values
-     Rule start[[ Pgm ]] = initialise-binding finalise-failing run[[ Pgm ]] 	
+     Rule start[[ Pgm ]] = initialise-binding finalise-failing 
+                             run[[ Pgm ]] 	

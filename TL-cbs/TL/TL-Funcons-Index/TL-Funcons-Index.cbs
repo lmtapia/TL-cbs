@@ -57,6 +57,12 @@
   Funcon   checked
 ]
 
+### Returning
+[
+  Funcon   return
+  Funcon   handle-return
+]
+
 # Values
 
 ## Value Types

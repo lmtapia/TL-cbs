@@ -15,13 +15,17 @@ Syntax
 
 Semantics execute[[ _:stmt* ]] : =>values 
      Rule execute[[ Exp ]] = eval[[ Exp ]]
-     Rule execute[[ ID '=' AExp ]] = assign(bound(id[[ ID ]]),eval[[ AExp ]])
-     Rule execute[['print' '(' Exp ')'  ]] = print(to-string eval[[ Exp ]], "\n")
+     Rule execute[[ ID '=' AExp ]] = 
+       assign(bound(id[[ ID ]]),eval[[ AExp ]])
+     Rule execute[['print' '(' Exp ')'  ]] = 
+       print(to-string eval[[ Exp ]], "\n")
      Rule execute[['if' BExp Block1 'else' Block2]] = 
-       if-else(eval-bool[[ BExp ]], execute[[Block1]], execute[[ Block2 ]])
+       if-else(eval-bool[[ BExp ]], execute[[Block1]], 
+               execute[[ Block2 ]])
      Rule execute[[ 'while' BExp Block ]] =
        last while-values(eval-bool[[ BExp ]], execute[[ Block ]])     
      Rule execute[[ 'return' Exp ]] = return eval[[ Exp ]]
      Rule execute[[ '{' Stmt* '}' ]] = sequential(execute[[ Stmt* ]])
      Rule execute[[ ]] = null-value
-     Rule execute[[ Stmt Stmt+ ]] = effect(execute[[ Stmt ]]),execute[[ Stmt+ ]]
+     Rule execute[[ Stmt Stmt+ ]] = effect(execute[[ Stmt ]]),
+                                    execute[[ Stmt+ ]]
